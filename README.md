@@ -8,7 +8,7 @@ Virtual liveのためのVolumetricLightBeam専用拡張
 ### PackageManager
 
 ```
-https://github.com/murasaqi/Unity VLVLB.git?path=/Assets/VLVLB#v0.1.0
+https://github.com/murasaqi/Unity_VLVLB.git?path=/Assets/VLVLB#v0.1.0
 ```
 
 ## エラー解決
