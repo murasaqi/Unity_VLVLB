@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Button text="Search In Children (PTL)" display-tooltip-when-elided="true" name="SearchPtlButton" />
+    <ui:Button text="Search In Children (Universe)" display-tooltip-when-elided="true" name="SearchUniverseButton" />
+    <ui:ListView focusable="true" binding-path="ptls" name="PTLsField" show-border="true" show-foldout-header="true" show-alternating-row-backgrounds="All" reorderable="true" show-add-remove-footer="true" horizontal-scrolling="true" selection-type="Multiple" usage-hints="DynamicTransform" reorder-mode="Animated" header-title="PTLs" virtualization-method="DynamicHeight" />
+    <ui:ListView focusable="true" binding-path="ptlUniverses" name="UniverseField" show-border="true" show-foldout-header="true" show-alternating-row-backgrounds="All" reorderable="true" show-add-remove-footer="true" horizontal-scrolling="true" selection-type="Multiple" usage-hints="DynamicTransform" reorder-mode="Animated" header-title="Universe" virtualization-method="DynamicHeight" />
+    <ui:Toggle label="SearchOnAwake" binding-path="searchOnAwake" />
+</ui:UXML>

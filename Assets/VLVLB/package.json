@@ -1,0 +1,13 @@
+{
+  "name": "com.murasaqi.vlvlb",
+  "displayName": "VLVLB",
+  "version": "0.1.0",
+  "unity": "2021.2",
+  "description": "VolumetricLightBeam extensions for virtual live.",
+  "keywords": [
+    "Timeline",
+    "Light",
+    "Volumetric Light Beam"
+  ],
+  "unityRelease": "8f1"
+}

@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ef649f52a26554aac7a52163b7705e, type: 3}
+  m_Name: BlackOut
+  m_EditorClassIdentifier: 
+  ptlProps:
+    inputPlayableTime: 0
+    weight: 0
+    BPM: 60
+    fixedTime: 0
+    offsetUniverseTime: 0.19
+    offsetChildTime: 0.12
+    timeScalePan: 1
+    ignoreOffsetPan: 0
+    pan:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    timeScaleTilt: 1
+    ignoreOffsetTilt: 0
+    tilt:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 16.099695
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ignoreOffsetColor: 0
+    timeScaleColor: 1
+    color:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 0, g: 0, b: 0, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
+      key5: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
+      key6: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
+      key7: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
+      ctime0: 6720
+      ctime1: 22080
+      ctime2: 40895
+      ctime3: 58559
+      ctime4: 65471
+      ctime5: 65535
+      ctime6: 65535
+      ctime7: 65535
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 1
+      m_NumColorKeys: 4
+      m_NumAlphaKeys: 2
+    ignoreOffsetIntensity: 1
+    timeScaleIntensity: 1
+    intensity:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    rootEmissionPower: 0.01
+    ignoreOffsetAngle: 0
+    timeScaleAngle: 1
+    spotAngle: 53.22
+    rangeLimit: 3.97
+    truncatedRadius: 0.15
+    decalSize: {x: 1, y: 1}
+    decalDepth: 20
+    decalOpacity: 1
+    loopType: 1
