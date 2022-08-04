@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5697320056661468304}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -360,7 +360,7 @@ MonoBehaviour:
   - {fileID: 3725646898553883568}
   emissionMatMeshRenderer: {fileID: 822202108586296126}
   decalProjector: {fileID: 7354552871571863582}
-  emissionPropertyName: _Emission
+  emissionPropertyName: _EmissionColor
 --- !u!1 &7935720491300433748
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,12 +441,9 @@ MonoBehaviour:
   intensityModeAdvanced: 0
   intensityInside: 1
   intensityOutside: 1
-  intensityMultiplier: 1
-  hdrpExposureWeight: 0
   blendingMode: 0
   spotAngleFromLight: 1
   spotAngle: 35
-  spotAngleMultiplier: 1
   coneRadiusStart: 0.1
   shaderAccuracy: 0
   geomMeshType: 0
@@ -455,12 +452,11 @@ MonoBehaviour:
   skewingLocalForwardDirection: {x: 0, y: 0, z: 1}
   clippingPlaneTransform: {fileID: 0}
   geomCap: 0
+  fallOffEndFromLight: 1
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
   fallOffEnd: 3
-  fallOffEndFromLight: 1
-  fallOffEndMultiplier: 1
   depthBlendDistance: 2
   cameraClippingDistance: 0.5
   glareFrontal: 0.5
@@ -474,7 +470,7 @@ MonoBehaviour:
   noiseVelocityLocal: {x: 0.07, y: 0.18, z: 0.05}
   dimensions: 0
   tiltFactor: {x: 0, y: 0}
-  pluginVersion: 1981
+  pluginVersion: 1970
   _TrackChangesDuringPlaytime: 0
   _SortingLayerID: 0
   _SortingOrder: 0
