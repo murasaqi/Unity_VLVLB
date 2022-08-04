@@ -11,6 +11,7 @@ namespace VLVLB
         public Transform pan;
         public Transform tilt;
         public List<VolumetricLightBeam> volumetricLightBeams = new List<VolumetricLightBeam>();
+        public List<Light> lights = new List<Light>();
         public MeshRenderer emissionMatMeshRenderer;
         public DecalProjector decalProjector;
         private MaterialPropertyBlock materialPropertyBlock;
@@ -112,6 +113,17 @@ namespace VLVLB
                     volumetricLightBeam.fallOffEnd = rangeLimit;
                     volumetricLightBeam.coneRadiusStart = truncatedRadius;
                     volumetricLightBeam.spotAngle = spotAngle;    
+                }
+            }
+            
+            if(lights != null)
+            {
+                foreach (var light in lights)
+                {
+                    light.intensity = intensity;
+                    light.color = color;
+                    light.spotAngle = spotAngle;
+                    light.range = rangeLimit;
                 }
             }
 
