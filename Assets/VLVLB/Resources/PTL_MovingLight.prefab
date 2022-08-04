@@ -358,9 +358,11 @@ MonoBehaviour:
   tilt: {fileID: 7844514258342414472}
   volumetricLightBeams:
   - {fileID: 3725646898553883568}
+  lights: []
   emissionMatMeshRenderer: {fileID: 822202108586296126}
   decalProjector: {fileID: 7354552871571863582}
   emissionPropertyName: _EmissionColor
+  decalMaterial: {fileID: 2100000, guid: 962d6bcab3cace0419b39d543b974c00, type: 2}
 --- !u!1 &7935720491300433748
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +473,7 @@ MonoBehaviour:
   dimensions: 0
   tiltFactor: {x: 0, y: 0}
   pluginVersion: 1970
-  _TrackChangesDuringPlaytime: 0
+  _TrackChangesDuringPlaytime: 1
   _SortingLayerID: 0
   _SortingOrder: 0
   _FadeOutBegin: -150

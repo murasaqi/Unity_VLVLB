@@ -49,10 +49,10 @@ MonoBehaviour:
   tilt: {fileID: 7543768324564896302}
   volumetricLightBeams:
   - {fileID: 1893554908572485420}
+  lights: []
   emissionMatMeshRenderer: {fileID: 5859310160929284228}
   decalProjector: {fileID: 0}
   emissionPropertyName: _Emission
-  materialEmissionPower: 1.2
 --- !u!1 &1893554908572485423
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,12 +133,9 @@ MonoBehaviour:
   intensityModeAdvanced: 0
   intensityInside: 0.35200012
   intensityOutside: 0.35200012
-  intensityMultiplier: 1
-  hdrpExposureWeight: 0
   blendingMode: 0
   spotAngleFromLight: 0
   spotAngle: 83.67
-  spotAngleMultiplier: 1
   coneRadiusStart: 0.15
   shaderAccuracy: 0
   geomMeshType: 0
@@ -147,12 +144,11 @@ MonoBehaviour:
   skewingLocalForwardDirection: {x: 0, y: 0, z: 1}
   clippingPlaneTransform: {fileID: 0}
   geomCap: 0
+  fallOffEndFromLight: 1
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
   fallOffEnd: 1.5
-  fallOffEndFromLight: 1
-  fallOffEndMultiplier: 1
   depthBlendDistance: 2
   cameraClippingDistance: 0.5
   glareFrontal: 0.5
@@ -166,7 +162,7 @@ MonoBehaviour:
   noiseVelocityLocal: {x: 0.07, y: 0.18, z: 0.05}
   dimensions: 0
   tiltFactor: {x: 0, y: 0}
-  pluginVersion: 1981
+  pluginVersion: 1970
   _TrackChangesDuringPlaytime: 0
   _SortingLayerID: 0
   _SortingOrder: 0

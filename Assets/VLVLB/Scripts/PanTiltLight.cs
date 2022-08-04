@@ -15,10 +15,10 @@ namespace VLVLB
         public MeshRenderer emissionMatMeshRenderer;
         public DecalProjector decalProjector;
         private MaterialPropertyBlock materialPropertyBlock;
-        public string emissionPropertyName = "_Emission";
+        public string emissionPropertyName = "_EmissionColor";
         // public float materialEmissionPower = 1.2f;
-
-        private Material decalMaterial = null;
+        public Material decalMaterial;
+        private Material instancedDecalMaterial = null;
         // public MeshRenderer MeshRenderer;
         private List<Material> instanced = new List<Material>();
 
@@ -41,7 +41,7 @@ namespace VLVLB
         private void OnDestroy()
         {
 
-            DestroyImmediate(decalMaterial);
+            DestroyImmediate(instancedDecalMaterial);
 
             foreach (var i in instanced)
             {
@@ -51,11 +51,11 @@ namespace VLVLB
 
         public void InitDecal()
         {
-            if(decalMaterial != null) DestroyImmediate(decalMaterial);
+            if(instancedDecalMaterial != null) DestroyImmediate(instancedDecalMaterial);
             if (decalProjector != null)
             {
-                decalMaterial = Material.Instantiate(Resources.Load<Material>("VLVLBMaterials/DecalMat"));
-                decalProjector.material = decalMaterial;     
+                instancedDecalMaterial = Material.Instantiate(decalMaterial);
+                decalProjector.material = instancedDecalMaterial;     
             }
            
         }
@@ -129,13 +129,13 @@ namespace VLVLB
 
             if (decalProjector != null)
             {
-                if (decalMaterial == null) InitDecal();
+                if (instancedDecalMaterial == null) InitDecal();
 
                 decalProjector.material.SetFloat("_Alpha",color.a);
                 decalProjector.material.SetColor("_Color",color);
                 decalProjector.size = new Vector3(decalSize.x, decalSize.y, decalDepth);
                 // decalProjector.
-                decalProjector.fadeFactor = decalOpacity;
+                decalProjector.fadeFactor = decalOpacity*intensity*Vector3.Distance(new Vector3(color.r,color.g,color.b),new Vector3(0,0,0));
                 decalProjector.pivot = new Vector3(0, 0, decalDepth / 2f);
                 // decalProjector.size = decalSize;
                 // decalProjector.ma
