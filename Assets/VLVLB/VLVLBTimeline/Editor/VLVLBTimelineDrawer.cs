@@ -1,12 +1,14 @@
+using UnityEngine;
+#if UNITY_EDITOR
 using System.Reflection;
 using UnityEditor;
-using UnityEngine;
 using VLVLB;
 
 [CustomPropertyDrawer(typeof(VLVLBTimelineBehaviour))]
 public class VLVLBTimelineDrawer : PropertyDrawer
 {
 
+    
     private SerializedProperty defaultProps = null;
     SerializedObject parentSerializedObject;
     public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
@@ -109,4 +111,6 @@ public class VLVLBTimelineDrawer : PropertyDrawer
     }
     
     
+
 }
+#endif

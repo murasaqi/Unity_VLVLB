@@ -98,13 +98,9 @@ namespace VLVLB
 
         public void UpdatePTL(List<PTLProps> ptlPropsCues)
         {
-
-
             var count = 0;
             foreach (var ptl in ptls)
             {
-
-
                 ptl.UpdatePtl(0,count, ptlPropsCues);
                 count++;
             }
@@ -112,13 +108,9 @@ namespace VLVLB
             var univerCount = 0;
             foreach (var unv in ptlUniverses)
             {
-
-
                 count = 0;
                 foreach (var ptl in unv.ptls)
                 {
-
-
                     ptl.UpdatePtl(univerCount,count, ptlPropsCues);
                     count++;
                 }

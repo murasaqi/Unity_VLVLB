@@ -16,7 +16,7 @@ namespace VLVLB
         public float offsetClipTime;
         public bool useProfile = false;
         public VLVLBTimelineBehaviour template = new VLVLBTimelineBehaviour();
-        public VLVLBClipProfile resolvedVlvlbClipProfile = null;
+        [HideInInspector]public VLVLBClipProfile resolvedVlvlbClipProfile = null;
        
         public ClipCaps clipCaps
         {

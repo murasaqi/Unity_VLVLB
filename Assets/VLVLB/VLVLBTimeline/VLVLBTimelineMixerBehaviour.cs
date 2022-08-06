@@ -17,6 +17,8 @@ namespace VLVLB
             set { m_Clips = value; }
         }
 
+        private bool firstFrameHappend = false;
+        private int elementCount = 0;
         // NOTE: This function is called at runtime and edit time.  Keep that in mind when setting the values of properties.
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
@@ -28,11 +30,32 @@ namespace VLVLB
             int inputCount = playable.GetInputCount();
 
 
+            if (!firstFrameHappend)
+            {
+                elementCount = 0;
+                foreach (var ptl in trackBinding.ptls)
+                {
+                    ptl.elementIndex = elementCount;
+                    elementCount++;
+                }
+
+                foreach (var universe in trackBinding.ptlUniverses)
+                {
+                    foreach (var ptl in universe.ptls)
+                    {
+                        ptl.elementIndex = elementCount;
+                        elementCount++;
+                    }
+                }
+
+                firstFrameHappend = true;
+            }
             var cue = new List<PTLProps>();
             for (int i = 0; i < inputCount; i++)
             {
                 var clip = clips[i].asset as VLVLBTimelineClip;
                 float inputWeight = playable.GetInputWeight(i);
+                if(inputWeight<=0) continue;
                 ScriptPlayable<VLVLBTimelineBehaviour> inputPlayable =
                     (ScriptPlayable<VLVLBTimelineBehaviour>) playable.GetInput(i);
                 VLVLBTimelineBehaviour input = inputPlayable.GetBehaviour();
@@ -75,48 +98,35 @@ namespace VLVLB
                     props.weight = inputWeight;
                     props.useManualTransform = referenceProp.useManualTransform;
 
-                    var elementCount = 0;
-                    foreach (var ptl in trackBinding.ptls)
-                    {
-                        ptl.elementIndex = elementCount;
-                        elementCount++;
-                    }
 
-                    foreach (var universe in trackBinding.ptlUniverses)
+                    if (props.useManualTransform)
                     {
-                        foreach (var ptl in universe.ptls)
+                        // Debug.Log($"{referenceProp.manualTransforms.Count}, {ptlCount}");
+                        if (referenceProp.manualTransforms == null)
                         {
-                            ptl.elementIndex = elementCount;
-                            elementCount++;
+                            referenceProp.manualTransforms = new List<PanTilt>( elementCount);
                         }
-                    }
-
-                    var ptlCount = elementCount;
-                    
-                    // Debug.Log($"{referenceProp.manualTransforms.Count}, {ptlCount}");
-                    if (referenceProp.manualTransforms == null)
-                    {
-                        referenceProp.manualTransforms = new List<PanTilt>( ptlCount);
-                    }
-                    else if( referenceProp.manualTransforms.Count != ptlCount)
-                    {
-                        if (referenceProp.manualTransforms.Count > ptlCount)
+                        else if( referenceProp.manualTransforms.Count != elementCount)
                         {
-                           
-                            referenceProp.manualTransforms.RemoveRange( ptlCount-1, referenceProp.manualTransforms.Count - ptlCount);
-                            
-                        }
-
-                        if (referenceProp.manualTransforms.Count < ptlCount)
-                        {
-                            var diff = ptlCount - referenceProp.manualTransforms.Count;
-                            for(int j = 0; j < diff; j++)
+                            if (referenceProp.manualTransforms.Count > elementCount)
                             {
-                                referenceProp.manualTransforms.Add(new PanTilt(0,0));
+                           
+                                referenceProp.manualTransforms.RemoveRange( elementCount-1, referenceProp.manualTransforms.Count - elementCount);
+                            
+                            }
+
+                            if (referenceProp.manualTransforms.Count < elementCount)
+                            {
+                                var diff = elementCount - referenceProp.manualTransforms.Count;
+                                for(int j = 0; j < diff; j++)
+                                {
+                                    referenceProp.manualTransforms.Add(new PanTilt(0,0));
+                                }
                             }
                         }
+                        props.manualTransforms = referenceProp.manualTransforms;
+
                     }
-                    props.manualTransforms = referenceProp.manualTransforms;
                     
                     cue.Add(props);
                 }
