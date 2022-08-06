@@ -55,16 +55,16 @@ namespace VLVLB
             {
                 var clip = clips[i].asset as VLVLBTimelineClip;
                 float inputWeight = playable.GetInputWeight(i);
-                if(inputWeight<=0) continue;
+                // if(inputWeight<=0) continue;
                 ScriptPlayable<VLVLBTimelineBehaviour> inputPlayable =
                     (ScriptPlayable<VLVLBTimelineBehaviour>) playable.GetInput(i);
                 VLVLBTimelineBehaviour input = inputPlayable.GetBehaviour();
                 float normalisedTime = (float)(inputPlayable.GetTime() / inputPlayable.GetDuration ());
                 var time = playable.GetTime();
 
-
-                if (inputWeight > 0)
+                if(clips[i].start <= time && time < clips[i].start+clips[i].duration)
                 {
+                    
 
                     var props = new PTLProps();
                     var referenceProp = input.props;
@@ -134,7 +134,7 @@ namespace VLVLB
 
             }
 
-            trackBinding.UpdatePTL(cue);
+            if(cue.Count!=0)trackBinding.UpdatePTL(cue);
         }
     }
 }
