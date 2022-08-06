@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
@@ -27,14 +28,6 @@ namespace VLVLB
             int inputCount = playable.GetInputCount();
 
 
-
-            // float pan = 0f;
-            // float tilt = 0f;
-            // float intensity = 0f;
-            // Color color =Color.black;
-            // float spotAngle = 0f;
-            // float rangeLimit = 0f;
-            // float startDistance = 0f;
             var cue = new List<PTLProps>();
             for (int i = 0; i < inputCount; i++)
             {
@@ -44,77 +37,92 @@ namespace VLVLB
                     (ScriptPlayable<VLVLBTimelineBehaviour>) playable.GetInput(i);
                 VLVLBTimelineBehaviour input = inputPlayable.GetBehaviour();
                 float normalisedTime = (float)(inputPlayable.GetTime() / inputPlayable.GetDuration ());
-
-                // var duration = 60 / input.BPM;
-                // var t = (float)inputPlayable.GetTime()%duration;
-                // var inv = Mathf.CeilToInt((float) inputPlayable.GetTime() / duration) %2 != 0;
-                // var normalisedTime = t / duration;
-                // normalisedTime = inv ? 1f - normalisedTime : normalisedTime;
-
-                var time = inputPlayable.GetTime();
+                var time = playable.GetTime();
 
 
                 if (inputWeight > 0)
                 {
 
                     var props = new PTLProps();
-                    props.offsetChildTime = input.offsetChildTime;
-                    props.BPM = input.BPM;
-                    props.offsetChildTime = input.offsetChildTime;
-                    props.offsetUniverseTime = input.offsetUniverseTime;
+                    var referenceProp = input.props;
+                    props.BPM = referenceProp.BPM;
+                    props.offsetChildTime = referenceProp.offsetChildTime;
+                    props.offsetUniverseTime = referenceProp.offsetUniverseTime;
                     // props.normalisedTime = normalisedTime;
-                    props.ignoreOffsetPan = input.ignoreOffsetPan;
-                    props.timeScalePan = input.timeScalePan;
-                    props.ignoreOffsetTilt = input.ignoreOffsetTilt;
-                    props.timeScaleTilt = input.timeScaleTilt;
-                    props.ignoreOffsetAngle = input.ignoreOffsetAngle;
-                    props.timeScaleAngle = input.timeScaleAngle;
-                    props.ignoreOffsetIntensity = input.ignoreOffsetIntensity;
-                    props.timeScaleIntensity = input.timeScaleIntensity;
-                    props.ignoreOffsetColor = input.ignoreOffsetColor;
-                    props.timeScaleColor = input.timeScaleColor;
-                    props.pan = input.pan;
-                    props.tilt = input.tilt;
-                    props.intensity = input.intensity;
-                    props.color = input.color;
-                    props.spotAngle = input.spotAngle;
-                    props.rangeLimit = input.rangeLimit;
-                    props.truncatedRadius = input.truncatedRadius;
-                    props.decalSize = input.decalSize;
-                    props.decalDepth = input.decalDepth;
-                    props.decalOpacity = input.decalOpacity;
+                    props.ignoreOffsetPan = referenceProp.ignoreOffsetPan;
+                    props.timeScalePan = referenceProp.timeScalePan;
+                    props.ignoreOffsetTilt = referenceProp.ignoreOffsetTilt;
+                    props.timeScaleTilt = referenceProp.timeScaleTilt;
+                    props.ignoreOffsetAngle = referenceProp.ignoreOffsetAngle;
+                    props.timeScaleAngle = referenceProp.timeScaleAngle;
+                    props.ignoreOffsetIntensity = referenceProp.ignoreOffsetIntensity;
+                    props.timeScaleIntensity = referenceProp.timeScaleIntensity;
+                    props.ignoreOffsetColor = referenceProp.ignoreOffsetColor;
+                    props.timeScaleColor = referenceProp.timeScaleColor;
+                    props.pan = referenceProp.pan;
+                    props.tilt = referenceProp.tilt;
+                    props.intensity = referenceProp.intensity;
+                    props.lightColor = referenceProp.lightColor;
+                    props.spotAngle = referenceProp.spotAngle;
+                    props.rangeLimit = referenceProp.rangeLimit;
+                    props.truncatedRadius = referenceProp.truncatedRadius;
+                    props.decalSize = referenceProp.decalSize;
+                    props.decalDepth = referenceProp.decalDepth;
+                    props.decalOpacity = referenceProp.decalOpacity;
                     props.fixedTime = normalisedTime;
-                    props.loopType = input.loopType;
-                    props.rootEmissionPower = input.rootEmissionPower;
-
-
-                    
-                    // Debug.Log(input.ptlPropsObject);
-                    // if (input.ptlPropsObject != null && input.saveProperties)
-                    // {
-                    //
-                    //     clips[i].displayName = input.ptlPropsObject.name + "(Auto Save)";
-                    //     // input.saveProperties = false;
-                    //     input.ptlPropsObject.ptlProps = props;
-                    //    
-                    // }
-                    //
-                    // if (input.ptlPropsObject != null && input.useProfile)
-                    // {
-                    //     clips[i].displayName = input.ptlPropsObject.name + "(Synch)";
-                    //     props = ScriptableObject.Instantiate(input.ptlPropsObject).ptlProps;
-                    // }
-
-                    // var clip = clips[i].asset as PTLTimelineClip;
+                    props.loopType = referenceProp.loopType;
                     props.inputPlayableTime = Math.Max(time + clip.offsetClipTime, 0);
                     props.weight = inputWeight;
+                    props.useManualTransform = referenceProp.useManualTransform;
+
+                    var elementCount = 0;
+                    foreach (var ptl in trackBinding.ptls)
+                    {
+                        ptl.elementIndex = elementCount;
+                        elementCount++;
+                    }
+
+                    foreach (var universe in trackBinding.ptlUniverses)
+                    {
+                        foreach (var ptl in universe.ptls)
+                        {
+                            ptl.elementIndex = elementCount;
+                            elementCount++;
+                        }
+                    }
+
+                    var ptlCount = elementCount;
+                    
+                    Debug.Log($"{referenceProp.manualTransforms.Count}, {ptlCount}");
+                    if (referenceProp.manualTransforms == null)
+                    {
+                        referenceProp.manualTransforms = new List<PanTilt>( ptlCount);
+                    }
+                    else if( referenceProp.manualTransforms.Count != ptlCount)
+                    {
+                        if (referenceProp.manualTransforms.Count > ptlCount)
+                        {
+                           
+                            referenceProp.manualTransforms.RemoveRange( ptlCount-1, referenceProp.manualTransforms.Count - ptlCount);
+                            
+                        }
+
+                        if (referenceProp.manualTransforms.Count < ptlCount)
+                        {
+                            var diff = ptlCount - referenceProp.manualTransforms.Count;
+                            for(int j = 0; j < diff; j++)
+                            {
+                                referenceProp.manualTransforms.Add(new PanTilt(0,0));
+                            }
+                        }
+                    }
+                    props.manualTransforms = referenceProp.manualTransforms;
+                    
                     cue.Add(props);
                 }
-                // if(inputWeight > 0)Debug.Log(t);
 
             }
 
-            // Debug.Log($"angle{spotAngle}, limit:{rangeLimit}, distance:{startDistance}");
             trackBinding.UpdatePTL(cue);
         }
     }

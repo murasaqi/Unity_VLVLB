@@ -11,7 +11,7 @@ public class VLVLBTimelineDrawer : PropertyDrawer
     SerializedObject parentSerializedObject;
     public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
     {
-        int fieldCount = 58;
+        int fieldCount = 80;
         return fieldCount * EditorGUIUtility.singleLineHeight;
     }
 
@@ -38,8 +38,8 @@ public class VLVLBTimelineDrawer : PropertyDrawer
         
         EditorGUILayout.BeginHorizontal();
 
-        var buttonWidth = 100;
-        var buttonMargine = 4;
+        var buttonWidth = 80;
+        var buttonMargine = 8;
         var objectReferenceValue    = property.serializedObject.targetObject as VLVLBTimelineClip;
      
         var type                    = objectReferenceValue.GetType();
@@ -47,47 +47,44 @@ public class VLVLBTimelineDrawer : PropertyDrawer
 
         
 
-        // Debug.Log(ptlPropsObject.IsTargetAlive());
-        // Debug.Log(ptlPropsObject.objectReferenceValue);
-        var isSave = objectReferenceValue.resolvedVlvlbClipProfile != null;
-        string saveButtonText = isSave  ? "Save" : "Export";
-        if (GUI.Button( new Rect(position.x+position.width-buttonWidth, position.y, buttonWidth, EditorGUIUtility.singleLineHeight), saveButtonText))
+        var isSave = objectReferenceValue.resolvedVlvlbClipProfile != null && !objectReferenceValue.useProfile;
+        var isLoadButton = objectReferenceValue.resolvedVlvlbClipProfile != null && !objectReferenceValue.useProfile;
+     
+        EditorGUI.BeginDisabledGroup(!isSave);
+        if (GUI.Button( new Rect(position.x+position.width-buttonWidth, position.y, buttonWidth, EditorGUIUtility.singleLineHeight), "Save"))
         {
-            MethodInfo method = isSave 
-                ? type.GetMethod("SaveProps", bindingAttr)
-                : type.GetMethod("ExportProfile", bindingAttr);
-           
+            var method = type.GetMethod( "SaveProps", bindingAttr );
             method.Invoke(objectReferenceValue,null);
-
-        }
-
-
-
-        var isLoadButton = objectReferenceValue.resolvedVlvlbClipProfile != null;
-
-        // if (objectReferenceValue.ptlPropObject.defaultValue == null && objectReferenceValue.useProfile) isLoadButton = false;
-        
-        
-        
-        EditorGUI.BeginDisabledGroup(!isLoadButton);
-        if (GUI.Button(new Rect(position.x+position.width-buttonWidth*2-buttonMargine, position.y, buttonWidth, EditorGUIUtility.singleLineHeight), "Load"))
-        {
-            
-            var method                  = type.GetMethod( "LoadProps", bindingAttr );
-            method.Invoke(objectReferenceValue,null);
-            
-            Debug.Log($"Load profile {objectReferenceValue.template.vlvlbClipProfile.name}");
-
         }
         EditorGUI.EndDisabledGroup();
+        
+        EditorGUI.BeginDisabledGroup(!isLoadButton);
+        if (GUI.Button( new Rect(position.x+position.width-buttonWidth*2-buttonMargine, position.y, buttonWidth, EditorGUIUtility.singleLineHeight), "Load"))
+        {
+            MethodInfo method = type.GetMethod("LoadProps", bindingAttr);
+            method.Invoke(objectReferenceValue,null);
+            Debug.Log($"Load profile {objectReferenceValue.template.vlvlbClipProfile.name}");
+        }
+        EditorGUI.EndDisabledGroup();
+        
+        if (GUI.Button(new Rect(position.x+position.width-buttonWidth*3-buttonMargine*2, position.y, buttonWidth, EditorGUIUtility.singleLineHeight), "Export"))
+        {
+            
+            MethodInfo method = type.GetMethod("ExportProfile", bindingAttr);
+            method.Invoke(objectReferenceValue,null);
+            
+            
+        }
         EditorGUILayout.EndHorizontal();
         
         
         position.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.BeginDisabledGroup(objectReferenceValue.useProfile && objectReferenceValue.ptlPropObject.defaultValue != null);
-        defaultProps = PropertyDrawerUtility.DrawDefaultGUI(position,property,new GUIContent("props"));
+        EditorGUI.BeginDisabledGroup(objectReferenceValue.useProfile);
+        // property.serializedObject.FindProperty(property.propertyPath);
+        defaultProps = PropertyDrawerUtility.DrawDefaultGUI(position,property.FindPropertyRelative("props"),new GUIContent("props"));
         EditorGUI.EndDisabledGroup();
-        position.y += PropertyDrawerUtility.GetDefaultPropertyHeight(property,new GUIContent("props"));
+        // EditorGUI.PropertyField(position,property.FindPropertyRelative("props"));
+        // position.y += PropertyDrawerUtility.GetDefaultPropertyHeight(property,new GUIContent("props"));
 
     }
     

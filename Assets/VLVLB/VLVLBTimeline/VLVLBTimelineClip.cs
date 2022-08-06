@@ -14,7 +14,7 @@ namespace VLVLB
 
         public ExposedReference<VLVLBClipProfile> ptlPropObject;
         public float offsetClipTime;
-        public bool useProfile = true;
+        public bool useProfile = false;
         public VLVLBTimelineBehaviour template = new VLVLBTimelineBehaviour();
         public VLVLBClipProfile resolvedVlvlbClipProfile = null;
        
@@ -59,19 +59,16 @@ namespace VLVLB
             #if UNITY_EDITOR
             if (template == null) return;
             
-                var path = EditorUtility.SaveFilePanelInProject("Save VLVLB Asset", "vlvlbSettings", "asset", "Please enter a file name to save the texture to");
-            // if (string.IsNullOrEmpty(path))
-            //     return;
+            var path = EditorUtility.SaveFilePanelInProject("Save VLVLB Asset", "vlvlbSettings", "asset", "Please enter a file name to save the texture to");
             string fileName = Path.GetFileName(path);
             string dir = Path.GetDirectoryName(path);
             Debug.Log($"dir: {dir}, file: {fileName}");
-            // var setting = 
-           AssetDatabase.CreateAsset(template.ExportToProfile(), path);
+            AssetDatabase.CreateAsset(template.ExportToProfile(), path);
+            useProfile = true;
            ptlPropObject = new ExposedReference<VLVLBClipProfile>();
            ptlPropObject.defaultValue = AssetDatabase.LoadAssetAtPath<VLVLBClipProfile>(path);
            Debug.Log($"Load {path}");
            LoadProps();
-           // ptlPropObject = path
 #endif
         }
 
@@ -91,8 +88,6 @@ namespace VLVLB
             {
                 LoadProps();
             }
-            // clone.ptlPropsObject = ptlPropObject;
-            // if (clone.useProfile && ptlPropObject != null) name = ptlPropObject.name + "(Synch)";
             return playable;
         }
 

@@ -54,6 +54,20 @@ namespace VLVLB
             SearchPTLInChild();
         }
 
+        // public int ptlCount
+        // {
+        //     get
+        //     {
+        //         var count = ptls.Count;
+        //         foreach (var universe in ptlUniverses)
+        //         {
+        //             count += universe.ptls.Count;
+        //         }
+        //
+        //         return ptlCount;
+        //     }
+        // }
+
         public void SearchPTLInChild()
         {
             ptls.Clear();
