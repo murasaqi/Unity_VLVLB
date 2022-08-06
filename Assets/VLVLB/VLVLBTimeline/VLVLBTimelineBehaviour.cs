@@ -79,6 +79,7 @@ namespace VLVLB
         
         public void LoadFromProfile()
         {
+            if (vlvlbClipProfile == null) return;
             props =new PTLProps(vlvlbClipProfile.ptlProps);
 
         }
@@ -98,37 +99,49 @@ namespace VLVLB
         }
     }
 
+    
+    [Serializable]
     public abstract class PtlPropsElement
     {
        
         [HideInInspector]public double inputPlayableTime;
         [HideInInspector]public float weight;
+        [Header("--- BPM ---")]        
         public float BPM;
         [HideInInspector]public float fixedTime;
+        [Header("--- Loop Type ---")]        
         public LoopType loopType;
+        [Header("--- Offset time ---")]        
         public float offsetUniverseTime;
         public float offsetChildTime;
+        [Header("--- Pan ---")]        
         public float timeScalePan;
         public bool ignoreOffsetPan;
         public AnimationCurve pan;
+        [Header("--- Tilt ---")]
         public float timeScaleTilt;
         public bool ignoreOffsetTilt;
         public AnimationCurve tilt;
+        [Header("--- Color ---")]
         public bool ignoreOffsetColor;
         public float timeScaleColor;
         [GradientUsage(true)]public Gradient lightColor;
+        [Header("--- Intensity ---")]
         public bool ignoreOffsetIntensity;
         public float timeScaleIntensity;
         public AnimationCurve intensity;
+        [Header("--- Angle ---")]
         public bool ignoreOffsetAngle;
         public float timeScaleAngle;
         public float innerSpotAngle;
         public float spotAngle;
         public float rangeLimit;
         public float truncatedRadius;
+        [Header("--- Decal ---")]
         public Vector2 decalSize;
         public float decalDepth;
         public float decalOpacity;
+        [Header("--- Manual Transform ---")]
         public bool useManualTransform;
         public List<PanTilt> manualTransforms;
     }
@@ -220,10 +233,10 @@ namespace VLVLB
                 rangeLimit = 10;
                 truncatedRadius = 0;
                 decalSize = new Vector2(0,0);
-                decalDepth = 0;
+                decalDepth = 10;
                 decalOpacity = 1;
                 fixedTime = 0;
-                lightColor = new Gradient(){mode = GradientMode.Blend,alphaKeys = new GradientAlphaKey[1]{new GradientAlphaKey(1,0)},colorKeys = new GradientColorKey[1]{new GradientColorKey(Color.white,0)}};
+                lightColor = new Gradient(){alphaKeys = new GradientAlphaKey[1]{new GradientAlphaKey(1,0)},colorKeys = new GradientColorKey[1]{new GradientColorKey(Color.white,0)}};
                 loopType = LoopType.Loop;
                 useManualTransform = false;
                 manualTransforms = new List<PanTilt>();

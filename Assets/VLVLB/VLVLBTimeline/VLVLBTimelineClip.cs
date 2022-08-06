@@ -15,7 +15,7 @@ namespace VLVLB
         public ExposedReference<VLVLBClipProfile> ptlPropObject;
         public float offsetClipTime;
         public bool useProfile = false;
-        public VLVLBTimelineBehaviour template = new VLVLBTimelineBehaviour();
+        [SerializeField]public VLVLBTimelineBehaviour template = new VLVLBTimelineBehaviour();
         [HideInInspector]public VLVLBClipProfile resolvedVlvlbClipProfile = null;
        
         public ClipCaps clipCaps
