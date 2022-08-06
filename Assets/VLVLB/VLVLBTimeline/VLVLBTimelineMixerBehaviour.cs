@@ -93,7 +93,7 @@ namespace VLVLB
 
                     var ptlCount = elementCount;
                     
-                    Debug.Log($"{referenceProp.manualTransforms.Count}, {ptlCount}");
+                    // Debug.Log($"{referenceProp.manualTransforms.Count}, {ptlCount}");
                     if (referenceProp.manualTransforms == null)
                     {
                         referenceProp.manualTransforms = new List<PanTilt>( ptlCount);
