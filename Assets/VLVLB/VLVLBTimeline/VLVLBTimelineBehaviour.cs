@@ -122,6 +122,7 @@ namespace VLVLB
         public AnimationCurve intensity;
         public bool ignoreOffsetAngle;
         public float timeScaleAngle;
+        public float innerSpotAngle;
         public float spotAngle;
         public float rangeLimit;
         public float truncatedRadius;
@@ -184,6 +185,7 @@ namespace VLVLB
                 offsetUniverseTime = props.offsetUniverseTime;
                 intensity = CloneAnimationCurve(props.intensity);
                 spotAngle = props.spotAngle;
+                innerSpotAngle  = props.innerSpotAngle;
                 rangeLimit = props.rangeLimit;
                 truncatedRadius = props.truncatedRadius;
                 decalSize = props.decalSize;
@@ -213,18 +215,19 @@ namespace VLVLB
                 offsetUniverseTime = 0;
                 pan = new AnimationCurve();
                 tilt = new AnimationCurve();
-                intensity = new AnimationCurve();
-                spotAngle = 0;
-                rangeLimit = 0;
+                intensity = new AnimationCurve(){keys = new Keyframe[] {new Keyframe(0, 1), new Keyframe(1, 1)}};
+                spotAngle = 38;
+                rangeLimit = 10;
                 truncatedRadius = 0;
                 decalSize = new Vector2(0,0);
                 decalDepth = 0;
                 decalOpacity = 1;
                 fixedTime = 0;
-                lightColor = new Gradient();
+                lightColor = new Gradient(){mode = GradientMode.Blend,alphaKeys = new GradientAlphaKey[1]{new GradientAlphaKey(1,0)},colorKeys = new GradientColorKey[1]{new GradientColorKey(Color.white,0)}};
                 loopType = LoopType.Loop;
                 useManualTransform = false;
                 manualTransforms = new List<PanTilt>();
+                innerSpotAngle =21.8f;
             }
             
         }

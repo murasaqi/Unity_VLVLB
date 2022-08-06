@@ -104,7 +104,7 @@ namespace VLVLB
           
             if (materialPropertyBlock == null) materialPropertyBlock = new MaterialPropertyBlock();
 
-            float p = 0f, t = 0f, intensity = 0f, spotAngle = 0f, rangeLimit = 0f, truncatedRadius = 0f, decalOpacity = 0f,decalDepth = 0f;
+            float p = 0f, t = 0f, intensity = 0f, spotAngle = 0f, rangeLimit = 0f, truncatedRadius = 0f, decalOpacity = 0f,decalDepth = 0f, innerSpotAngle =0f, outerSpotAngle=0f;
             var lightColor = new Color();
             var materialEmissionColor = new Color();
             var decalSize = new Vector2(0, 0);
@@ -146,6 +146,7 @@ namespace VLVLB
                 decalOpacity += cue.decalOpacity * cue.weight;
                 decalDepth += cue.decalDepth * cue.weight;
                 decalSize += cue.decalSize * cue.weight;
+                innerSpotAngle += cue.innerSpotAngle * cue.weight;
                 // rootEmissionPower += cue.rootEmissionPower * cue.weight;
                 // Debug.Log($"{ cue.decalSize},{decalSize}");
                 count++;
@@ -177,6 +178,8 @@ namespace VLVLB
                     light.color = lightColor;
                     light.spotAngle = spotAngle;
                     light.range = rangeLimit;
+                    light.innerSpotAngle = innerSpotAngle;
+                    // light.spotAngle = outerSpotAngle;
                 }
             }
 
