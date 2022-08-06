@@ -86,6 +86,7 @@ namespace VLVLB
                     props.tilt = referenceProp.tilt;
                     props.intensity = referenceProp.intensity;
                     props.lightColor = referenceProp.lightColor;
+                    props.innerSpotAngle = referenceProp.innerSpotAngle;
                     props.spotAngle = referenceProp.spotAngle;
                     props.rangeLimit = referenceProp.rangeLimit;
                     props.truncatedRadius = referenceProp.truncatedRadius;
