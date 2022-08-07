@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -88,6 +89,8 @@ namespace VLVLB
         {
             if (vlvlbClipProfile == null) return;
             this.vlvlbClipProfile.ptlProps = new PTLProps(this.props);
+            EditorUtility.SetDirty(vlvlbClipProfile);
+            AssetDatabase.SaveAssets();
         }
         
        
