@@ -49,6 +49,8 @@ namespace VLVLB
                 }
 
                 trackBinding.UpdatePTL(new List<PTLProps>(new List<PTLProps>()));
+                
+                trackBinding.UpdatePTL(new List<PTLProps>(){new PTLProps()});
                 firstFrameHappend = true;
             }
             var cue = new List<PTLProps>();
@@ -133,9 +135,10 @@ namespace VLVLB
                     cue.Add(props);
                 }
 
+                trackBinding.UpdatePTL(cue);
             }
 
-            trackBinding.UpdatePTL(cue);
+           
         }
     }
 }
