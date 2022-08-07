@@ -48,6 +48,7 @@ namespace VLVLB
                     }
                 }
 
+                trackBinding.UpdatePTL(new List<PTLProps>(new List<PTLProps>()));
                 firstFrameHappend = true;
             }
             var cue = new List<PTLProps>();

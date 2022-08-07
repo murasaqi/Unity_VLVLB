@@ -182,14 +182,15 @@ namespace VLVLB
                     // light.spotAngle = outerSpotAngle;
                 }
             }
-
+            var emissionIntensity = Mathf.Clamp(intensity, 0,1);
             if (decalProjector != null)
             {
                 if (instancedDecalMaterial == null) InitDecal();
                 decalProjector.material.SetFloat("_Alpha",materialEmissionColor.a);
                 decalProjector.material.SetColor("_Color",materialEmissionColor);
+                // decalProjector.material.SetFloat("_Intensity",intensity);
                 decalProjector.size = new Vector3(decalSize.x, decalSize.y, decalDepth);
-                decalProjector.fadeFactor = decalOpacity*intensity*Vector3.Distance(new Vector3(materialEmissionColor.r,materialEmissionColor.g,materialEmissionColor.b),new Vector3(0,0,0));
+                decalProjector.fadeFactor =emissionIntensity* decalOpacity*Vector3.Distance(new Vector3(materialEmissionColor.r,materialEmissionColor.g,materialEmissionColor.b),Vector3.zero);
                 decalProjector.pivot = new Vector3(0, 0, decalDepth / 2f);
             }
 
@@ -197,8 +198,8 @@ namespace VLVLB
             {
                 emissionMatMeshRenderer.GetPropertyBlock(materialPropertyBlock);
                 materialPropertyBlock.SetColor(emissionPropertyName,
-                    new Color(materialEmissionColor.r*intensity, materialEmissionColor.g*intensity,
-                        materialEmissionColor.b*intensity));
+                    new Color(materialEmissionColor.r*emissionIntensity, materialEmissionColor.g*emissionIntensity,
+                        materialEmissionColor.b*emissionIntensity));
                 emissionMatMeshRenderer.SetPropertyBlock(materialPropertyBlock);
             }
         }
