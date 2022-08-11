@@ -262,6 +262,7 @@ namespace VLVLB
                 var t = (float) offsetTime % duration;
                 var inv = Mathf.CeilToInt((float) offsetTime / duration) % 2 != 0;
                 var normalisedTime = t / duration;
+                if (loopType == LoopType.Loop) return normalisedTime;
                 return inv ? 1f - normalisedTime : normalisedTime;
             }
            
