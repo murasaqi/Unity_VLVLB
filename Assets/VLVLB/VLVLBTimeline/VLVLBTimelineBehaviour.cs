@@ -87,10 +87,14 @@ namespace VLVLB
         
         public void SaveToProfile()
         {
+#if UNITY_EDITOR
+            
             if (vlvlbClipProfile == null) return;
             this.vlvlbClipProfile.ptlProps = new PTLProps(this.props);
             EditorUtility.SetDirty(vlvlbClipProfile);
             AssetDatabase.SaveAssets();
+            
+#endif
         }
         
        
