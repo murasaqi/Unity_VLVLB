@@ -12,12 +12,15 @@ namespace VLVLB
     public class VLVLBTimelineClip : PlayableAsset, ITimelineClipAsset
     {
 
-        public ExposedReference<VLVLBClipProfile> ptlPropObject;
-        public float offsetClipTime;
-        public bool useProfile = false;
-        [SerializeField]public VLVLBTimelineBehaviour template = new VLVLBTimelineBehaviour();
+        [HideInInspector]public bool useProfile = false;
+        [SerializeField]public float offsetClipTime;
+        [SerializeField]public ExposedReference<VLVLBClipProfile> ptlPropObject;
+        [SerializeField]public VLVLBTimelineBehaviour behaviour = new VLVLBTimelineBehaviour();
         [HideInInspector]public VLVLBClipProfile resolvedVlvlbClipProfile = null;
-       
+        [HideInInspector] public VLVLBTimelineMixerBehaviour mixer;
+        [HideInInspector] public VLVLBTimelineTrack track;
+        private PlayableGraph playableGraph;
+        [HideInInspector] public bool forceTimelineClipUpdate = false;
         public ClipCaps clipCaps
         {
             get { return ClipCaps.Blending; }
@@ -25,10 +28,10 @@ namespace VLVLB
 
         public void SaveProps()
         {
-            if (template != null)
+            if (behaviour != null)
             {
-                template.SaveToProfile();
-                Debug.Log($"Save to {template.vlvlbClipProfile.name}");
+                behaviour.SaveToProfile();
+                Debug.Log($"Save to {behaviour.vlvlbClipProfile.name}");
             }
             
             
@@ -38,10 +41,12 @@ namespace VLVLB
         {
 
             // Debug.Log(clone);
-            if (template != null)
+            if (behaviour != null )
             {
-                template.vlvlbClipProfile = resolvedVlvlbClipProfile;
-                template.LoadFromProfile();
+                // resolvedVlvlbClipProfile = ptlPropObject.Resolve(playableGraph.GetResolver());
+                behaviour.vlvlbClipProfile = resolvedVlvlbClipProfile;
+                behaviour.LoadFromProfile();
+                forceTimelineClipUpdate = true;
                 // if(resolvedPtlPropsObject != null)Debug.Log($"{name}: Load {template.ptlPropsObject.name}");
             }
         }
@@ -57,31 +62,36 @@ namespace VLVLB
         public void ExportProfile()
         {
             #if UNITY_EDITOR
-            if (template == null) return;
+            if (behaviour == null) return;
+            var exportPath = ptlPropObject.defaultValue != null ? AssetDatabase.GetAssetPath(ptlPropObject.defaultValue) : "Asset";
             
             var path = EditorUtility.SaveFilePanelInProject("Save VLVLB Asset", "vlvlbSettings", "asset", "Please enter a file name to save the texture to");
             string fileName = Path.GetFileName(path);
             string dir = Path.GetDirectoryName(path);
             Debug.Log($"dir: {dir}, file: {fileName}");
-            AssetDatabase.CreateAsset(template.ExportToProfile(), path);
+            var newProfile = ScriptableObject.CreateInstance<VLVLBClipProfile>();
+            newProfile.ptlProps = new PTLProps(behaviour.props);
+            AssetDatabase.CreateAsset(newProfile, path);
             useProfile = true;
            ptlPropObject = new ExposedReference<VLVLBClipProfile>();
            ptlPropObject.defaultValue = AssetDatabase.LoadAssetAtPath<VLVLBClipProfile>(path);
            Debug.Log($"Load {path}");
-           LoadProps();
+           behaviour.props = new PTLProps(newProfile.ptlProps);
+           // LoadProps();
 #endif
         }
 
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
-            var playable = ScriptPlayable<VLVLBTimelineBehaviour>.Create(graph, template);
-            template = playable.GetBehaviour();
+            playableGraph = graph;
+            var playable = ScriptPlayable<VLVLBTimelineBehaviour>.Create(graph, behaviour);
+            behaviour = playable.GetBehaviour();
             if (ptlPropObject.defaultValue == null)
             {
-                template.vlvlbClipProfile = null;
+                behaviour.vlvlbClipProfile = null;
             }
             resolvedVlvlbClipProfile = ptlPropObject.Resolve(graph.GetResolver());
-            template.vlvlbClipProfile = resolvedVlvlbClipProfile;
+            behaviour.vlvlbClipProfile = resolvedVlvlbClipProfile;
             
             
             if (useProfile && resolvedVlvlbClipProfile != null)

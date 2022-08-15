@@ -1,5 +1,148 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8854035420436654709
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21dcc2386d650c4597f3633c75a1f98, type: 3}
+  m_Name: Animation Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 1.5166666507720947
+    m_ClipIn: 0
+    m_Asset: {fileID: -2761211587468737956}
+    m_Duration: 4.500000015894572
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -8854035420436654709}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 0.31666666666666643
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 1
+    m_PostExtrapolationMode: 1
+    m_PreExtrapolationMode: 1
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 1.5166666507720947
+    m_DisplayName: Recorded
+  - m_Version: 1
+    m_Start: 5.7
+    m_ClipIn: 0
+    m_Asset: {fileID: 1571104411277548321}
+    m_Duration: 2.4333333333333327
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -8854035420436654709}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0.31666666666666643
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 1
+    m_PostExtrapolationMode: 1
+    m_PreExtrapolationMode: 1
+    m_PostExtrapolationTime: Infinity
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Recorded (1)
+  m_Markers:
+    m_Objects: []
+  m_InfiniteClipPreExtrapolation: 1
+  m_InfiniteClipPostExtrapolation: 1
+  m_InfiniteClipOffsetPosition: {x: 0, y: 0, z: 0}
+  m_InfiniteClipOffsetEulerAngles: {x: 0, y: 0, z: 0}
+  m_InfiniteClipTimeOffset: 0
+  m_InfiniteClipRemoveOffset: 0
+  m_InfiniteClipApplyFootIK: 1
+  mInfiniteClipLoop: 0
+  m_MatchTargetFields: 63
+  m_Position: {x: 0, y: 0, z: 0}
+  m_EulerAngles: {x: 0, y: 0, z: 0}
+  m_AvatarMask: {fileID: 0}
+  m_ApplyAvatarMask: 1
+  m_TrackOffset: 0
+  m_InfiniteClip: {fileID: 0}
+  m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  m_ApplyOffsets: 0
 --- !u!114 &-8118639410050275581
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58,25 +201,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -179,110 +304,134 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 1
   template:
-    BPM: 60
-    offsetChildTime: 0.24
-    offsetUniverseTime: 0
-    ignoreOffsetPan: 1
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 18.271606
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: -14.320984
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 1
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1.03
-    spotAngle: 7.1
-    rangeLimit: 88.5
-    truncatedRadius: 0.3
-    decalSize: {x: 1.5, y: 1.5}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 0.2509804, g: 1.1764706, b: 2, a: 1}
-      key1: {r: 0.2509804, g: 1.1764706, b: 2, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 0
+      BPM: 120
+      fixedTime: 0
+      loopType: 1
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: -30
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 30
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 40
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: -40
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1.03
+      innerSpotAngle: 0
+      spotAngle: 14.79
+      rangeLimit: 88.5
+      truncatedRadius: 0.03
+      decalSize: {x: 2, y: 2}
+      decalDepth: 20
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
 --- !u!114 &-7112543517224125791
@@ -343,25 +492,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -464,101 +595,98 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 1
   template:
-    BPM: 120
-    offsetChildTime: 0.4
-    offsetUniverseTime: 0
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 0
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.97894907
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 1.7
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 63.3
-    rangeLimit: 4.99
-    truncatedRadius: 0.1
-    decalSize: {x: 1, y: 1}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 0, g: 0, b: 0, a: 1}
-      key1: {r: 1.4980392, g: 0.5176471, b: 0.21176471, a: 1}
-      key2: {r: 1.4980392, g: 0.5176471, b: 0.22745098, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 10003
-      ctime1: 17314
-      ctime2: 44823
-      ctime3: 54442
-      ctime4: 54442
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 4
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 1
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 21.8
+      spotAngle: 38
+      rangeLimit: 10
+      truncatedRadius: 0
+      decalSize: {x: 0, y: 0}
+      decalDepth: 10
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 0}
   resolvedVlvlbClipProfile: {fileID: 0}
 --- !u!114 &-5682906006592359073
@@ -579,121 +707,316 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 1
   template:
-    BPM: 60
-    offsetChildTime: 0.09
-    offsetUniverseTime: 0
-    ignoreOffsetPan: 0
-    timeScalePan: 2
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 20.947754
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: -20.86797
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -40.983864
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 33.18824
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 0
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 1.2
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 5.48
-    rangeLimit: 16.04
-    truncatedRadius: 0.03
-    decalSize: {x: 1, y: 1}
-    decalDepth: 19.85
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 2, g: 2, b: 2, a: 1}
-      key1: {r: 0.54901963, g: 1.5058824, b: 1.7960784, a: 1}
-      key2: {r: 0.85490197, g: 0.32941177, b: 1.8666667, a: 0}
-      key3: {r: 1.7568628, g: 0.36078432, b: 0.54901963, a: 0}
-      key4: {r: 0.9098039, g: 0.47058824, b: 1.6235294, a: 0}
-      key5: {r: 0.39215687, g: 1.3254902, b: 1.827451, a: 0}
-      key6: {r: 2, g: 2, b: 2, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 1536
-      ctime1: 9984
-      ctime2: 19776
-      ctime3: 33215
-      ctime4: 45119
-      ctime5: 55871
-      ctime6: 65535
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 7
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 0
+      BPM: 60
+      fixedTime: 0
+      loopType: 1
+      offsetUniverseTime: 0
+      offsetChildTime: 0.09
+      timeScalePan: 2
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 20.947754
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: -20.86797
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: -40.983864
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 33.18824
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 0
+      spotAngle: 32.3
+      rangeLimit: 1.89
+      truncatedRadius: 0.03
+      decalSize: {x: 0.5, y: 0.5}
+      decalDepth: 19.85
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
+--- !u!114 &-2761211587468737956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
+  m_Name: Recorded
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 8424907085310388128}
+  m_Position: {x: 0.058905426, y: -0.89064187, z: 0.059648395}
+  m_EulerAngles: {x: -0, y: 0, z: 0}
+  m_UseTrackMatchFields: 1
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 0
+  m_ApplyFootIK: 1
+  m_Loop: 0
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!74 &-1892047988758250488
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Recorded (1)
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 2.4710946, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 2.4333334
+        value: {x: -0.48890543, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: 
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 2.4333334
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2.4710946
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.4333334
+        value: -0.48890543
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 1
+  m_HasMotionFloatCurves: 0
+  m_Events: []
 --- !u!114 &-1683337788953746322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -752,25 +1075,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -873,119 +1178,98 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 0
   template:
-    BPM: 120
-    offsetChildTime: 0.25
-    offsetUniverseTime: 0.29
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -68.22448
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 19.567932
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 0
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 9.78
-    rangeLimit: 21.2
-    truncatedRadius: 0.03
-    decalSize: {x: 1, y: 1}
-    decalDepth: 19.85
-    decalOpacity: 1
-    ignoreOffsetColor: 1
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 1.4980392, g: 0.27680817, b: 0.21176468, a: 1}
-      key1: {r: 1.4980392, g: 1.1215687, b: 0.24313726, a: 1}
-      key2: {r: 0.5011643, g: 0.16018222, b: 1.1576815, a: 0}
-      key3: {r: 1.7568628, g: 0.36078432, b: 0.54901963, a: 0}
-      key4: {r: 0.6895024, g: 0.35663918, b: 1.2304052, a: 0}
-      key5: {r: 0.21849114, g: 0.87396455, b: 1.2290126, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 17280
-      ctime1: 65535
-      ctime2: 21696
-      ctime3: 33215
-      ctime4: 45119
-      ctime5: 55871
-      ctime6: 65535
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 1
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 21.8
+      spotAngle: 38
+      rangeLimit: 10
+      truncatedRadius: 0
+      decalSize: {x: 0, y: 0}
+      decalDepth: 10
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
 --- !u!114 &11400000
@@ -1006,6 +1290,7 @@ MonoBehaviour:
   - {fileID: -7112543517224125791}
   - {fileID: -8118639410050275581}
   - {fileID: -1683337788953746322}
+  - {fileID: -8854035420436654709}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -1028,123 +1313,151 @@ MonoBehaviour:
     exposedName: ad302441bd3d0cb4dbb3f0b11f1e0eb9
     defaultValue: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
   offsetClipTime: 0
-  useProfile: 1
+  useProfile: 0
   template:
-    BPM: 120
-    offsetChildTime: 0.25
-    offsetUniverseTime: 0.29
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -68.22448
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 19.567932
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 0
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 9.78
-    rangeLimit: 21.2
-    truncatedRadius: 0.03
-    decalSize: {x: 1, y: 1}
-    decalDepth: 19.85
-    decalOpacity: 1
-    ignoreOffsetColor: 1
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 1.4980392, g: 0.27680817, b: 0.21176468, a: 1}
-      key1: {r: 1.4980392, g: 1.1215687, b: 0.24313726, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 17280
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 0
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: -68.22448
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 19.567932
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 0
+      spotAngle: 9.78
+      rangeLimit: 21.2
+      truncatedRadius: 0.03
+      decalSize: {x: 1, y: 1}
+      decalDepth: 19.85
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
+--- !u!114 &1571104411277548321
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
+  m_Name: Recorded (1)
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: -1892047988758250488}
+  m_Position: {x: 0.058905426, y: -0.89064187, z: 0.059648395}
+  m_EulerAngles: {x: -0, y: 0, z: 0}
+  m_UseTrackMatchFields: 1
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 0
+  m_ApplyFootIK: 1
+  m_Loop: 0
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &1892166753479631533
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1163,119 +1476,98 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 0
   template:
-    BPM: 60
-    offsetChildTime: 0.09
-    offsetUniverseTime: 0
-    ignoreOffsetPan: 0
-    timeScalePan: 2
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 20.947754
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: -20.86797
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 0
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -40.983864
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 33.18824
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 0
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 1.2
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 5.48
-    rangeLimit: 16.04
-    truncatedRadius: 0.03
-    decalSize: {x: 1, y: 1}
-    decalDepth: 19.85
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 2, g: 2, b: 2, a: 1}
-      key1: {r: 0.54901963, g: 1.5058824, b: 1.7960784, a: 1}
-      key2: {r: 0.85490197, g: 0.32941177, b: 1.8666667, a: 0}
-      key3: {r: 1.7568628, g: 0.36078432, b: 0.54901963, a: 0}
-      key4: {r: 0.9098039, g: 0.47058824, b: 1.6235294, a: 0}
-      key5: {r: 0.39215687, g: 1.3254902, b: 1.827451, a: 0}
-      key6: {r: 2, g: 2, b: 2, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 1536
-      ctime1: 9984
-      ctime2: 19776
-      ctime3: 33215
-      ctime4: 45119
-      ctime5: 55871
-      ctime6: 65535
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 7
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 1
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 21.8
+      spotAngle: 38
+      rangeLimit: 10
+      truncatedRadius: 0
+      decalSize: {x: 0, y: 0}
+      decalDepth: 10
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
 --- !u!114 &2005387145505320155
@@ -1296,101 +1588,107 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 1
   template:
-    BPM: 60
-    offsetChildTime: 0.12
-    offsetUniverseTime: 0.19
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 16.099695
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 1
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0.01
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 53.22
-    rangeLimit: 3.97
-    truncatedRadius: 0.15
-    decalSize: {x: 1, y: 1}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 0, g: 0, b: 0, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 6720
-      ctime1: 22080
-      ctime2: 40895
-      ctime3: 58559
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 1
-      m_NumColorKeys: 4
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 0
+      BPM: 60
+      fixedTime: 0
+      loopType: 1
+      offsetUniverseTime: 0.19
+      offsetChildTime: 0.12
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 16.099695
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 1
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 0
+      spotAngle: 53.22
+      rangeLimit: 3.97
+      truncatedRadius: 0.15
+      decalSize: {x: 1, y: 1}
+      decalDepth: 20
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
 --- !u!114 &2078133005169993622
@@ -1411,101 +1709,107 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 1
   template:
-    BPM: 60
-    offsetChildTime: 0.12
-    offsetUniverseTime: 0.19
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 16.099695
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 1
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0.01
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 53.22
-    rangeLimit: 3.97
-    truncatedRadius: 0.15
-    decalSize: {x: 1, y: 1}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 0, g: 0, b: 0, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 6720
-      ctime1: 22080
-      ctime2: 40895
-      ctime3: 58559
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 1
-      m_NumColorKeys: 4
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 0
+      BPM: 60
+      fixedTime: 0
+      loopType: 1
+      offsetUniverseTime: 0.19
+      offsetChildTime: 0.12
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 16.099695
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 1
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 0
+      spotAngle: 53.22
+      rangeLimit: 3.97
+      truncatedRadius: 0.15
+      decalSize: {x: 1, y: 1}
+      decalDepth: 20
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
 --- !u!114 &3710077120681780826
@@ -1526,101 +1830,98 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 0
   template:
-    BPM: 60
-    offsetChildTime: 0.12
-    offsetUniverseTime: 0.19
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 16.099695
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 1
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 1.42
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 53.22
-    rangeLimit: 3.97
-    truncatedRadius: 0.15
-    decalSize: {x: 1, y: 1}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 0, g: 0, b: 0, a: 1}
-      key1: {r: 2.2538774, g: 0.5878385, b: 0.56701297, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 1.4980392, g: 1.0509804, b: 0.47058824, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 1.4980392, g: 1.2784314, b: 1.2392157, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
-      ctime0: 6720
-      ctime1: 14016
-      ctime2: 22080
-      ctime3: 30528
-      ctime4: 40895
-      ctime5: 48575
-      ctime6: 58559
-      ctime7: 65535
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 1
-      m_NumColorKeys: 8
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 1
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 21.8
+      spotAngle: 38
+      rangeLimit: 10
+      truncatedRadius: 0
+      decalSize: {x: 0, y: 0}
+      decalDepth: 10
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
 --- !u!114 &4251200724651608596
@@ -1641,110 +1942,98 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 0
   template:
-    BPM: 60
-    offsetChildTime: 0.24
-    offsetUniverseTime: 0
-    ignoreOffsetPan: 1
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 18.271606
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: -14.320984
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 1
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1.03
-    spotAngle: 7.1
-    rangeLimit: 88.5
-    truncatedRadius: 0.3
-    decalSize: {x: 1.5, y: 1.5}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 0.2509804, g: 1.1764706, b: 2, a: 1}
-      key1: {r: 0.2509804, g: 1.1764706, b: 2, a: 1}
-      key2: {r: 0.1254902, g: 0.5882353, b: 1, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 65535
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 1
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 21.8
+      spotAngle: 38
+      rangeLimit: 10
+      truncatedRadius: 0
+      decalSize: {x: 0, y: 0}
+      decalDepth: 10
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
 --- !u!114 &4284925209526827663
@@ -1765,119 +2054,98 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 1
   template:
-    BPM: 120
-    offsetChildTime: 0
-    offsetUniverseTime: 0
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 0
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -68.22448
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 19.567932
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 0
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 1.2
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 32.3
-    rangeLimit: 1.89
-    truncatedRadius: 0.03
-    decalSize: {x: 0.5, y: 0.5}
-    decalDepth: 19.85
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 2, g: 2, b: 2, a: 1}
-      key1: {r: 0.54901963, g: 1.5058824, b: 1.7960784, a: 1}
-      key2: {r: 0.85490197, g: 0.32941177, b: 1.8666667, a: 0}
-      key3: {r: 1.7568628, g: 0.36078432, b: 0.54901963, a: 0}
-      key4: {r: 0.9098039, g: 0.47058824, b: 1.6235294, a: 0}
-      key5: {r: 0.39215687, g: 1.3254902, b: 1.827451, a: 0}
-      key6: {r: 2, g: 2, b: 2, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 1536
-      ctime1: 9984
-      ctime2: 19776
-      ctime3: 33215
-      ctime4: 45119
-      ctime5: 55871
-      ctime6: 65535
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 7
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 1
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 21.8
+      spotAngle: 38
+      rangeLimit: 10
+      truncatedRadius: 0
+      decalSize: {x: 0, y: 0}
+      decalDepth: 10
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 0}
   resolvedVlvlbClipProfile: {fileID: 0}
 --- !u!114 &4655615610908806722
@@ -1914,49 +2182,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.5666666666666664
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2007,25 +2239,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2052,49 +2266,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.9166666666666679
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2121,49 +2299,13 @@ MonoBehaviour:
     m_BlendOutDuration: 0.25
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2190,7 +2332,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2281,110 +2441,116 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 1
   template:
-    BPM: 120
-    offsetChildTime: 0
-    offsetUniverseTime: 0.28
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 16.099695
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 0
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 53.22
-    rangeLimit: 3.97
-    truncatedRadius: 0.15
-    decalSize: {x: 1, y: 1}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 0.2761955, g: 0.75377023, b: 0.8962264, a: 1}
-      key2: {r: 0.4216224, g: 0.07784496, b: 0.7735849, a: 0}
-      key3: {r: 0.7645612, g: 0.278288, b: 0.24501619, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 1536
-      ctime1: 9984
-      ctime2: 45119
-      ctime3: 65535
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 4
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 0
+      BPM: 120
+      fixedTime: 0
+      loopType: 1
+      offsetUniverseTime: 0.28
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 16.099695
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 0
+      spotAngle: 53.22
+      rangeLimit: 3.97
+      truncatedRadius: 0.15
+      decalSize: {x: 1, y: 1}
+      decalDepth: 20
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
 --- !u!114 &7711080804005979669
@@ -2405,100 +2571,264 @@ MonoBehaviour:
   offsetClipTime: 0
   useProfile: 0
   template:
-    BPM: 60
-    offsetChildTime: 0.12
-    offsetUniverseTime: 0.19
-    ignoreOffsetPan: 0
-    timeScalePan: 1
-    pan:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetTilt: 0
-    timeScaleTilt: 1
-    tilt:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 16.099695
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ignoreOffsetIntensity: 1
-    timeScaleIntensity: 1
-    intensity:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    rootEmissionPower: 0.01
-    ignoreOffsetAngle: 0
-    timeScaleAngle: 1
-    spotAngle: 53.22
-    rangeLimit: 3.97
-    truncatedRadius: 0.15
-    decalSize: {x: 1, y: 1}
-    decalDepth: 20
-    decalOpacity: 1
-    ignoreOffsetColor: 0
-    timeScaleColor: 1
-    color:
-      serializedVersion: 2
-      key0: {r: 0, g: 0, b: 0, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
-      key5: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
-      key6: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
-      key7: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
-      ctime0: 6720
-      ctime1: 22080
-      ctime2: 40895
-      ctime3: 58559
-      ctime4: 65471
-      ctime5: 65535
-      ctime6: 65535
-      ctime7: 65535
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 1
-      m_NumColorKeys: 4
-      m_NumAlphaKeys: 2
-    loopType: 1
+    props:
+      inputPlayableTime: 0
+      weight: 1
+      BPM: 120
+      fixedTime: 0
+      loopType: 0
+      offsetUniverseTime: 0
+      offsetChildTime: 0
+      timeScalePan: 1
+      ignoreOffsetPan: 0
+      pan:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      timeScaleTilt: 1
+      ignoreOffsetTilt: 0
+      tilt:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetColor: 0
+      timeScaleColor: 1
+      lightColor:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      ignoreOffsetIntensity: 0
+      timeScaleIntensity: 1
+      intensity:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      ignoreOffsetAngle: 0
+      timeScaleAngle: 1
+      innerSpotAngle: 21.8
+      spotAngle: 38
+      rangeLimit: 10
+      truncatedRadius: 0
+      decalSize: {x: 0, y: 0}
+      decalDepth: 10
+      decalOpacity: 1
+      useManualTransform: 0
+      manualTransforms: []
     vlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
   resolvedVlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
+--- !u!74 &8424907085310388128
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Recorded
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 2.4710946, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 2.4333334
+        value: {x: -0.48890543, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: 
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 2.4333334
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2.4710946
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.4333334
+        value: -0.48890543
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2.4333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 1
+  m_HasMotionFloatCurves: 0
+  m_Events: []

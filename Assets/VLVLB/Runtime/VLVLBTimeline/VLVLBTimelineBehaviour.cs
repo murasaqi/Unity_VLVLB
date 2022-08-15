@@ -31,40 +31,8 @@ namespace VLVLB
     [Serializable]
     public class VLVLBTimelineBehaviour : PlayableBehaviour
     {
-        // public LoopType loopType = LoopType.PingPong;
-        // [SerializeField]public float BPM = 120;
-        // public float offsetChildTime = 0f;
-        // public float offsetUniverseTime = 0;
-        //
-        // public bool ignoreOffsetColor = false;
-        // public float timeScaleColor = 1;
-        // [GradientUsage(true)] public Gradient lightColor = new Gradient();
-        // public bool  ignoreOffsetPan = false;
-        // public float timeScalePan = 1;
-        //
-        // [NormalizedAnimationCurveAttribute(false,true)]public AnimationCurve pan = new AnimationCurve(new Keyframe[] {new Keyframe(0, -30), new Keyframe(1, 30)});
-        // public bool ignoreOffsetTilt = false;
-        // public float timeScaleTilt = 1;
-        // [NormalizedAnimationCurveAttribute(false,true)]public AnimationCurve tilt = new AnimationCurve(new Keyframe[] {new Keyframe(0, 40), new Keyframe(1, -40)});
-        // public bool ignoreOffsetIntensity = false;
-        // public float timeScaleIntensity = 1;
-        // [NormalizedAnimationCurveAttribute(false,true)]public AnimationCurve intensity = new AnimationCurve(new Keyframe[] {new Keyframe(0, 0), new Keyframe(1, 1)});
-        // // public float rootEmissionPower = 1.2f;
-        // public bool ignoreOffsetAngle = false;
-        // public float timeScaleAngle = 1;
-        //
-        // public float spotAngle = 14f;
-        // public float rangeLimit = 1.5f;
-        // public float truncatedRadius = 0.03f;
-        // public Vector2 decalSize = new Vector2(1, 1);
-        // public float decalDepth = 20;
-        // public float decalOpacity = 1f;
-        //
-        // public bool useManualTransform = false;
-        // public List<PanTilt> manualTransforms = new List<PanTilt>();
 
-
-        public PTLProps props = new PTLProps();
+        [SerializeField]public PTLProps props = new PTLProps();
 
 
 
@@ -97,13 +65,12 @@ namespace VLVLB
 #endif
         }
         
-       
-        public VLVLBClipProfile ExportToProfile()
-        {
-            var exportPtlProps = new VLVLBClipProfile(this.props);
-            return exportPtlProps;
-
-        }
+        // public VLVLBClipProfile ExportToProfile(VLVLBClipProfile vlvlbClipProfile)
+        // {
+        //     var exportPtlProps = new VLVLBClipProfile(vlvlbClipProfile.ptlProps);
+        //     return exportPtlProps;
+        //
+        // }
     }
 
     
@@ -114,43 +81,43 @@ namespace VLVLB
         [HideInInspector]public double inputPlayableTime;
         [HideInInspector]public float weight;
         [Header("--- BPM ---")]        
-        public float BPM;
-        [HideInInspector]public float fixedTime;
+        [SerializeField] public float BPM;
+        [SerializeField][HideInInspector]public float fixedTime;
         [Header("--- Loop Type ---")]        
-        public LoopType loopType;
+        [SerializeField]public LoopType loopType;
         [Header("--- Offset time ---")]        
-        public float offsetUniverseTime;
-        public float offsetChildTime;
+        [SerializeField]public float offsetUniverseTime;
+        [SerializeField]public float offsetChildTime;
         [Header("--- Pan ---")]        
-        public float timeScalePan;
-        public bool ignoreOffsetPan;
-        public AnimationCurve pan;
+        [SerializeField]public float timeScalePan;
+        [SerializeField]public bool ignoreOffsetPan;
+        [SerializeField, NormalizedAnimationCurve(false,true)]public AnimationCurve pan;
         [Header("--- Tilt ---")]
-        public float timeScaleTilt;
-        public bool ignoreOffsetTilt;
-        public AnimationCurve tilt;
+        [SerializeField]public float timeScaleTilt;
+        [SerializeField]public bool ignoreOffsetTilt;
+        [SerializeField, NormalizedAnimationCurve(false,true)]public AnimationCurve tilt;
         [Header("--- Color ---")]
-        public bool ignoreOffsetColor;
-        public float timeScaleColor;
+        [SerializeField]public bool ignoreOffsetColor;
+        [SerializeField]public float timeScaleColor;
         [GradientUsage(true)]public Gradient lightColor;
         [Header("--- Intensity ---")]
-        public bool ignoreOffsetIntensity;
-        public float timeScaleIntensity;
-        public AnimationCurve intensity;
+        [SerializeField]public bool ignoreOffsetIntensity;
+        [SerializeField]public float timeScaleIntensity;
+        [SerializeField, NormalizedAnimationCurve(false,true)]public AnimationCurve intensity;
         [Header("--- Angle ---")]
-        public bool ignoreOffsetAngle;
-        public float timeScaleAngle;
-        public float innerSpotAngle;
-        public float spotAngle;
-        public float rangeLimit;
-        public float truncatedRadius;
+        [SerializeField]public bool ignoreOffsetAngle;
+        [SerializeField]public float timeScaleAngle;
+        [SerializeField]public float innerSpotAngle;
+        [SerializeField]public float spotAngle;
+        [SerializeField]public float rangeLimit;
+        [SerializeField]public float truncatedRadius;
         [Header("--- Decal ---")]
-        public Vector2 decalSize;
-        public float decalDepth;
-        public float decalOpacity;
+        [SerializeField]public Vector2 decalSize;
+        [SerializeField]public float decalDepth;
+        [SerializeField]public float decalOpacity;
         [Header("--- Manual Transform ---")]
-        public bool useManualTransform;
-        public List<PanTilt> manualTransforms;
+        [SerializeField]public bool useManualTransform;
+        [SerializeField]public List<PanTilt> manualTransforms;
     }
 
     [Serializable]

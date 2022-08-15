@@ -19,12 +19,14 @@ namespace VLVLB
 
         private bool firstFrameHappend = false;
         private int elementCount = 0;
+        
+        public PanTiltLightGroup panTiltLightGroup;
         // NOTE: This function is called at runtime and edit time.  Keep that in mind when setting the values of properties.
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            PanTiltLightGroup trackBinding = playerData as PanTiltLightGroup;
+            panTiltLightGroup = playerData as PanTiltLightGroup;
 
-            if (!trackBinding)
+            if (!panTiltLightGroup)
                 return;
 
             int inputCount = playable.GetInputCount();
@@ -33,13 +35,13 @@ namespace VLVLB
             if (!firstFrameHappend)
             {
                 elementCount = 0;
-                foreach (var ptl in trackBinding.ptls)
+                foreach (var ptl in panTiltLightGroup.ptls)
                 {
                     ptl.elementIndex = elementCount;
                     elementCount++;
                 }
 
-                foreach (var universe in trackBinding.ptlUniverses)
+                foreach (var universe in panTiltLightGroup.ptlUniverses)
                 {
                     foreach (var ptl in universe.ptls)
                     {
@@ -48,9 +50,9 @@ namespace VLVLB
                     }
                 }
 
-                trackBinding.UpdatePTL(new List<PTLProps>(new List<PTLProps>()));
+                panTiltLightGroup.UpdatePTL(new List<PTLProps>(new List<PTLProps>()));
                 
-                trackBinding.UpdatePTL(new List<PTLProps>(){new PTLProps()});
+                panTiltLightGroup.UpdatePTL(new List<PTLProps>(){new PTLProps()});
                 firstFrameHappend = true;
             }
             var cue = new List<PTLProps>();
@@ -135,7 +137,7 @@ namespace VLVLB
                     cue.Add(props);
                 }
 
-                trackBinding.UpdatePTL(cue);
+                panTiltLightGroup.UpdatePTL(cue);
             }
 
            
