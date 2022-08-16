@@ -12,7 +12,7 @@ namespace VLVLB
     public class VLVLBTimelineClip : PlayableAsset, ITimelineClipAsset
     {
 
-        [HideInInspector]public bool useProfile = false;
+        [HideInInspector][SerializeField]public bool useProfile = false;
         [SerializeField]public float offsetClipTime;
         [SerializeField]public ExposedReference<VLVLBClipProfile> ptlPropObject;
         [SerializeField]public VLVLBTimelineBehaviour behaviour = new VLVLBTimelineBehaviour();

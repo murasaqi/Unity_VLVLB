@@ -83,6 +83,7 @@ namespace VLVLB
             base.DrawBackground(clip, region);
 
 
+            if(syncIconTexture == null)syncIconTexture = Resources.Load<Texture2D>("VLVLBMaterials/icon_sync");
             var vlvlbTimelineClip = (VLVLBTimelineClip) clip.asset;
             var update = vlvlbTimelineClip.forceTimelineClipUpdate;
             var tex = GetGradientTexture(clip, update);
