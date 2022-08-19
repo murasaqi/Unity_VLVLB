@@ -30,8 +30,12 @@ namespace VLVLB
         {
             if (behaviour != null)
             {
+               
+                
+               
                 behaviour.SaveToProfile();
                 Debug.Log($"Save to {behaviour.vlvlbClipProfile.name}");
+                
             }
             
             
@@ -63,20 +67,24 @@ namespace VLVLB
         {
             #if UNITY_EDITOR
             if (behaviour == null) return;
+            Undo.RegisterCompleteObjectUndo(behaviour.vlvlbClipProfile, behaviour.vlvlbClipProfile.name);
+            EditorUtility.SetDirty(behaviour.vlvlbClipProfile);
             var exportPath = ptlPropObject.defaultValue != null ? AssetDatabase.GetAssetPath(ptlPropObject.defaultValue) : "Asset";
-            
-            var path = EditorUtility.SaveFilePanelInProject("Save VLVLB Asset", "vlvlbSettings", "asset", "Please enter a file name to save the texture to");
+            var exportName = ptlPropObject.defaultValue != null ? ptlPropObject.defaultValue.name+"(Clone)" : "vlvlbSettings";
+            var path = EditorUtility.SaveFilePanel("Save VLVLB Asset", exportPath,exportName, "asset");
             string fileName = Path.GetFileName(path);
+            if(path == "") return;
+            path = path.Replace("\\", "/").Replace(Application.dataPath, "Assets");
             string dir = Path.GetDirectoryName(path);
             Debug.Log($"dir: {dir}, file: {fileName}");
             var newProfile = ScriptableObject.CreateInstance<VLVLBClipProfile>();
             newProfile.ptlProps = new PTLProps(behaviour.props);
             AssetDatabase.CreateAsset(newProfile, path);
             useProfile = true;
-           ptlPropObject = new ExposedReference<VLVLBClipProfile>();
-           ptlPropObject.defaultValue = AssetDatabase.LoadAssetAtPath<VLVLBClipProfile>(path);
-           Debug.Log($"Load {path}");
-           behaviour.props = new PTLProps(newProfile.ptlProps);
+            ptlPropObject = new ExposedReference<VLVLBClipProfile>();
+            ptlPropObject.defaultValue = AssetDatabase.LoadAssetAtPath<VLVLBClipProfile>(path);
+            Debug.Log($"Load {path}");
+            behaviour.props = new PTLProps(newProfile.ptlProps);
            // LoadProps();
 #endif
         }

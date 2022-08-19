@@ -88,6 +88,8 @@ namespace VLVLB
             var update = vlvlbTimelineClip.forceTimelineClipUpdate;
             var tex = GetGradientTexture(clip, update);
             vlvlbTimelineClip.forceTimelineClipUpdate = false;
+            if(vlvlbTimelineClip.track == null) return;
+            
             var colorHeight = region.position.height * vlvlbTimelineClip.track.colorLineHeight;
             var beatHeight = 2f;
 

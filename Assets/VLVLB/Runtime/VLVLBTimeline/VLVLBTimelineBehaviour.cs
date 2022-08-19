@@ -56,7 +56,8 @@ namespace VLVLB
         public void SaveToProfile()
         {
 #if UNITY_EDITOR
-            
+            Undo.RegisterCompleteObjectUndo(vlvlbClipProfile, vlvlbClipProfile.name);
+            // EditorUtility.SetDirty(vlvlbClipProfile);
             if (vlvlbClipProfile == null) return;
             this.vlvlbClipProfile.ptlProps = new PTLProps(this.props);
             EditorUtility.SetDirty(vlvlbClipProfile);
