@@ -112,6 +112,7 @@ namespace VLVLB
         [SerializeField]public float spotAngle;
         [SerializeField]public float rangeLimit;
         [SerializeField]public float truncatedRadius;
+        [SerializeField, HideInInspector] public float sideThickness;
         [Header("--- Decal ---")]
         [SerializeField]public Vector2 decalSize;
         [SerializeField]public float decalDepth;
@@ -173,6 +174,7 @@ namespace VLVLB
                 offsetUniverseTime = props.offsetUniverseTime;
                 intensity = CloneAnimationCurve(props.intensity);
                 spotAngle = props.spotAngle;
+                sideThickness = props.sideThickness;
                 innerSpotAngle  = props.innerSpotAngle;
                 rangeLimit = props.rangeLimit;
                 truncatedRadius = props.truncatedRadius;
@@ -205,9 +207,10 @@ namespace VLVLB
                 tilt = new AnimationCurve();
                 intensity = new AnimationCurve(){keys = new Keyframe[] {new Keyframe(0, 1), new Keyframe(1, 1)}};
                 spotAngle = 38;
+                sideThickness = 0.2f;
                 rangeLimit = 10;
                 truncatedRadius = 0;
-                decalSize = new Vector2(0,0);
+                decalSize = new Vector2(0.5f,0.5f);
                 decalDepth = 10;
                 decalOpacity = 1;
                 fixedTime = 0;

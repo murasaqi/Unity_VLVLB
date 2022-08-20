@@ -67,8 +67,11 @@ namespace VLVLB
         {
             #if UNITY_EDITOR
             if (behaviour == null) return;
-            Undo.RegisterCompleteObjectUndo(behaviour.vlvlbClipProfile, behaviour.vlvlbClipProfile.name);
-            EditorUtility.SetDirty(behaviour.vlvlbClipProfile);
+            if (behaviour.vlvlbClipProfile != null)
+            {
+                Undo.RegisterCompleteObjectUndo(behaviour.vlvlbClipProfile, behaviour.vlvlbClipProfile.name);
+                EditorUtility.SetDirty(behaviour.vlvlbClipProfile);
+            }
             var exportPath = ptlPropObject.defaultValue != null ? AssetDatabase.GetAssetPath(ptlPropObject.defaultValue) : "Asset";
             var exportName = ptlPropObject.defaultValue != null ? ptlPropObject.defaultValue.name+"(Clone)" : "vlvlbSettings";
             var path = EditorUtility.SaveFilePanel("Save VLVLB Asset", exportPath,exportName, "asset");

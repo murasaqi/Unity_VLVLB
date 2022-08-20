@@ -104,7 +104,7 @@ namespace VLVLB
           
             if (materialPropertyBlock == null) materialPropertyBlock = new MaterialPropertyBlock();
 
-            float p = 0f, t = 0f, intensity = 0f, spotAngle = 0f, rangeLimit = 0f, truncatedRadius = 0f, decalOpacity = 0f,decalDepth = 0f, innerSpotAngle =0f, outerSpotAngle=0f;
+            float p = 0f, sideThickness = 0f,t = 0f, intensity = 0f, spotAngle = 0f, rangeLimit = 0f, truncatedRadius = 0f, decalOpacity = 0f,decalDepth = 0f, innerSpotAngle =0f, outerSpotAngle=0f;
             var lightColor = new Color();
             var materialEmissionColor = new Color();
             var decalSize = new Vector2(0, 0);
@@ -141,6 +141,7 @@ namespace VLVLB
                 var exposure = 0f;
                 lightColor = VLVLBUtils.DecomposeHdrColor(materialEmissionColor);
                 spotAngle += cue.spotAngle * cue.weight;
+                sideThickness += cue.sideThickness * cue.weight;
                 rangeLimit += cue.rangeLimit * cue.weight;
                 truncatedRadius += cue.truncatedRadius * cue.weight;
                 decalOpacity += cue.decalOpacity * cue.weight;
@@ -166,10 +167,11 @@ namespace VLVLB
                     volumetricLightBeam.spotAngleFromLight = false;
                     volumetricLightBeam.fallOffEnd = rangeLimit;
                     volumetricLightBeam.coneRadiusStart = truncatedRadius;
-                    volumetricLightBeam.spotAngle = spotAngle;    
+                    volumetricLightBeam.spotAngle = spotAngle;
+                    // volumetricLightBeam.fresnelPow=  (1 - sideThickness) * Consts.Beam.FresnelPowMaxValue ;
                 }
             }
-            
+           
             if(lights != null)
             {
                 foreach (var light in lights)
