@@ -244,7 +244,15 @@ namespace VLVLB
             
             
             tex.Apply();
-            _gradientTextures.Add(customClip, tex);
+            if (_gradientTextures.ContainsKey(customClip))
+            {
+                _gradientTextures[customClip] = tex;
+            }
+            else
+            {
+                _gradientTextures.Add(customClip, tex);    
+            }
+            
             _beatPoint.Add(customClip,beatPointList);
 
             return tex;
