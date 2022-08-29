@@ -214,7 +214,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: Spot_LR
   - m_Version: 1
     m_Start: 4.616666666666666
     m_ClipIn: 0
@@ -228,25 +228,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -283,9 +265,12 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: BlackOut
   m_Markers:
     m_Objects: []
+  colorLineHeight: 0.1
+  drawBeat: 0
+  beatLineColor: {r: 0, g: 1, b: 0.7126422, a: 0.3}
 --- !u!114 &-7774502289502186579
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,142 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
-  offsetClipTime: 0
   useProfile: 1
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 0
-      BPM: 120
-      fixedTime: 0
-      loopType: 1
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: -30
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 30
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 40
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: -40
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1.03
-      innerSpotAngle: 0
-      spotAngle: 14.79
-      rangeLimit: 88.5
-      truncatedRadius: 0.03
-      decalSize: {x: 2, y: 2}
-      decalDepth: 20
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: 4655615610908806722}
 --- !u!114 &-7112543517224125791
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,7 +357,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: Spot_LR
   - m_Version: 1
     m_Start: 4.616666666666666
     m_ClipIn: 0
@@ -519,25 +371,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -574,9 +408,12 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: Spot_LR
   m_Markers:
     m_Objects: []
+  colorLineHeight: 0.1
+  drawBeat: 0
+  beatLineColor: {r: 0, g: 1, b: 0.7126422, a: 0.3}
 --- !u!114 &-5686485955899444970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -589,106 +426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip(Clone)
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: fb457b0ee51b23a4693d09c2b8fa90bc
-    defaultValue: {fileID: 0}
-  offsetClipTime: 0
   useProfile: 1
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 1
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 21.8
-      spotAngle: 38
-      rangeLimit: 10
-      truncatedRadius: 0
-      decalSize: {x: 0, y: 0}
-      decalDepth: 10
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 0}
-  resolvedVlvlbClipProfile: {fileID: 0}
+  profile: {fileID: 0}
+  track: {fileID: -1683337788953746322}
 --- !u!114 &-5682906006592359073
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,133 +441,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
-  offsetClipTime: 0
   useProfile: 1
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 0
-      BPM: 60
-      fixedTime: 0
-      loopType: 1
-      offsetUniverseTime: 0
-      offsetChildTime: 0.09
-      timeScalePan: 2
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 20.947754
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: -20.86797
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: -40.983864
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 33.18824
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 0
-      spotAngle: 32.3
-      rangeLimit: 1.89
-      truncatedRadius: 0.03
-      decalSize: {x: 0.5, y: 0.5}
-      decalDepth: 19.85
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: 4655615610908806722}
 --- !u!114 &-2761211587468737956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1102,25 +718,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1157,9 +755,12 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: BlackOut
   m_Markers:
     m_Objects: []
+  colorLineHeight: 0.1
+  drawBeat: 0
+  beatLineColor: {r: 0, g: 1, b: 0.7126422, a: 0.3}
 --- !u!114 &-28038972408565587
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1172,106 +773,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip(Clone)
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 583de33e7a769c04a864112ea82530b3
-    defaultValue: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
-  offsetClipTime: 0
   useProfile: 0
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 1
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 21.8
-      spotAngle: 38
-      rangeLimit: 10
-      truncatedRadius: 0
-      decalSize: {x: 0, y: 0}
-      decalDepth: 10
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: 4655615610908806722}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,133 +813,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: ad302441bd3d0cb4dbb3f0b11f1e0eb9
-    defaultValue: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
-  offsetClipTime: 0
   useProfile: 0
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 0
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: -68.22448
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 19.567932
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 0
-      spotAngle: 9.78
-      rangeLimit: 21.2
-      truncatedRadius: 0.03
-      decalSize: {x: 1, y: 1}
-      decalDepth: 19.85
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 05e982197ee1c794fb606df942287544, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: 4655615610908806722}
 --- !u!114 &1571104411277548321
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1470,106 +850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
-  offsetClipTime: 0
   useProfile: 0
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 1
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 21.8
-      spotAngle: 38
-      rangeLimit: 10
-      truncatedRadius: 0
-      decalSize: {x: 0, y: 0}
-      decalDepth: 10
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 8f659e691aef9ba4c9d6759fbbe53038, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: 4655615610908806722}
 --- !u!114 &2005387145505320155
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1582,115 +865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip(Clone)(Clone)
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
-  offsetClipTime: 0
   useProfile: 1
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 0
-      BPM: 60
-      fixedTime: 0
-      loopType: 1
-      offsetUniverseTime: 0.19
-      offsetChildTime: 0.12
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 16.099695
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 1
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 0
-      spotAngle: 53.22
-      rangeLimit: 3.97
-      truncatedRadius: 0.15
-      decalSize: {x: 1, y: 1}
-      decalDepth: 20
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: -8118639410050275581}
 --- !u!114 &2078133005169993622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1703,115 +880,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: f7e207c2ef107d845a6b2aa3af51d604
-    defaultValue: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
-  offsetClipTime: 0
   useProfile: 1
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 0
-      BPM: 60
-      fixedTime: 0
-      loopType: 1
-      offsetUniverseTime: 0.19
-      offsetChildTime: 0.12
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 16.099695
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 1
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 0
-      spotAngle: 53.22
-      rangeLimit: 3.97
-      truncatedRadius: 0.15
-      decalSize: {x: 1, y: 1}
-      decalDepth: 20
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 43c89b3fa0da06f47aec3d83dc497268, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: -1683337788953746322}
 --- !u!114 &3710077120681780826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1824,106 +895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
-  offsetClipTime: 0
   useProfile: 0
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 1
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 21.8
-      spotAngle: 38
-      rangeLimit: 10
-      truncatedRadius: 0
-      decalSize: {x: 0, y: 0}
-      decalDepth: 10
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: -7112543517224125791}
 --- !u!114 &4251200724651608596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1936,106 +910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
-  offsetClipTime: 0
   useProfile: 0
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 1
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 21.8
-      spotAngle: 38
-      rangeLimit: 10
-      truncatedRadius: 0
-      decalSize: {x: 0, y: 0}
-      decalDepth: 10
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: f0baaf4e1307a1448860d909c74d21be, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: 4655615610908806722}
 --- !u!114 &4284925209526827663
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2048,106 +925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip(Clone)
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 0}
-  offsetClipTime: 0
   useProfile: 1
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 1
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 21.8
-      spotAngle: 38
-      rangeLimit: 10
-      truncatedRadius: 0
-      decalSize: {x: 0, y: 0}
-      decalDepth: 10
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 0}
-  resolvedVlvlbClipProfile: {fileID: 0}
+  profile: {fileID: 0}
+  track: {fileID: 0}
 --- !u!114 &4655615610908806722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2201,7 +981,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: vlvlbSettings02
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
@@ -2252,7 +1032,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: vlvlbSettings
   - m_Version: 1
     m_Start: 9.05
     m_ClipIn: 0
@@ -2285,7 +1065,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: vlvlbSettings
   - m_Version: 1
     m_Start: 13.05
     m_ClipIn: 0
@@ -2318,7 +1098,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: vlvlbSettings02
   - m_Version: 1
     m_Start: 23.05
     m_ClipIn: 0
@@ -2332,25 +1112,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2387,7 +1149,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: vlvlbSettings03
   - m_Version: 1
     m_Start: 17.8
     m_ClipIn: 0
@@ -2420,9 +1182,12 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: PTLTimelineClip
+    m_DisplayName: vlvlbSettings03
   m_Markers:
     m_Objects: []
+  colorLineHeight: 0.1
+  drawBeat: 0
+  beatLineColor: {r: 0, g: 1, b: 0.7126422, a: 0.3}
 --- !u!114 &5172741738634232146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2435,124 +1200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 
-    defaultValue: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
-  offsetClipTime: 0
   useProfile: 1
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 0
-      BPM: 120
-      fixedTime: 0
-      loopType: 1
-      offsetUniverseTime: 0.28
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 16.099695
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 0
-      spotAngle: 53.22
-      rangeLimit: 3.97
-      truncatedRadius: 0.15
-      decalSize: {x: 1, y: 1}
-      decalDepth: 20
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: -8118639410050275581}
 --- !u!114 &7711080804005979669
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2565,106 +1215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a959d91416addd4b9b157f5faa15326, type: 3}
   m_Name: PTLTimelineClip(Clone)
   m_EditorClassIdentifier: 
-  ptlPropObject:
-    exposedName: 2028dac29c8eaf14db120e3afc8a348f
-    defaultValue: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
-  offsetClipTime: 0
   useProfile: 0
-  template:
-    props:
-      inputPlayableTime: 0
-      weight: 1
-      BPM: 120
-      fixedTime: 0
-      loopType: 0
-      offsetUniverseTime: 0
-      offsetChildTime: 0
-      timeScalePan: 1
-      ignoreOffsetPan: 0
-      pan:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      timeScaleTilt: 1
-      ignoreOffsetTilt: 0
-      tilt:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetColor: 0
-      timeScaleColor: 1
-      lightColor:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      ignoreOffsetIntensity: 0
-      timeScaleIntensity: 1
-      intensity:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      ignoreOffsetAngle: 0
-      timeScaleAngle: 1
-      innerSpotAngle: 21.8
-      spotAngle: 38
-      rangeLimit: 10
-      truncatedRadius: 0
-      decalSize: {x: 0, y: 0}
-      decalDepth: 10
-      decalOpacity: 1
-      useManualTransform: 0
-      manualTransforms: []
-    vlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
-  resolvedVlvlbClipProfile: {fileID: 11400000, guid: 9c7836099234bff42ae1818afcc405fd, type: 2}
+  profile: {fileID: 0}
+  track: {fileID: -7112543517224125791}
 --- !u!74 &8424907085310388128
 AnimationClip:
   m_ObjectHideFlags: 0
