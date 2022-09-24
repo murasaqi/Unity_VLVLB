@@ -80,7 +80,8 @@ namespace StageLightSupervisor
         public StageLightProperty<float> spotAngle;// = new StageLightProperty<float>(){value = 15f};
         public StageLightProperty<float> innerSpotAngle;// = new StageLightProperty<float>(){value = 10f};
         
-        public LightProperty()
+        public 
+            LightProperty()
         {
             lightColor = new StageLightProperty<Gradient>(){value = new Gradient()};
             lightIntensity = new StageLightProperty<AnimationCurve>(){value = new AnimationCurve()};
@@ -97,10 +98,30 @@ namespace StageLightSupervisor
         }
     }
 
- 
-    
-    
-   
-    
-    
+    [Serializable]
+    public class TimeProperty: StageLightData
+    {
+        public StageLightProperty<float> bpm = new StageLightProperty<float>() { value = 120 };
+        public StageLightProperty<float> bpmOffset = new StageLightProperty<float>() { value = 0f };
+
+        
+        public TimeProperty()
+        {
+            bpm = new StageLightProperty<float>() { value = 120 };
+            bpmOffset = new StageLightProperty<float>() { value = 0f };
+        }
+        
+        public TimeProperty(TimeProperty other)
+        {
+            bpm = other.bpm;
+            bpmOffset = other.bpmOffset;
+        }
+    }
+
+
+
+
+
+
+
 }

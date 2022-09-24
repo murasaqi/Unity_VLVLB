@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -10,6 +11,9 @@ public class StageLightTimelineTrack : TrackAsset
 {
     public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
     {
-        return ScriptPlayable<StageLightTimelineMixerBehaviour>.Create (graph, inputCount);
+        var mixer = ScriptPlayable<StageLightTimelineMixerBehaviour>.Create (graph, inputCount);
+        var stageLightTimelineMixer = mixer.GetBehaviour();
+        stageLightTimelineMixer.clips = GetClips().ToList();
+        return mixer;
     }
 }

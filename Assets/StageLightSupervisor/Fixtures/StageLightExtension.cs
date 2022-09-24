@@ -7,8 +7,8 @@ namespace StageLightSupervisor
     public abstract class StageLightExtension: MonoBehaviour
     {
         public float weight;
-        public StageLightProperty<float> bpm = new StageLightProperty<float>() { value = 120 };
-        public StageLightProperty<float> bpmScale = new StageLightProperty<float>() { value = 1f };
+        public TimeProperty timeProperty = new TimeProperty();
+        public StageLightProperty<float> bpmScale = new StageLightProperty<float>(){value = 1f};
         public StageLightProperty<float> bpmOffset = new StageLightProperty<float>() { value = 0f };
         public StageLightProperty<int> index = new StageLightProperty<int>() { value = 0 };
         public virtual void Update(float currentTime)
@@ -16,10 +16,14 @@ namespace StageLightSupervisor
 
         }
 
+        public virtual void Init()
+        {
+            
+        }
 
         public float GetNormalizedTime(float time)
         {
-            var scaledBpm = bpm.value * bpmScale.value;
+            var scaledBpm = timeProperty.bpm.value * bpmScale.value;
             // var offsetBpm = scaledBpm + (bpmOffset.value * index.value);
             // var offsetChildTime = 60f / offsetBpm;
             var duration = 60 / scaledBpm;
