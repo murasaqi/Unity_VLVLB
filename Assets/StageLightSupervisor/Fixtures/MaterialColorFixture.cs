@@ -30,10 +30,10 @@ namespace StageLightSupervisor
             materialPropertyBlock = new MaterialPropertyBlock();
             if(meshRenderer)meshRenderer.GetPropertyBlock(materialPropertyBlock);
         }
-        public override void Update(float currentTime)
+        public override void UpdateFixture(float currentTime)
         {
             if(meshRenderer == null || materialPropertyBlock == null) return;
-            base.Update(currentTime);
+            base.UpdateFixture(currentTime);
             
             var t = GetNormalizedTime(currentTime);
             

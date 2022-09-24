@@ -37,7 +37,7 @@ namespace StageLightSupervisor
         {
             foreach (var stageLightFixture in stageLightFixtures)
             {
-                stageLightFixture.Update(time);
+                stageLightFixture.UpdateFixture(time);
             }
         }
 

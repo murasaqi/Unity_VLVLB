@@ -7,11 +7,13 @@ namespace StageLightSupervisor
     public abstract class StageLightExtension: MonoBehaviour
     {
         public float weight;
-        public TimeProperty timeProperty = new TimeProperty();
+        public StageLightProperty<float> bpm = new StageLightProperty<float>() { value = 120 };
         public StageLightProperty<float> bpmScale = new StageLightProperty<float>(){value = 1f};
         public StageLightProperty<float> bpmOffset = new StageLightProperty<float>() { value = 0f };
         public StageLightProperty<int> index = new StageLightProperty<int>() { value = 0 };
-        public virtual void Update(float currentTime)
+        public StageLightProperty<LoopType> loopType = new StageLightProperty<LoopType>() { value = LoopType.Loop };
+        public ClipProperty clipProperty = new ClipProperty();
+        public virtual void UpdateFixture(float currentTime)
         {
 
         }
@@ -23,16 +25,29 @@ namespace StageLightSupervisor
 
         public float GetNormalizedTime(float time)
         {
-            var scaledBpm = timeProperty.bpm.value * bpmScale.value;
-            // var offsetBpm = scaledBpm + (bpmOffset.value * index.value);
+            var scaledBpm = bpm.value * bpmScale.value;
+            var offsetBpm = scaledBpm + (bpmOffset.value * index.value);
             // var offsetChildTime = 60f / offsetBpm;
-            var duration = 60 / scaledBpm;
+            var duration = 60 / offsetBpm;
             var t = (float)time % duration;
-            // var inv = Mathf.CeilToInt((float) offsetTime / duration) % 2 != 0;
+            // 
             var normalisedTime = t / duration;
-            // if (loopType == LoopType.Loop) return normalisedTime;
-            // return inv ? 1f - normalisedTime : normalisedTime;
-            return t;
+
+            var result = normalisedTime;
+            if (loopType.value == LoopType.PingPong)
+            {
+                var inv = Mathf.CeilToInt(time / duration) % 2 != 0;
+                if (inv)
+                {
+                    result = 1 - normalisedTime;
+                }
+            }
+            else if(loopType.value == LoopType.Fixed)
+            {
+                result = Mathf.InverseLerp(clipProperty.clipStartTime, clipProperty.clipEndTime, normalisedTime);
+            }
+           
+            return result;
         }
     }
 }

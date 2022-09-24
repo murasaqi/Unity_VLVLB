@@ -9,10 +9,10 @@ namespace StageLightSupervisor
         public Light light;
         public UniversalAdditionalLightData universalAdditionalLightData;
         
-        public override void Update(float currentTime)
+        public override void UpdateFixture(float currentTime)
         {
             if(light == null) return;
-            base.Update(currentTime);
+            base.UpdateFixture(currentTime);
             var t = GetNormalizedTime(currentTime);
             light.color = lightProperty.lightColor.value.Evaluate(t);
             light.intensity = lightProperty.lightIntensity.value.Evaluate(t);
