@@ -11,9 +11,9 @@ namespace StageLightSupervisor
         public DecalProperty decalProperty = new DecalProperty();
         public DecalProjector decalProjector;
         public Material decalMaterial;
-        private Material instancedDecalMaterial = null;
-        private float radius = 1f;
-        private float depth = 1f;
+        private Material _instancedDecalMaterial = null;
+        private float _radius = 1f;
+        private float _depth = 1f;
         private void Start()
         {
             Init();
@@ -26,24 +26,26 @@ namespace StageLightSupervisor
 
         private void Update()
         {
+            if(decalProjector ==null) return;
+            
             var floor = new Vector3(0,decalProperty.floorHeight.value,0);
             var distance = Vector3.Distance(transform.position,floor);
             var angle = lightFixture.lightProperty.spotAngle.value;
-            radius = Mathf.Tan(angle * Mathf.Deg2Rad) * distance * decalProperty.decalSizeScaler.value;
-            depth = distance * decalProperty.decalDepthScaler.value;
+            _radius = Mathf.Tan(angle * Mathf.Deg2Rad) * distance * decalProperty.decalSizeScaler.value;
+            _depth = distance * decalProperty.decalDepthScaler.value;
             
-            decalProjector.size = new Vector3(radius,radius, depth);
+            decalProjector.size = new Vector3(_radius,_radius, _depth);
             decalProjector.fadeFactor = decalProperty.fadeFactor.value;
-            decalProjector.pivot = new Vector3(0, 0, depth / 2f);
+            decalProjector.pivot = new Vector3(0, 0, _depth / 2f);
 
         }
         public override void Init()
         {
-            if(instancedDecalMaterial != null) DestroyImmediate(instancedDecalMaterial);
+            if(_instancedDecalMaterial != null) DestroyImmediate(_instancedDecalMaterial);
             if (decalProjector != null)
             {
-                instancedDecalMaterial = Material.Instantiate(decalMaterial);
-                decalProjector.material = instancedDecalMaterial;     
+                _instancedDecalMaterial = Material.Instantiate(decalMaterial);
+                decalProjector.material = _instancedDecalMaterial;     
             }
             
             lightFixture = GetComponent<LightFixture>();

@@ -50,7 +50,7 @@ namespace StageLightSupervisor
     [Serializable]
     public class RollProperty:StageLightData
     {
-        public StageLightProperty<LightTransformControlType> lighttransformControlType;
+        public StageLightProperty<LightTransformControlType> lightTransformControlType;
         public StageLightProperty<float> startRoll;
         public StageLightProperty<float> endRoll;
         public StageLightProperty<EaseType> easeType;
@@ -58,7 +58,7 @@ namespace StageLightSupervisor
 
         public RollProperty(RollProperty rollProperty)
         {
-            this.lighttransformControlType = rollProperty.lighttransformControlType;
+            this.lightTransformControlType = rollProperty.lightTransformControlType;
             this.startRoll = rollProperty.startRoll;
             this.endRoll = rollProperty.endRoll;
             this.easeType = rollProperty.easeType;
@@ -67,7 +67,7 @@ namespace StageLightSupervisor
 
         public RollProperty()
         {
-            lighttransformControlType = new StageLightProperty<LightTransformControlType>(){value =  LightTransformControlType.Ease};
+            lightTransformControlType = new StageLightProperty<LightTransformControlType>(){value =  LightTransformControlType.Ease};
             startRoll = new StageLightProperty<float>() {value = 0f};
             endRoll = new StageLightProperty<float>() {value = 0f};
             easeType = new StageLightProperty<EaseType>() {value = EaseType.Linear};
@@ -101,25 +101,34 @@ namespace StageLightSupervisor
         }
     }
 
-    // [Serializable]
-    // public class TimeProperty: StageLightData
-    // {
-    //     public StageLightProperty<float> bpm = new StageLightProperty<float>() { value = 120 };
-    //     public StageLightProperty<float> bpmOffset = new StageLightProperty<float>() { value = 0f };
-    //
-    //     
-    //     public TimeProperty()
-    //     {
-    //         bpm = new StageLightProperty<float>() { value = 120 };
-    //         bpmOffset = new StageLightProperty<float>() { value = 0f };
-    //     }
-    //     
-    //     public TimeProperty(TimeProperty other)
-    //     {
-    //         bpm = other.bpm;
-    //         bpmOffset = other.bpmOffset;
-    //     }
-    // }
+    [Serializable]
+    public class StageLightExtensionProperty: StageLightData
+    {
+        public float weight;
+        public StageLightProperty<float> bpm = new StageLightProperty<float>() { value = 120 };
+        public StageLightProperty<float> bpmScale = new StageLightProperty<float>(){value = 1f};
+        public StageLightProperty<float> bpmOffset = new StageLightProperty<float>() { value = 0f };
+        public StageLightProperty<int> index = new StageLightProperty<int>() { value = 0 };
+        public StageLightProperty<LoopType> loopType = new StageLightProperty<LoopType>() { value = LoopType.Loop };
+       
+        public StageLightExtensionProperty()
+        {
+            bpm = new StageLightProperty<float>() { value = 120 };
+            bpmScale = new StageLightProperty<float>() { value = 1f };
+            bpmOffset = new StageLightProperty<float>() { value = 0f };
+            index = new StageLightProperty<int>() { value = 0 };
+            loopType = new StageLightProperty<LoopType>() { value = LoopType.Loop };
+        }
+            
+        public StageLightExtensionProperty(StageLightExtensionProperty other)
+        {
+            bpm = other.bpm;
+            bpmScale = other.bpmScale;
+            bpmOffset = other.bpmOffset;
+            index = other.index;
+            loopType = other.loopType;
+        }
+    }
     //
     // [Serializable]
     // public class BpmProperty: StageLightData

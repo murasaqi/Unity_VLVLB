@@ -26,7 +26,7 @@ namespace StageLightSupervisor
             if(rotateTransform == null) return;
             var time = GetNormalizedTime(currentTime);
             float angle = 0f;
-            if(rollProperty.lighttransformControlType.value == LightTransformControlType.Ease)
+            if(rollProperty.lightTransformControlType.value == LightTransformControlType.Ease)
             {
                 var start = rollProperty.startRoll.value;
                 var end = rollProperty.endRoll.value;
@@ -138,7 +138,6 @@ namespace StageLightSupervisor
                         break;
                 }
                 
-                Debug.Log(angle);
             }
             else
             {
