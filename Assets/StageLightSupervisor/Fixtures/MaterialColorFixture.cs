@@ -8,7 +8,7 @@ namespace StageLightSupervisor
     public class MaterialColorFixture : StageLightExtension
     {
         public LightProperty lightProperty = new LightProperty();
-        public StageLightProperty<bool> fromLightFixture = new StageLightProperty<bool>();
+        // public StageLightProperty<bool> fromLightFixture = new StageLightProperty<bool>();
         public MeshRenderer meshRenderer;
         public StageLightProperty<string> materialPropertyName = new StageLightProperty<string>(){value = "_Color"};
         private MaterialPropertyBlock _materialPropertyBlock;
@@ -34,19 +34,12 @@ namespace StageLightSupervisor
         {
             if(meshRenderer == null || _materialPropertyBlock == null) return;
             base.UpdateFixture(currentTime);
-            
-            var t = GetNormalizedTime(currentTime);
-            
-            if(fromLightFixture.value && lightFixture != null)
-            {
-                _materialPropertyBlock.SetColor(materialPropertyName.value,lightFixture.lightProperty.lightColor.value.Evaluate(t));
-            }
-            else
-            {
-                _materialPropertyBlock.SetColor(materialPropertyName.value,lightProperty.lightColor.value.Evaluate(t));
-            }
+
+        }
+
+        private void Update()
+        {
             meshRenderer.SetPropertyBlock(_materialPropertyBlock);
-        
         }
     }
 

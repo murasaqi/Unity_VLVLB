@@ -12,7 +12,7 @@ public class StageLightTimelineMixerBehaviour : PlayableBehaviour
     // NOTE: This function is called at runtime and edit time.  Keep that in mind when setting the values of properties.
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
-        StageLightBase trackBinding = playerData as StageLightBase;
+        StageLight trackBinding = playerData as StageLight;
 
         if (!trackBinding)
             return;

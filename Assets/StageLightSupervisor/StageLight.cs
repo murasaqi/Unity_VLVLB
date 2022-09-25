@@ -1,44 +1,68 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace StageLightSupervisor
 {
-    public class StageLight: StageLightBase
+    [ExecuteAlways]
+    public class StageLight: MonoBehaviour,IStageLight
     {
         public List<StageLightExtension> stageLightFixtures = new List<StageLightExtension>();
-        
-        [ContextMenu("Init")]
-        public void Init()
+        [SerializeField]private int index = 0;
+        public int Index { get => index; set => index = value; }
+        [SerializeField]private List<StageLight> stageLightGroup = new List<StageLight>();
+
+        public List<StageLight> StageLightGroup
         {
-
-            for (int i = stageLightFixtures.Count-1; i >= 0; i--)  
-            {
-                DestroyImmediate(stageLightFixtures[i]);
-            }
-            stageLightFixtures.Clear();
-
-            var pan = gameObject.AddComponent<LightTransformFixture>();
-            pan.lightTransformType = LightTransformType.Pan;
-            stageLightFixtures.Add(pan);
-                
-            var tilt = gameObject.AddComponent<LightTransformFixture>();
-            tilt.lightTransformType = LightTransformType.Tilt;
-            stageLightFixtures.Add(tilt);
-            
-            
-            stageLightFixtures.Add(gameObject.AddComponent<LightFixture>());
+            get => stageLightGroup;
+            set=> stageLightGroup = value;
         }
+
         public void Update()
         {
-            
         }
 
-        public override void UpdateFixture(float time)
+        public void AddQue(StageLightSetting stageLightSetting, float weight)
         {
+            var que = new StageLightDataQueue()
+            {
+                stageLightSetting = stageLightSetting,
+                weight = weight
+            };
+            foreach (var stageLightFixture in stageLightFixtures)
+            {
+                stageLightFixture.stageLightDataQueue.Enqueue(que);
+            }
+
+            foreach (var stageLight in StageLightGroup)
+            {
+                stageLight.AddQue(stageLightSetting,weight);
+            }
+        }
+
+        public void UpdateFixture(float time)
+        {
+            var i = 0;
+            foreach (var stageLight in StageLightGroup)
+            {
+                Debug.Log(stageLight.name);
+                stageLight.Index = i;
+                stageLight.UpdateFixture(time);
+                i++;
+            }
             foreach (var stageLightFixture in stageLightFixtures)
             {
                 stageLightFixture.UpdateFixture(time);
+                stageLightFixture.Index = index;
             }
+        }
+        
+        [ContextMenu("Get StageLights in Children")]
+        public void AddStageLightInChild()
+        {
+            StageLightGroup.Clear();
+            StageLightGroup = GetComponentsInChildren<StageLight>().ToList();
+            
         }
 
     }

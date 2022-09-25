@@ -7,6 +7,8 @@ namespace StageLightSupervisor
 		public static float EaseLinear(float t, float total, float begin, float end)
 		{
 			return (end - begin) * t / total + begin;
+			
+			//(1 - -1) * 0.5/1 + 1
 		}
 
 		#region Quad
@@ -319,5 +321,120 @@ namespace StageLightSupervisor
 		}
 
 		#endregion
+
+
+		public static float GetEaseValue(EaseType easeType, float t, float total, float begin, float end, float a = 0,
+			float p = 0)
+		{
+			var result = 0f;
+				switch (easeType)
+                {
+                    case EaseType.Linear:
+                        result = EaseUtil.EaseLinear(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InQuad:
+                        result = EaseUtil.EaseInQuad(t,total,begin,end);
+                        break;
+                    case EaseType.OutQuad:
+                        result = EaseUtil.EaseOutQuad(t,total,begin,end);
+                        break;
+                    case EaseType.InOutQuad:
+                        result = EaseUtil.EaseInOutQuad(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InCubic:
+                        result = EaseUtil.EaseInCubic(t,total,begin,end);
+                        break;
+                    case EaseType.OutCubic:
+                        result = EaseUtil.EaseOutCubic(t,total,begin,end);
+                        break;
+                    case EaseType.InOutCubic:
+                        result = EaseUtil.EaseInOutCubic(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InQuart:
+                        result = EaseUtil.EaseInQuart(t,total,begin,end);
+                        break;
+                    case EaseType.OutQuart:
+                        result = EaseUtil.EaseOutQuart(t,total,begin,end);
+                        break;
+                    case EaseType.InOutQuart:
+                        result = EaseUtil.EaseInOutQuart(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InQuint:
+                        result = EaseUtil.EaseInQuint(t,total,begin,end);
+                        break;
+                    case EaseType.OutQuint:
+                        result = EaseUtil.EaseOutQuint(t,total,begin,end);
+                        break;
+                    case EaseType.InOutQuint:
+                        result = EaseUtil.EaseInOutQuint(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InSine:
+                        result = EaseUtil.EaseInSine(t,total,begin,end);
+                        break;
+                    case EaseType.OutSine:
+                        result = EaseUtil.EaseOutSine(t,total,begin,end);
+                        break;
+                    case EaseType.InOutSine:
+                        result = EaseUtil.EaseInOutSine(t,total,begin,end);
+                        break;
+
+                    case EaseType.InExpo:
+                        result = EaseUtil.EaseInExpo(t,total,begin,end);
+                        break;
+                    case EaseType.OutExpo:
+                        result = EaseUtil.EaseOutExpo(t,total,begin,end);
+                        break;
+                    case EaseType.InOutExpo:
+                        result = EaseUtil.EaseInOutExpo(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InCirc:
+                        result = EaseUtil.EaseInCirc(t,total,begin,end);
+                        break;
+                    case EaseType.OutCirc:
+                        result = EaseUtil.EaseOutCirc(t,total,begin,end);
+                        break;
+                    case EaseType.InOutCirc:
+                        result = EaseUtil.EaseInOutCirc(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InBack:
+                        result = EaseUtil.EaseInBack(t,total,begin,end);
+                        break;
+                    case EaseType.OutBack:
+                        result = EaseUtil.EaseOutBack(t,total,begin,end);
+                        break;
+                    case EaseType.InOutBack:
+                        result = EaseUtil.EaseInOutBack(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InBounce:
+                        result = EaseUtil.EaseInBounce(t,total,begin,end);
+                        break;
+                    case EaseType.OutBounce:
+                        result = EaseUtil.EaseOutBounce(t,total,begin,end);
+                        break;
+                    case EaseType.InOutBounce:
+                        result = EaseUtil.EaseInOutBounce(t,total,begin,end);
+                        break;
+                    
+                    case EaseType.InElastic:
+                        result = EaseUtil.EaseInElastic(t,total,begin,end);
+                        break;
+                    case EaseType.OutElastic:
+                        result = EaseUtil.EaseOutElastic(t,total,begin,end);
+                        break;
+                    case EaseType.InOutElastic:
+                        result = EaseUtil.EaseInOutElastic(t,total,begin,end);
+                        break;
+                }
+
+				return result;
+		}
 	}
 }

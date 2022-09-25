@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a57934446d44b0ca793db9de904ce39, type: 3}
+  m_Name: New StageLightSetting_B
+  m_EditorClassIdentifier: 
+  stageLightBaseProperty:
+    propertyOverride: 0
+    LoopType: 0
+    bpm:
+      propertyOverride: 0
+      value: 120
+    bpmScale:
+      propertyOverride: 0
+      value: 1
+    bpmOffset:
+      propertyOverride: 0
+      value: 0.3
+  lightProperty:
+    propertyOverride: 0
+    LoopType: 0
+    lightColor:
+      propertyOverride: 0
+      value:
+        serializedVersion: 2
+        key0: {r: 0, g: 0, b: 0, a: 1}
+        key1: {r: 2.2538774, g: 2.1935208, b: 0.5782198, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0.48286575, g: 1.4980392, b: 0.47058818, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 1.4339623, g: 0.5636643, b: 1.2266978, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 1.5566572, b: 1.6627454, a: 0}
+        ctime0: 6720
+        ctime1: 14016
+        ctime2: 22080
+        ctime3: 30528
+        ctime4: 40895
+        ctime5: 48575
+        ctime6: 58559
+        ctime7: 65535
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 1
+        m_NumColorKeys: 8
+        m_NumAlphaKeys: 2
+    lightIntensity:
+      propertyOverride: 0
+      value:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    spotAngle:
+      propertyOverride: 0
+      value: 15
+    innerSpotAngle:
+      propertyOverride: 0
+      value: 10
+  panProperty:
+    propertyOverride: 0
+    LoopType: 0
+    lightTransformControlType:
+      propertyOverride: 0
+      value: 0
+    startRoll:
+      propertyOverride: 0
+      value: -61.13
+    endRoll:
+      propertyOverride: 0
+      value: 59.18
+    easeType:
+      propertyOverride: 0
+      value: 0
+    animationCurve:
+      propertyOverride: 0
+      value:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+  tiltProperty:
+    propertyOverride: 0
+    LoopType: 0
+    lightTransformControlType:
+      propertyOverride: 0
+      value: 0
+    startRoll:
+      propertyOverride: 0
+      value: -48.69
+    endRoll:
+      propertyOverride: 0
+      value: 41.81
+    easeType:
+      propertyOverride: 0
+      value: 0
+    animationCurve:
+      propertyOverride: 0
+      value:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+  decalProperty:
+    propertyOverride: 0
+    LoopType: 0
+    decalSizeScaler:
+      propertyOverride: 0
+      value: 0.8
+    floorHeight:
+      propertyOverride: 0
+      value: 0
+    decalDepthScaler:
+      propertyOverride: 0
+      value: 1
+    fadeFactor:
+      propertyOverride: 0
+      value: 1
+    opacity:
+      propertyOverride: 0
+      value: 1
+  stageLightData:
+  - propertyOverride: 0
+  - propertyOverride: 0
+  - propertyOverride: 0
+  - propertyOverride: 0
+  - propertyOverride: 0
