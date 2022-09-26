@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace StageLightSupervisor
 {
+    [ExecuteAlways]
     public class MaterialColorFixture : StageLightExtension
     {
         public LightProperty lightProperty = new LightProperty();
@@ -12,7 +13,6 @@ namespace StageLightSupervisor
         public MeshRenderer meshRenderer;
         public StageLightProperty<string> materialPropertyName = new StageLightProperty<string>(){value = "_Color"};
         private MaterialPropertyBlock _materialPropertyBlock;
-
         public LightFixture lightFixture;
         private void Start()
         {
@@ -39,6 +39,7 @@ namespace StageLightSupervisor
 
         private void Update()
         {
+           
             meshRenderer.SetPropertyBlock(_materialPropertyBlock);
         }
     }

@@ -92,7 +92,7 @@ MonoBehaviour:
       value: 10
   panProperty:
     propertyOverride: 0
-    LoopType: 0
+    LoopType: 1
     lightTransformControlType:
       propertyOverride: 0
       value: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
       value: 47.79
     easeType:
       propertyOverride: 0
-      value: 0
+      value: 21
     animationCurve:
       propertyOverride: 0
       value:
@@ -115,7 +115,7 @@ MonoBehaviour:
         m_RotationOrder: 4
   tiltProperty:
     propertyOverride: 0
-    LoopType: 0
+    LoopType: 1
     lightTransformControlType:
       propertyOverride: 0
       value: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
       value: 20
     easeType:
       propertyOverride: 0
-      value: 0
+      value: 21
     animationCurve:
       propertyOverride: 0
       value:

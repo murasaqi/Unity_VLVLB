@@ -10,12 +10,12 @@ namespace StageLightSupervisor
         public List<StageLightExtension> stageLightFixtures = new List<StageLightExtension>();
         [SerializeField]private int index = 0;
         public int Index { get => index; set => index = value; }
-        [SerializeField]private List<StageLight> stageLightGroup = new List<StageLight>();
+        [SerializeField]private List<StageLight> stageLightChild = new List<StageLight>();
 
-        public List<StageLight> StageLightGroup
+        public List<StageLight> StageLightChild
         {
-            get => stageLightGroup;
-            set=> stageLightGroup = value;
+            get => stageLightChild;
+            set=> stageLightChild = value;
         }
 
         public void Update()
@@ -34,7 +34,7 @@ namespace StageLightSupervisor
                 stageLightFixture.stageLightDataQueue.Enqueue(que);
             }
 
-            foreach (var stageLight in StageLightGroup)
+            foreach (var stageLight in StageLightChild)
             {
                 stageLight.AddQue(stageLightSetting,weight);
             }
@@ -43,7 +43,7 @@ namespace StageLightSupervisor
         public void UpdateFixture(float time)
         {
             var i = 0;
-            foreach (var stageLight in StageLightGroup)
+            foreach (var stageLight in StageLightChild)
             {
                 Debug.Log(stageLight.name);
                 stageLight.Index = i;
@@ -60,8 +60,8 @@ namespace StageLightSupervisor
         [ContextMenu("Get StageLights in Children")]
         public void AddStageLightInChild()
         {
-            StageLightGroup.Clear();
-            StageLightGroup = GetComponentsInChildren<StageLight>().ToList();
+            StageLightChild.Clear();
+            StageLightChild = GetComponentsInChildren<StageLight>().ToList();
             
         }
 

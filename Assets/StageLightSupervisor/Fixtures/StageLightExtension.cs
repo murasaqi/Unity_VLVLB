@@ -20,7 +20,7 @@ namespace StageLightSupervisor
         public Queue<StageLightDataQueue> stageLightDataQueue = new Queue<StageLightDataQueue>();
 
         public int Index { get; set; }
-        public List<StageLight> StageLightGroup { get; set; }
+        public List<StageLight> StageLightChild { get; set; }
 
         public virtual void UpdateFixture(float currentTime)
         {
@@ -43,18 +43,16 @@ namespace StageLightSupervisor
             var offset = duration* stageLightBaseProperty.bpmOffset.value * Index;
             Debug.Log(offset);
             var offsetTime = time + offset;
+            var result = 0f;
             var t = (float)offsetTime % duration;
-            // 
             var normalisedTime = t / duration;
-
-            var result = normalisedTime;
-            if (loopType == LoopType.PingPong)
+            
+            if (loopType == LoopType.Loop)
             {
-                var inv = Mathf.CeilToInt(offsetTime / duration) % 2 != 0;
-                if (inv)
-                {
-                    result = 1 - normalisedTime;
-                }
+                result = normalisedTime;     
+            }else if (loopType == LoopType.PingPong)
+            {
+                result = Mathf.PingPong(offsetTime / duration, 1f);
             }
             else if(loopType == LoopType.Fixed)
             {
