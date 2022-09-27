@@ -7,7 +7,7 @@ namespace StageLightSupervisor
     public class StageLightSupervisor: MonoBehaviour
     {
         public List<StageLight> stageLights = new List<StageLight>();
-        public List<StageLightSetting> stageLightSettings = new List<StageLightSetting>();
+        public List<StageLightProfile> stageLightSettings = new List<StageLightProfile>();
         [Range(0f,1f)]public float fader = 0f;
 
         public int a;

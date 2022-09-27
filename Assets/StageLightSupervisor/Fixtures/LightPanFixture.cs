@@ -34,10 +34,10 @@ namespace StageLightSupervisor
                 var queueData = stageLightDataQueue.Dequeue();
 
 
-                var qLightBaseProperty = queueData.stageLightSetting.stageLightBaseProperty;
+                var qLightBaseProperty = queueData.stageLightProfile.stageLightBaseProperty;
                
                 
-                var qPanProperty = queueData.stageLightSetting.panProperty;
+                var qPanProperty = queueData.stageLightProfile.panProperty;
                 var weight = queueData.weight;
                 if (qPanProperty == null) continue;
                 var time = GetNormalizedTime(currentTime,qLightBaseProperty,qPanProperty.LoopType);

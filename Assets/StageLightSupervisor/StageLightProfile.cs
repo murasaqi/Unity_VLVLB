@@ -6,9 +6,8 @@ using UnityEngine.Rendering.Universal;
 namespace StageLightSupervisor
 {
     [CreateAssetMenu(fileName = "New StageLightSetting", menuName = "ScriptableObject/StageLightSetting")]
-    public class StageLightSetting: ScriptableObject
+    public class StageLightProfile: ScriptableObject
     {
-
         public StageLightBaseProperty stageLightBaseProperty = new StageLightBaseProperty();
         public LightProperty lightProperty = new LightProperty();
         public PanProperty panProperty = new PanProperty();

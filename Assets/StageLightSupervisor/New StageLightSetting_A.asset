@@ -31,7 +31,7 @@ MonoBehaviour:
       propertyOverride: 0
       value:
         serializedVersion: 2
-        key0: {r: 0.764151, g: 0.6896582, b: 0.7515196, a: 1}
+        key0: {r: 1, g: 0, b: 0.8421054, a: 1}
         key1: {r: 0.1254902, g: 0.5882353, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}

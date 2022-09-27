@@ -28,10 +28,10 @@ namespace StageLightSupervisor
             while (stageLightDataQueue.Count>0)
             {
                 var data = stageLightDataQueue.Dequeue();
-                var lightProperty = data.stageLightSetting.lightProperty;
+                var lightProperty = data.stageLightProfile.lightProperty;
                 var weight = data.weight;
                 if(lightProperty == null) continue;
-                var t = GetNormalizedTime(currentTime,data.stageLightSetting.stageLightBaseProperty, lightProperty.LoopType);
+                var t = GetNormalizedTime(currentTime,data.stageLightProfile.stageLightBaseProperty, lightProperty.LoopType);
                 lightColor += lightProperty.lightColor.value.Evaluate(t) * weight;
                 lightIntensity += lightProperty.lightIntensity.value.Evaluate(t) * weight;
                 spotAngle += lightProperty.spotAngle.value * weight;

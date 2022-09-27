@@ -16,8 +16,8 @@ namespace StageLightSupervisor
             while (stageLightDataQueue.Count>0)
             {
                 var queueData = stageLightDataQueue.Dequeue();
-                var qTiltProperty = queueData.stageLightSetting.tiltProperty;
-                var stageLightBaseProperty = queueData.stageLightSetting.stageLightBaseProperty;
+                var qTiltProperty = queueData.stageLightProfile.tiltProperty;
+                var stageLightBaseProperty = queueData.stageLightProfile.stageLightBaseProperty;
                 var weight = queueData.weight;
                 if (qTiltProperty == null) continue;
                 var time = GetNormalizedTime(currentTime,stageLightBaseProperty,qTiltProperty.LoopType);

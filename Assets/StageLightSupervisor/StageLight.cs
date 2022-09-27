@@ -22,11 +22,11 @@ namespace StageLightSupervisor
         {
         }
 
-        public void AddQue(StageLightSetting stageLightSetting, float weight)
+        public void AddQue(StageLightProfile stageLightProfile, float weight)
         {
             var que = new StageLightDataQueue()
             {
-                stageLightSetting = stageLightSetting,
+                stageLightProfile = stageLightProfile,
                 weight = weight
             };
             foreach (var stageLightFixture in stageLightFixtures)
@@ -36,7 +36,7 @@ namespace StageLightSupervisor
 
             foreach (var stageLight in StageLightChild)
             {
-                stageLight.AddQue(stageLightSetting,weight);
+                stageLight.AddQue(stageLightProfile,weight);
             }
         }
 

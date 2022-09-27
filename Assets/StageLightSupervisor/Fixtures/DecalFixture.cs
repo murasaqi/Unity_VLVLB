@@ -48,10 +48,10 @@ namespace StageLightSupervisor
             {
                 
                 var queueData = stageLightDataQueue.Dequeue();
-                var qDecalProperty = queueData.stageLightSetting.decalProperty;
+                var qDecalProperty = queueData.stageLightProfile.decalProperty;
                 var weight = queueData.weight;
                 if (qDecalProperty == null) continue;
-                var t = GetNormalizedTime(time,queueData.stageLightSetting.stageLightBaseProperty, qDecalProperty.LoopType);
+                var t = GetNormalizedTime(time,queueData.stageLightProfile.stageLightBaseProperty, qDecalProperty.LoopType);
                 opacity += qDecalProperty.opacity.value * weight;
                 fadeFactor += qDecalProperty.fadeFactor.value * weight;
                 decalSizeScaler += qDecalProperty.decalSizeScaler.value * weight;

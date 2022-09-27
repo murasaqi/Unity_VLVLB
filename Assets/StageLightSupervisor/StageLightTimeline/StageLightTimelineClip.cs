@@ -4,11 +4,14 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using StageLightSupervisor;
 
+
 [Serializable]
 public class StageLightTimelineClip : PlayableAsset, ITimelineClipAsset
 {
-    public StageLightTimelineBehaviour template = new StageLightTimelineBehaviour ();
-
+    
+    public StageLightProfile referenceStageLightProfile;
+    [HideInInspector]public StageLightProfile stageLightProfile = null;
+    [HideInInspector]public StageLightTimelineBehaviour template = new StageLightTimelineBehaviour ();
     public ClipCaps clipCaps
     {
         get { return ClipCaps.Blending; }
@@ -18,6 +21,16 @@ public class StageLightTimelineClip : PlayableAsset, ITimelineClipAsset
     {
         var playable = ScriptPlayable<StageLightTimelineBehaviour>.Create (graph, template);
         StageLightTimelineBehaviour clone = playable.GetBehaviour ();
+        if(stageLightProfile == null)stageLightProfile = ScriptableObject.CreateInstance<StageLightProfile>();
+        ApplySetting();
         return playable;
+    }
+    
+    
+    [ContextMenu("Apply")]
+    private void ApplySetting()
+    {
+        if(referenceStageLightProfile == null) return;
+        stageLightProfile = Instantiate(referenceStageLightProfile);
     }
 }

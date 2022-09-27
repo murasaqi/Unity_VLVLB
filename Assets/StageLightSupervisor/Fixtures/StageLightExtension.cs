@@ -8,7 +8,7 @@ namespace StageLightSupervisor
     [Serializable]
     public class StageLightDataQueue
     {
-        public StageLightSetting stageLightSetting;
+        public StageLightProfile stageLightProfile;
         public float weight = 1;
     }
     
@@ -37,11 +37,8 @@ namespace StageLightSupervisor
         {
             
             var scaledBpm = stageLightBaseProperty.bpm.value * stageLightBaseProperty.bpmScale.value;
-            // var offsetBpm = scaledBpm + (stageLightBaseProperty.bpmOffset.value * Index);
-            // var offsetChildTime = 60f / offsetBpm;
             var duration = 60 / scaledBpm;
             var offset = duration* stageLightBaseProperty.bpmOffset.value * Index;
-            Debug.Log(offset);
             var offsetTime = time + offset;
             var result = 0f;
             var t = (float)offsetTime % duration;

@@ -221,54 +221,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!115 &68608369
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: LightFixture
-  m_Namespace: StageLightSupervisor
---- !u!1 &101995193
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 101995194}
-  m_Layer: 0
-  m_Name: DecalPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &101995194
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101995193}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.378, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 737846127}
-  - {fileID: 2022401807}
-  m_Father: {fileID: 190944060}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &139237436
+--- !u!21 &45402388
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -371,7 +324,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Normal_Blend: 0
-    - _Alpha: 1
+    - _Alpha: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -410,10 +363,57 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.2532224, g: 0.6085199, b: 0.9503039, a: 2}
+    - _Color: {r: 0.9797385, g: 0.6862746, b: 1.8684212, a: 3}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
+--- !u!115 &68608369
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 5
+  m_Script: 
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_ExecutionOrder: 0
+  m_ClassName: LightFixture
+  m_Namespace: StageLightSupervisor
+--- !u!1 &101995193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101995194}
+  m_Layer: 0
+  m_Name: DecalPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &101995194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101995193}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.378, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 737846127}
+  - {fileID: 2022401807}
+  m_Father: {fileID: 190944060}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190944059
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +439,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190944059}
-  m_LocalRotation: {x: -0.1736482, y: 0, z: 0, w: 0.9848078}
+  m_LocalRotation: {x: 0.30942652, y: 0, z: 0, w: 0.9509234}
   m_LocalPosition: {x: 0, y: -0.344, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -524,7 +524,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214735891}
-  m_LocalRotation: {x: -0.15928076, y: 0, z: 0, w: 0.98723334}
+  m_LocalRotation: {x: 0.19175836, y: 0, z: 0, w: 0.9814422}
   m_LocalPosition: {x: 0, y: -0.344, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -660,7 +660,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527145322}
-  m_LocalRotation: {x: 0, y: 0.3762626, z: 0, w: 0.9265131}
+  m_LocalRotation: {x: 0, y: -0.32381418, z: 0, w: 0.94612074}
   m_LocalPosition: {x: 0, y: -0.184, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -759,12 +759,12 @@ MonoBehaviour:
     clipStartTime: 0
     clipEndTime: 0
   lightFixture: {fileID: 530682553}
-  decalColor: {r: 0.2532224, g: 0.6085199, b: 0.9503039, a: 2}
-  decalSizeScaler: 0.8
+  decalColor: {r: 0.9797385, g: 0.6862746, b: 1.8684212, a: 3}
+  decalSizeScaler: 1.24
   floorHeight: 0
-  decalDepthScaler: 1
-  fadeFactor: 1
-  opacity: 1
+  decalDepthScaler: 2
+  fadeFactor: 2
+  opacity: 2
   decalProjector: {fileID: 1003394353}
   decalMaterial: {fileID: 2100000, guid: 962d6bcab3cace0419b39d543b974c00, type: 2}
 --- !u!114 &530682552
@@ -851,10 +851,10 @@ MonoBehaviour:
     clipStartTime: 0
     clipEndTime: 0
   light: {fileID: 1701474334}
-  lightColor: {r: 0.2532224, g: 0.6085199, b: 0.9503039, a: 2}
-  lightIntensity: 0.89599997
-  spotAngle: 15
-  innerSpotAngle: 10
+  lightColor: {r: 0.9797385, g: 0.6862746, b: 1.8684212, a: 3}
+  lightIntensity: 1.2476852
+  spotAngle: 30
+  innerSpotAngle: 20
   universalAdditionalLightData: {fileID: 0}
 --- !u!114 &530682554
 MonoBehaviour:
@@ -966,7 +966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530682550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.06, z: 1.25}
+  m_LocalPosition: {x: 0, y: 2.93, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -974,7 +974,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &554602053
+--- !u!21 &637914965
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -1077,7 +1077,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Normal_Blend: 0
-    - _Alpha: 1
+    - _Alpha: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -1116,7 +1116,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.764151, g: 0.6896582, b: 0.7515196, a: 2}
+    - _Color: {r: 1.3295425, g: 0.4509804, b: 1.8052633, a: 3}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 554602053}
+  m_Material: {fileID: 1249266205}
   m_DrawDistance: 1000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -1190,8 +1190,8 @@ MonoBehaviour:
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
   m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 2.1426384}
-  m_Size: {x: 0.9185892, y: 0.9185892, z: 4.285277}
+  m_Offset: {x: 0, y: 0, z: 4.285277}
+  m_Size: {x: 3.0678911, y: 3.0678911, z: 8.570554}
   m_FadeFactor: 1
 --- !u!4 &737846127
 Transform:
@@ -1525,7 +1525,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1000898498
+--- !u!1 &1003394352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003394354}
+  - component: {fileID: 1003394353}
+  m_Layer: 0
+  m_Name: Decal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1003394353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003394352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 45402388}
+  m_DrawDistance: 1000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 3.1854985}
+  m_Size: {x: 2.280544, y: 2.280544, z: 6.370997}
+  m_FadeFactor: 1
+--- !u!4 &1003394354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003394352}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 717364883}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!115 &1067551468
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 5
+  m_Script: 
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_ExecutionOrder: 0
+  m_ClassName: LightTransformFixture
+  m_Namespace: StageLightSupervisor
+--- !u!21 &1249266205
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -1628,7 +1697,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Normal_Blend: 0
-    - _Alpha: 1
+    - _Alpha: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -1667,79 +1736,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.38095456, g: 0.6288045, b: 0.9006078, a: 2}
+    - _Color: {r: 0.62993467, g: 0.92156863, b: 1.931579, a: 3}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!1 &1003394352
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1003394354}
-  - component: {fileID: 1003394353}
-  m_Layer: 0
-  m_Name: Decal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1003394353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003394352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 139237436}
-  m_DrawDistance: 1000
-  m_FadeScale: 1
-  m_StartAngleFade: 180
-  m_EndAngleFade: 180
-  m_UVScale: {x: 1, y: 1}
-  m_UVBias: {x: 0, y: 0}
-  m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 1.6527326}
-  m_Size: {x: 0.7085574, y: 0.7085574, z: 3.3054652}
-  m_FadeFactor: 1
---- !u!4 &1003394354
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003394352}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.028}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 717364883}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!115 &1067551468
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: LightTransformFixture
-  m_Namespace: StageLightSupervisor
 --- !u!1 &1253047430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +2035,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443493041}
-  m_LocalRotation: {x: 0, y: 0.4050618, z: 0, w: 0.9142893}
+  m_LocalRotation: {x: 0, y: -0.55714345, z: 0, w: 0.83041626}
   m_LocalPosition: {x: 0, y: -0.184, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2134,12 +2134,12 @@ MonoBehaviour:
     clipStartTime: 0
     clipEndTime: 0
   lightFixture: {fileID: 1471234198}
-  decalColor: {r: 0.764151, g: 0.6896582, b: 0.7515196, a: 2}
-  decalSizeScaler: 0.8
+  decalColor: {r: 0.62993467, g: 0.92156863, b: 1.931579, a: 3}
+  decalSizeScaler: 1.24
   floorHeight: 0
-  decalDepthScaler: 1
-  fadeFactor: 1
-  opacity: 1
+  decalDepthScaler: 2
+  fadeFactor: 2
+  opacity: 2
   decalProjector: {fileID: 737846126}
   decalMaterial: {fileID: 2100000, guid: 962d6bcab3cace0419b39d543b974c00, type: 2}
 --- !u!114 &1471234197
@@ -2226,10 +2226,10 @@ MonoBehaviour:
     clipStartTime: 0
     clipEndTime: 0
   light: {fileID: 2022401810}
-  lightColor: {r: 0.764151, g: 0.6896582, b: 0.7515196, a: 2}
-  lightIntensity: 0
-  spotAngle: 15
-  innerSpotAngle: 10
+  lightColor: {r: 0.62993467, g: 0.92156863, b: 1.931579, a: 3}
+  lightIntensity: 1.7590185
+  spotAngle: 30
+  innerSpotAngle: 20
   universalAdditionalLightData: {fileID: 0}
 --- !u!114 &1471234199
 MonoBehaviour:
@@ -2417,7 +2417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorFromLight: 1
   colorMode: 0
-  color: {r: 0.2532224, g: 0.6085199, b: 0.9503039, a: 2}
+  color: {r: 0.9797385, g: 0.6862746, b: 1.8684212, a: 3}
   colorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2449,13 +2449,13 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   intensityFromLight: 1
   intensityModeAdvanced: 0
-  intensityInside: 0.89599997
-  intensityOutside: 0.89599997
+  intensityInside: 1.2476852
+  intensityOutside: 1.2476852
   intensityMultiplier: 1
   hdrpExposureWeight: 0
   blendingMode: 0
   spotAngleFromLight: 1
-  spotAngle: 15
+  spotAngle: 30
   spotAngleMultiplier: 1
   coneRadiusStart: 0.1
   shaderAccuracy: 0
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
-  fallOffEnd: 10
+  fallOffEnd: 20
   fallOffEndFromLight: 1
   fallOffEndMultiplier: 1
   depthBlendDistance: 2
@@ -2501,10 +2501,10 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.2532224, g: 0.6085199, b: 0.9503039, a: 2}
-  m_Intensity: 0.89599997
-  m_Range: 10
-  m_SpotAngle: 15
+  m_Color: {r: 0.9797385, g: 0.6862746, b: 1.8684212, a: 3}
+  m_Intensity: 1.2476852
+  m_Range: 20
+  m_SpotAngle: 30
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorFromLight: 1
   colorMode: 0
-  color: {r: 0.764151, g: 0.6896582, b: 0.7515196, a: 2}
+  color: {r: 0.62993467, g: 0.92156863, b: 1.931579, a: 3}
   colorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2702,13 +2702,13 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   intensityFromLight: 1
   intensityModeAdvanced: 0
-  intensityInside: 0
-  intensityOutside: 0
+  intensityInside: 1.7590185
+  intensityOutside: 1.7590185
   intensityMultiplier: 1
   hdrpExposureWeight: 0
   blendingMode: 0
   spotAngleFromLight: 1
-  spotAngle: 15
+  spotAngle: 30
   spotAngleMultiplier: 1
   coneRadiusStart: 0.1
   shaderAccuracy: 0
@@ -2721,7 +2721,7 @@ MonoBehaviour:
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
-  fallOffEnd: 10
+  fallOffEnd: 20
   fallOffEndFromLight: 1
   fallOffEndMultiplier: 1
   depthBlendDistance: 2
@@ -2754,10 +2754,10 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.764151, g: 0.6896582, b: 0.7515196, a: 2}
-  m_Intensity: 0
-  m_Range: 10
-  m_SpotAngle: 15
+  m_Color: {r: 0.62993467, g: 0.92156863, b: 1.931579, a: 3}
+  m_Intensity: 1.7590185
+  m_Range: 20
+  m_SpotAngle: 30
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -3045,10 +3045,10 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.38095456, g: 0.6288045, b: 0.9006078, a: 2}
-  m_Intensity: 0.6479998
-  m_Range: 10
-  m_SpotAngle: 15
+  m_Color: {r: 1.3295425, g: 0.4509804, b: 1.8052633, a: 3}
+  m_Intensity: 0.65635186
+  m_Range: 20
+  m_SpotAngle: 30
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -3130,7 +3130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorFromLight: 1
   colorMode: 0
-  color: {r: 0.38095456, g: 0.6288045, b: 0.9006078, a: 2}
+  color: {r: 1.3295425, g: 0.4509804, b: 1.8052633, a: 3}
   colorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3162,13 +3162,13 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   intensityFromLight: 1
   intensityModeAdvanced: 0
-  intensityInside: 0.6479998
-  intensityOutside: 0.6479998
+  intensityInside: 0.65635186
+  intensityOutside: 0.65635186
   intensityMultiplier: 1
   hdrpExposureWeight: 0
   blendingMode: 0
   spotAngleFromLight: 1
-  spotAngle: 15
+  spotAngle: 30
   spotAngleMultiplier: 1
   coneRadiusStart: 0.1
   shaderAccuracy: 0
@@ -3181,7 +3181,7 @@ MonoBehaviour:
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
-  fallOffEnd: 10
+  fallOffEnd: 20
   fallOffEndFromLight: 1
   fallOffEndMultiplier: 1
   depthBlendDistance: 2
@@ -3253,7 +3253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1000898498}
+  m_Material: {fileID: 637914965}
   m_DrawDistance: 1000
   m_FadeScale: 1
   m_StartAngleFade: 180
@@ -3261,8 +3261,8 @@ MonoBehaviour:
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
   m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 1.7347064}
-  m_Size: {x: 0.7437011, y: 0.7437011, z: 3.4694128}
+  m_Offset: {x: 0, y: 0, z: 3.4694128}
+  m_Size: {x: 2.4838023, y: 2.4838023, z: 6.9388256}
   m_FadeFactor: 1
 --- !u!4 &2023177578874880237
 Transform:
@@ -3271,7 +3271,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5320405488809385712}
-  m_LocalRotation: {x: -0.10452841, y: 0, z: 0, w: 0.9945219}
+  m_LocalRotation: {x: -0.22224468, y: 0, z: 0, w: 0.97499096}
   m_LocalPosition: {x: 0, y: -0.344, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3287,7 +3287,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7519213594590583950}
-  m_LocalRotation: {x: 0, y: 0.26397395, z: 0, w: 0.9645298}
+  m_LocalRotation: {x: 0, y: 0.5360868, z: 0, w: 0.84416294}
   m_LocalPosition: {x: 0, y: -0.184, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3541,12 +3541,12 @@ MonoBehaviour:
     clipStartTime: 0
     clipEndTime: 0
   lightFixture: {fileID: 7302555058408938629}
-  decalColor: {r: 0.38095456, g: 0.6288045, b: 0.9006078, a: 2}
-  decalSizeScaler: 0.8
+  decalColor: {r: 1.3295425, g: 0.4509804, b: 1.8052633, a: 3}
+  decalSizeScaler: 1.24
   floorHeight: 0
-  decalDepthScaler: 1
-  fadeFactor: 1
-  opacity: 1
+  decalDepthScaler: 2
+  fadeFactor: 2
+  opacity: 2
   decalProjector: {fileID: 1647767367939092603}
   decalMaterial: {fileID: 2100000, guid: 962d6bcab3cace0419b39d543b974c00, type: 2}
 --- !u!114 &7302555058408938628
@@ -3633,10 +3633,10 @@ MonoBehaviour:
     clipStartTime: 0
     clipEndTime: 0
   light: {fileID: 2138399650}
-  lightColor: {r: 0.38095456, g: 0.6288045, b: 0.9006078, a: 2}
-  lightIntensity: 0.6479998
-  spotAngle: 15
-  innerSpotAngle: 10
+  lightColor: {r: 1.3295425, g: 0.4509804, b: 1.8052633, a: 3}
+  lightIntensity: 0.65635186
+  spotAngle: 30
+  innerSpotAngle: 20
   universalAdditionalLightData: {fileID: 0}
 --- !u!114 &7302555058408938630
 MonoBehaviour:
