@@ -40,12 +40,16 @@ namespace StageLightSupervisor.StageLightTimeline.Editor
             //     new SerializedObject(stageLightSetting.FindProperty("stageLightData").objectReferenceValue);
             var iterator = stageLightSetting.GetIterator();
             // var iterator = serializedObject.GetIterator();
+            EditorGUI.BeginChangeCheck();
             bool enterChildren = true;
             while (iterator.NextVisible(enterChildren))
             {
-                enterChildren = false;
+                
+                Debug.Log($"{iterator.propertyType},{iterator.propertyPath},{iterator.type}");
                 EditorGUILayout.PropertyField(iterator, true);
             }
+            if (EditorGUI.EndChangeCheck())
+                stageLightSetting.ApplyModifiedProperties();
             // DrawPropertyInInspector(stageLightSetting.FindProperty("stageLightBaseProperty"));
         }
         
