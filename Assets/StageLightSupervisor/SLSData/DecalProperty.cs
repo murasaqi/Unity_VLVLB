@@ -6,18 +6,18 @@ namespace StageLightSupervisor
     [Serializable]
     public class DecalProperty : StageLightProperty
     {
-        public StageLightProperty<float> decalSizeScaler;
-        public StageLightProperty<float> floorHeight;
-        public StageLightProperty<float> decalDepthScaler;
-        public StageLightProperty<float> fadeFactor;
-        public StageLightProperty<float> opacity;
+        public StageLightValue<float> decalSizeScaler;
+        public StageLightValue<float> floorHeight;
+        public StageLightValue<float> decalDepthScaler;
+        public StageLightValue<float> fadeFactor;
+        public StageLightValue<float> opacity;
         public DecalProperty()
         {
-            decalSizeScaler = new StageLightProperty<float>(){value = 0.8f};
-            floorHeight = new StageLightProperty<float> { value = 0f };
-            decalDepthScaler = new StageLightProperty<float> { value = 1f };
-            fadeFactor = new StageLightProperty<float> { value = 1f };
-            opacity = new StageLightProperty<float> { value = 1f };
+            decalSizeScaler = new StageLightValue<float>(){value = 0.8f};
+            floorHeight = new StageLightValue<float> { value = 0f };
+            decalDepthScaler = new StageLightValue<float> { value = 1f };
+            fadeFactor = new StageLightValue<float> { value = 1f };
+            opacity = new StageLightValue<float> { value = 1f };
         }
 
         public DecalProperty(DecalProperty other)

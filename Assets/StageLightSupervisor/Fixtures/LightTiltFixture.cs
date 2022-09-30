@@ -24,7 +24,7 @@ namespace StageLightSupervisor
                 var start = qTiltProperty.startRoll.value;
                 var end = qTiltProperty.endRoll.value;
                 
-                if (qTiltProperty.lightTransformControlType.value == LightTransformControlType.Ease)
+                if (qTiltProperty.lightTransformControlType.value == AnimationMode.Ease)
                 {
                     _angle += EaseUtil.GetEaseValue(qTiltProperty.easeType.value, time, 1f, start, end) * weight;
                     // if(weight >= 1f)Debug.Log($"{queueData.stageLightSetting.name}: {_angle},{time},{weight}");

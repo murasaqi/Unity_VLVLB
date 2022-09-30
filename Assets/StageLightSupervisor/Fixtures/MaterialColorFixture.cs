@@ -11,7 +11,7 @@ namespace StageLightSupervisor
         public LightProperty lightProperty = new LightProperty();
         // public StageLightProperty<bool> fromLightFixture = new StageLightProperty<bool>();
         public MeshRenderer meshRenderer;
-        public StageLightProperty<string> materialPropertyName = new StageLightProperty<string>(){value = "_Color"};
+        public StageLightValue<string> materialValueName = new StageLightValue<string>(){value = "_Color"};
         private MaterialPropertyBlock _materialPropertyBlock;
         public LightFixture lightFixture;
         private void Start()

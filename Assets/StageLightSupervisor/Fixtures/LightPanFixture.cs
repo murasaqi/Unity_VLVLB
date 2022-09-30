@@ -10,7 +10,7 @@ namespace StageLightSupervisor
         Tilt
     }
     
-    public enum LightTransformControlType
+    public enum AnimationMode
     {
         Ease,
         AnimationCurve
@@ -42,7 +42,7 @@ namespace StageLightSupervisor
                 if (qPanProperty == null) continue;
                 var time = GetNormalizedTime(currentTime,qLightBaseProperty,qPanProperty.LoopType);
                 // Debug.Log($"{queueData.stageLightSetting.name},{time}");
-                if (qPanProperty.lightTransformControlType.value == LightTransformControlType.Ease)
+                if (qPanProperty.lightTransformControlType.value == AnimationMode.Ease)
                 {
                     
                     // Debug.Log($"{qPanProperty.startRoll.value},{qPanProperty.endRoll.value},{weight}");

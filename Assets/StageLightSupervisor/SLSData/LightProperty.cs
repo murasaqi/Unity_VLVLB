@@ -6,18 +6,18 @@ namespace StageLightSupervisor
     [Serializable]
     public class LightProperty: StageLightProperty
     {
-        public StageLightProperty<Gradient> lightColor;// = new StageLightProperty<Gradient>(){value = new Gradient()};
-        public StageLightProperty<AnimationCurve> lightIntensity;// = new StageLightProperty<float>(){value = 1f};
-        public StageLightProperty<float> spotAngle;// = new StageLightProperty<float>(){value = 15f};
-        public StageLightProperty<float> innerSpotAngle;// = new StageLightProperty<float>(){value = 10f};
+        public StageLightValue<Gradient> lightColor;// = new StageLightProperty<Gradient>(){value = new Gradient()};
+        public StageLightValue<AnimationCurve> lightIntensity;// = new StageLightProperty<float>(){value = 1f};
+        public StageLightValue<float> spotAngle;// = new StageLightProperty<float>(){value = 15f};
+        public StageLightValue<float> innerSpotAngle;// = new StageLightProperty<float>(){value = 10f};
         
         public 
             LightProperty()
         {
-            lightColor = new StageLightProperty<Gradient>(){value = new Gradient()};
-            lightIntensity = new StageLightProperty<AnimationCurve>(){value = new AnimationCurve()};
-            spotAngle = new StageLightProperty<float>(){value = 15f};
-            innerSpotAngle = new StageLightProperty<float>(){value = 10f};
+            lightColor = new StageLightValue<Gradient>(){value = new Gradient()};
+            lightIntensity = new StageLightValue<AnimationCurve>(){value = new AnimationCurve()};
+            spotAngle = new StageLightValue<float>(){value = 15f};
+            innerSpotAngle = new StageLightValue<float>(){value = 10f};
         }
         
         public LightProperty(LightProperty other)

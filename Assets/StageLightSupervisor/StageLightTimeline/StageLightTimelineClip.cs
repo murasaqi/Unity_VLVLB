@@ -22,13 +22,13 @@ public class StageLightTimelineClip : PlayableAsset, ITimelineClipAsset
         var playable = ScriptPlayable<StageLightTimelineBehaviour>.Create (graph, template);
         StageLightTimelineBehaviour clone = playable.GetBehaviour ();
         if(stageLightProfile == null)stageLightProfile = ScriptableObject.CreateInstance<StageLightProfile>();
-        ApplySetting();
+        // ApplySetting();
         return playable;
     }
     
     
     [ContextMenu("Apply")]
-    private void ApplySetting()
+    public void ApplySetting()
     {
         if(referenceStageLightProfile == null) return;
         stageLightProfile = Instantiate(referenceStageLightProfile);

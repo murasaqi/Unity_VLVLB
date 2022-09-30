@@ -13,19 +13,17 @@ namespace StageLightSupervisor
         public PanProperty panProperty = new PanProperty();
         public TiltProperty tiltProperty = new TiltProperty();
         public DecalProperty decalProperty = new DecalProperty();
-        public List<StageLightData> stageLightData = new List<StageLightData>();
-
+        [SerializeField]public List<StageLightProperty> stageLightProperties = new List<StageLightProperty>();
         
-
         [ContextMenu("Init")]
         public void Init()
         {
-            stageLightData.Clear();
-            stageLightData.Add(stageLightBaseProperty);
-            stageLightData.Add(lightProperty);
-            stageLightData.Add(panProperty);
-            stageLightData.Add(tiltProperty);
-            stageLightData.Add(decalProperty);
+            stageLightProperties.Clear();
+            stageLightProperties.Add(stageLightBaseProperty);
+            stageLightProperties.Add(lightProperty);
+            stageLightProperties.Add(panProperty);
+            stageLightProperties.Add(tiltProperty);
+            stageLightProperties.Add(decalProperty);
         }
         // public Dictionary<Type,StageLightData> stageLightDataDictionary = new Dictionary<Type, StageLightData>();
         

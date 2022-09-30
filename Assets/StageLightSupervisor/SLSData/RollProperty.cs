@@ -6,11 +6,11 @@ namespace StageLightSupervisor
     [Serializable]
     public class RollProperty:StageLightProperty
     {
-        public StageLightProperty<LightTransformControlType> lightTransformControlType;
-        public StageLightProperty<float> startRoll;
-        public StageLightProperty<float> endRoll;
-        public StageLightProperty<EaseType> easeType;
-        public StageLightProperty<AnimationCurve> animationCurve;
+        [DisplayNameAttribute("Animation Mode")]public StageLightValue<AnimationMode> lightTransformControlType;
+        [DisplayNameAttribute("Start")]public StageLightValue<float> startRoll;
+        [DisplayNameAttribute("End")]public StageLightValue<float> endRoll;
+        [DisplayNameAttribute("Easing")]public StageLightValue<EaseType> easeType;
+        [DisplayNameAttribute("Curve")]public StageLightValue<AnimationCurve> animationCurve;
 
         public RollProperty(RollProperty rollProperty)
         {
@@ -23,11 +23,11 @@ namespace StageLightSupervisor
 
         public RollProperty()
         {
-            lightTransformControlType = new StageLightProperty<LightTransformControlType>(){value =  LightTransformControlType.Ease};
-            startRoll = new StageLightProperty<float>() {value = 0f};
-            endRoll = new StageLightProperty<float>() {value = 0f};
-            easeType = new StageLightProperty<EaseType>() {value = EaseType.Linear};
-            animationCurve = new StageLightProperty<AnimationCurve>() {value = new AnimationCurve()};
+            lightTransformControlType = new StageLightValue<AnimationMode>(){value =  AnimationMode.Ease};
+            startRoll = new StageLightValue<float>() {value = 0f};
+            endRoll = new StageLightValue<float>() {value = 0f};
+            easeType = new StageLightValue<EaseType>() {value = EaseType.Linear};
+            animationCurve = new StageLightValue<AnimationCurve>() {value = new AnimationCurve()};
         }
 
     }

@@ -45,7 +45,7 @@ namespace StageLightSupervisor
             var i = 0;
             foreach (var stageLight in StageLightChild)
             {
-                Debug.Log(stageLight.name);
+                // Debug.Log(stageLight.name);
                 stageLight.Index = i;
                 stageLight.UpdateFixture(time);
                 i++;
