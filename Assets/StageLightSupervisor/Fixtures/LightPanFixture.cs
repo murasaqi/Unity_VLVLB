@@ -46,8 +46,8 @@ namespace StageLightSupervisor
                 {
                     
                     // Debug.Log($"{qPanProperty.startRoll.value},{qPanProperty.endRoll.value},{weight}");
-                    _angle += EaseUtil.GetEaseValue(qPanProperty.easeType.value, time, 1f, qPanProperty.startRoll.value,
-                        qPanProperty.endRoll.value) * weight;
+                    _angle += EaseUtil.GetEaseValue(qPanProperty.rollTransform.value.easeType, time, 1f, qPanProperty.rollTransform.value.rollRange.x,
+                        qPanProperty.rollTransform.value.rollRange.y) * weight;
                 }
                 else
                 {

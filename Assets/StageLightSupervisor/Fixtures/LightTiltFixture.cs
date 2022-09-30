@@ -21,12 +21,12 @@ namespace StageLightSupervisor
                 var weight = queueData.weight;
                 if (qTiltProperty == null) continue;
                 var time = GetNormalizedTime(currentTime,stageLightBaseProperty,qTiltProperty.LoopType);
-                var start = qTiltProperty.startRoll.value;
-                var end = qTiltProperty.endRoll.value;
+                var start = qTiltProperty.rollTransform.value;
+                // var end = qTiltProperty.endRoll.value;
                 
                 if (qTiltProperty.lightTransformControlType.value == AnimationMode.Ease)
                 {
-                    _angle += EaseUtil.GetEaseValue(qTiltProperty.easeType.value, time, 1f, start, end) * weight;
+                    _angle += EaseUtil.GetEaseValue(qTiltProperty.rollTransform.value.easeType, time, 1f, qTiltProperty.rollTransform.value.rollRange.x, qTiltProperty.rollTransform.value.rollRange.y) * weight;
                     // if(weight >= 1f)Debug.Log($"{queueData.stageLightSetting.name}: {_angle},{time},{weight}");
 
                 }

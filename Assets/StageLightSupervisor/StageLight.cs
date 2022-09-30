@@ -62,7 +62,6 @@ namespace StageLightSupervisor
         {
             StageLightChild.Clear();
             StageLightChild = GetComponentsInChildren<StageLight>().ToList();
-            
         }
 
     }

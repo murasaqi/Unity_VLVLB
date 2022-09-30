@@ -62,26 +62,7 @@ namespace StageLightSupervisor
             // loopType = other.loopType;
         }
     }
-    //
-    // [Serializable]
-    // public class BpmProperty: StageLightData
-    // {
-    //     public StageLightProperty<float> bpmScale = new StageLightProperty<float>(){value = 1f};
-    //     public StageLightProperty<float> bpmOffset = new StageLightProperty<float>() { value = 0f };
-    //         
-    //     public BpmProperty()
-    //     {
-    //         bpmScale = new StageLightProperty<float>(){value = 1f};
-    //         bpmOffset = new StageLightProperty<float>() { value = 0f };
-    //     }
-    //     
-    //     public BpmProperty(BpmProperty other)
-    //     {
-    //         bpmScale = other.bpmScale;
-    //         bpmOffset = other.bpmOffset;
-    //     }
-    // }
-
+    
     [Serializable]
 
     public class ClipProperty

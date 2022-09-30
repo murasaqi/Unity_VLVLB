@@ -3,30 +3,34 @@ using UnityEngine;
 
 namespace StageLightSupervisor
 {
+    
+    [Serializable]
+    public class RollTransform
+    {
+        [DisplayNameAttribute("Roll")]public Vector2 rollRange = new Vector2(0, 0);
+        [DisplayNameAttribute("Easing")]public EaseType easeType = EaseType.Linear;
+    }
     [Serializable]
     public class RollProperty:StageLightProperty
     {
         [DisplayNameAttribute("Animation Mode")]public StageLightValue<AnimationMode> lightTransformControlType;
-        [DisplayNameAttribute("Start")]public StageLightValue<float> startRoll;
-        [DisplayNameAttribute("End")]public StageLightValue<float> endRoll;
-        [DisplayNameAttribute("Easing")]public StageLightValue<EaseType> easeType;
+        [DisplayNameAttribute("RollValue")]public StageLightValue<RollTransform> rollTransform;
+        // [DisplayNameAttribute("End")]public StageLightValue<float> endRoll;
+        // [DisplayNameAttribute("Easing")]public StageLightValue<EaseType> easeType;
         [DisplayNameAttribute("Curve")]public StageLightValue<AnimationCurve> animationCurve;
 
         public RollProperty(RollProperty rollProperty)
         {
             this.lightTransformControlType = rollProperty.lightTransformControlType;
-            this.startRoll = rollProperty.startRoll;
-            this.endRoll = rollProperty.endRoll;
-            this.easeType = rollProperty.easeType;
+            this.rollTransform = rollProperty.rollTransform;
             this.animationCurve = rollProperty.animationCurve;
         }
 
         public RollProperty()
         {
             lightTransformControlType = new StageLightValue<AnimationMode>(){value =  AnimationMode.Ease};
-            startRoll = new StageLightValue<float>() {value = 0f};
-            endRoll = new StageLightValue<float>() {value = 0f};
-            easeType = new StageLightValue<EaseType>() {value = EaseType.Linear};
+            rollTransform = new StageLightValue<RollTransform>() {value = new RollTransform()};
+           
             animationCurve = new StageLightValue<AnimationCurve>() {value = new AnimationCurve()};
         }
 

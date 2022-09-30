@@ -1,91 +1,34 @@
+
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using UnityEngine.Timeline;
-using UnityEditor.Timeline;
+using StageLightSupervisor;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Playables;
-using UnityEngine.UIElements;
-using Object = UnityEngine.Object;
+// using Object = Unity.Object;
 
 namespace StageLightSupervisor.StageLightTimeline.Editor
 {
-    [CustomEditor(typeof(StageLightTimelineClip))]
-    public class StageLightTimelineClipEditor : UnityEditor.Editor
+    public class StageLightPropertyEditor
     {
-        
-        
-        private List<StageLightPropertyEditor> _stageLightPropertyEditors = new List<StageLightPropertyEditor>();
-
-        public override VisualElement CreateInspectorGUI()
+        private StageLightProperty _stageLightProperty;
+        public StageLightPropertyEditor(StageLightProperty property)
         {
-            var root = new VisualElement();
-            var template = EditorGUIUtility.Load("StageLightTimelineClipEditor.uxml") as VisualTreeAsset;
-            template.CloneTree(root);
-            return root;
+            _stageLightProperty = property;
         }
-
-        private List<string> mExcluded = new List<string>();
-
-        public override void OnInspectorGUI()
+    
+        public void DrawGUI(UnityEngine.Object undoTarget)
         {
-            BeginInspector();
-            mExcluded.Clear();
-            mExcluded.Add("stageLightSetting");
-            // DrawRemainingPropertiesInInspector();
-        }
-        
-        private void BeginInspector()
-        {
-            serializedObject.Update();
-            DrawRemainingPropertiesInInspector();
-            var stageLightTimelineClip = serializedObject.targetObject as StageLightTimelineClip;
-            stageLightTimelineClip.stageLightProfile.Init();
+            var fields = _stageLightProperty.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
 
-            if (GUILayout.Button("Load Profile"))
-            {
-                stageLightTimelineClip.ApplySetting();
-            }
-            var stageLightProperties = stageLightTimelineClip.stageLightProfile.stageLightProperties;
-            var stageLightProfile = new SerializedObject(serializedObject.FindProperty("stageLightProfile").objectReferenceValue);
-            
-            _stageLightPropertyEditors.Clear();
-            foreach (var property in stageLightProperties)
-            {
-                
-                DrawStageLightPropertyGUI(property, stageLightProfile.targetObject);
-                
-                // var stageLightPropertyEditor = new StageLightPropertyEditor(property);
-                // _stageLightPropertyEditors.Add(stageLightPropertyEditor);
-                // stageLightPropertyEditor.DrawGUI(stageLightProfile.targetObject);
-            }
-            
-           
-            // DrawPropertyInInspector(stageLightProfile.FindProperty("stageLightProperties"));
-        }
-
-        private void DrawRollProperty(FieldInfo[] fields)
-        {
-            foreach (var fieldInfo in fields)
-            {
-            }
-        }
-
-
-        private void DrawStageLightPropertyGUI(StageLightProperty property, Object undoTarget)
-        {
-             var fields = property.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
-                
-                var propertyOverrideFieldInfo = property.GetType().BaseType.GetField("propertyOverride");
+                var _stageLightPropertyOverrideFieldInfo = _stageLightProperty.GetType().BaseType.GetField("_stageLightPropertyOverride");
                 EditorGUILayout.BeginHorizontal();
                 EditorGUI.BeginChangeCheck();
-                var enable = EditorGUILayout.Toggle((bool)propertyOverrideFieldInfo.GetValue(property), GUILayout.Width(30));
+                var enable = EditorGUILayout.Toggle((bool)_stageLightPropertyOverrideFieldInfo.GetValue(_stageLightProperty), GUILayout.Width(30));
                 if (EditorGUI.EndChangeCheck())
                 {
-                    propertyOverrideFieldInfo.SetValue(property,enable);
+                    _stageLightPropertyOverrideFieldInfo.SetValue(_stageLightProperty,enable);
                 }
-                EditorGUILayout.PrefixLabel(property.GetType().ToString());
+                EditorGUILayout.PrefixLabel(_stageLightProperty.GetType().ToString());
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.Space(2);
                 
@@ -99,27 +42,27 @@ namespace StageLightSupervisor.StageLightTimeline.Editor
                         var fieldType = fieldInfo.FieldType;
                         if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(StageLightValue<>))
                         {
-                            var fieldValue = fieldInfo.GetValue(property);
+                            var fieldValue = fieldInfo.GetValue(_stageLightProperty);
                             var stageLightValueFieldInfo = fieldValue.GetType().GetField("value");
-                            var propertyOverride = fieldValue.GetType().BaseType.GetField("propertyOverride");
+                            var _stageLightPropertyOverride = fieldValue.GetType().BaseType.GetField("_stageLightPropertyOverride");
                             
-                            Debug.Log(propertyOverride.GetValue(fieldValue));
+                            Debug.Log(_stageLightPropertyOverride.GetValue(fieldValue));
                             EditorGUILayout.BeginHorizontal();
                             
                             EditorGUI.BeginChangeCheck();
                             
-                            var toggle = EditorGUILayout.Toggle((bool)propertyOverride.GetValue(fieldValue),
+                            var toggle = EditorGUILayout.Toggle((bool)_stageLightPropertyOverride.GetValue(fieldValue),
                                 GUILayout.Width(40));
                             if (EditorGUI.EndChangeCheck())
                             {
-                                propertyOverride.SetValue(fieldValue, toggle);
+                                _stageLightPropertyOverride.SetValue(fieldValue, toggle);
                             }
                             
-                
+
                             EditorGUI.BeginDisabledGroup(false);
                             var displayName = fieldInfo.GetCustomAttribute<DisplayNameAttribute>();
                             var labelValue = displayName != null ? displayName.name : fieldInfo.Name;
-                
+
                             object resultValue = null;
                             EditorGUI.BeginChangeCheck();
                             if (stageLightValueFieldInfo.FieldType == typeof(System.Single))
@@ -128,55 +71,55 @@ namespace StageLightSupervisor.StageLightTimeline.Editor
                                     (float)stageLightValueFieldInfo.GetValue(fieldValue));
                                
                             }
-                
+
                           if (stageLightValueFieldInfo.FieldType == typeof(System.Int32))
                             {
                                 resultValue = EditorGUILayout.IntField(labelValue,
                                     (int)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(System.Boolean))
                             {
                                 resultValue = EditorGUILayout.Toggle(labelValue,
                                     (bool)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(System.String))
                             {
                                 resultValue = EditorGUILayout.TextField(labelValue,
                                     (string)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Color))
                             {
                                 resultValue = EditorGUILayout.ColorField(labelValue,
                                     (Color)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Vector2))
                             {
                                 resultValue = EditorGUILayout.Vector2Field(
                                     labelValue,(Vector2)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Vector3))
                             {
                                 resultValue = EditorGUILayout.Vector3Field(
                                     labelValue,(Vector3)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Vector4))
                             {
                                 resultValue = EditorGUILayout.Vector4Field(
                                     labelValue,(Vector4)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Quaternion))
                             {
                                 resultValue = EditorGUILayout.Vector4Field(
                                     labelValue,(Vector4)stageLightValueFieldInfo.GetValue(fieldValue));
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.AnimationCurve))
                             {
                                 resultValue = EditorGUILayout.CurveField(labelValue,
@@ -188,7 +131,7 @@ namespace StageLightSupervisor.StageLightTimeline.Editor
                                 var easeType = stageLightValueFieldInfo.GetValue(fieldValue)as Enum;
                                 resultValue = EditorGUILayout.EnumPopup(labelValue,easeType);
                             }
-                
+
                             if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Gradient))
                             {
                                 resultValue = EditorGUILayout.GradientField(labelValue,
@@ -209,48 +152,8 @@ namespace StageLightSupervisor.StageLightTimeline.Editor
                     }
                 }
                 EditorGUI.EndDisabledGroup();
-        }
+        }    
         
-        protected void DrawRemainingPropertiesInInspector()
-        {
-            EditorGUI.BeginChangeCheck();
-            DrawPropertiesExcluding(serializedObject, mExcluded.ToArray());
-            if (EditorGUI.EndChangeCheck())
-                serializedObject.ApplyModifiedProperties();
-        }
-        
-        protected void DrawPropertyInInspector(SerializedProperty p)
-        {
-            if (!IsPropertyExcluded(p.name))
-            {
-                EditorGUI.BeginChangeCheck();
-                EditorGUILayout.PropertyField(p);
-                if (EditorGUI.EndChangeCheck())
-                    serializedObject.ApplyModifiedProperties();
-                ExcludeProperty(p.name);
-            }
-        }
-        
-        private bool IsPropertyExcluded(string propertyName)
-        {
-            return mExcluded.Contains(propertyName);
-        }
-
-        private void ExcludeProperty(string propertyName)
-        {
-            mExcluded.Add(propertyName);
-        }
-        private void OnDisable()
-        {
-           
-        }
-
-        private void OnDestroy()
-        {
-        }
-
-
-      
-
     }
+    
 }
