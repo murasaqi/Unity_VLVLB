@@ -24,7 +24,7 @@ namespace StageLightSupervisor
         public Transform rotateTransform;
         
         public override void UpdateFixture(float currentTime)
-        {
+        {   
             base.UpdateFixture(currentTime);
             if(rotateTransform == null) return;
            
@@ -35,12 +35,18 @@ namespace StageLightSupervisor
 
 
                 var qLightBaseProperty = queueData.stageLightProfile.stageLightBaseProperty;
-               
-                
+
                 var qPanProperty = queueData.stageLightProfile.panProperty;
                 var weight = queueData.weight;
                 if (qPanProperty == null) continue;
-                var time = GetNormalizedTime(currentTime,qLightBaseProperty,qPanProperty.LoopType);
+                var bpm = qLightBaseProperty.bpm.value;
+                var bpmOffset = qPanProperty.bpmOverrideData.value.bpmOverride
+                    ? qPanProperty.bpmOverrideData.value.bpmOffset
+                    : qLightBaseProperty.bpmOffset.value;
+                var bpmScale = qPanProperty.bpmOverrideData.value.bpmOverride
+                    ? qPanProperty.bpmOverrideData.value.bpmScale
+                    : qLightBaseProperty.bpmScale.value;
+                var time = GetNormalizedTime(currentTime,bpm,bpmOffset,bpmScale,qPanProperty.LoopType);
                 // Debug.Log($"{queueData.stageLightSetting.name},{time}");
                 if (qPanProperty.lightTransformControlType.value == AnimationMode.Ease)
                 {
@@ -51,7 +57,7 @@ namespace StageLightSupervisor
                 }
                 else
                 {
-                    _angle += qPanProperty.animationCurve.value.Evaluate(currentTime) * weight;
+                    _angle += qPanProperty.rollTransform.value.animationCurve.Evaluate(time) * weight;
                 }
                 
             }

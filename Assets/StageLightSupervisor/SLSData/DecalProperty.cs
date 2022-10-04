@@ -4,8 +4,9 @@ using UnityEngine;
 namespace StageLightSupervisor
 {
     [Serializable]
-    public class DecalProperty : StageLightProperty
+    public class DecalProperty : StageLightAdditionalProperty
     {
+        public StageLightValue<Texture2D> decalTexture;
         public StageLightValue<float> decalSizeScaler;
         public StageLightValue<float> floorHeight;
         public StageLightValue<float> decalDepthScaler;
@@ -13,6 +14,8 @@ namespace StageLightSupervisor
         public StageLightValue<float> opacity;
         public DecalProperty()
         {
+            propertyName = "Decal";
+            decalTexture = new StageLightValue<Texture2D>();
             decalSizeScaler = new StageLightValue<float>(){value = 0.8f};
             floorHeight = new StageLightValue<float> { value = 0f };
             decalDepthScaler = new StageLightValue<float> { value = 1f };
@@ -22,6 +25,8 @@ namespace StageLightSupervisor
 
         public DecalProperty(DecalProperty other)
         {
+            decalTexture = other.decalTexture;
+            propertyName = other.propertyName;
             decalSizeScaler = other.decalSizeScaler;
             floorHeight = other.floorHeight;
             decalDepthScaler = other.decalDepthScaler;

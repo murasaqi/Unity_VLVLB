@@ -4,7 +4,7 @@ using UnityEngine;
 namespace StageLightSupervisor
 {
     [Serializable]
-    public class LightProperty: StageLightProperty
+    public class LightProperty: StageLightAdditionalProperty
     {
         public StageLightValue<Gradient> lightColor;// = new StageLightProperty<Gradient>(){value = new Gradient()};
         public StageLightValue<AnimationCurve> lightIntensity;// = new StageLightProperty<float>(){value = 1f};
@@ -14,6 +14,7 @@ namespace StageLightSupervisor
         public 
             LightProperty()
         {
+            propertyName = "Light";
             lightColor = new StageLightValue<Gradient>(){value = new Gradient()};
             lightIntensity = new StageLightValue<AnimationCurve>(){value = new AnimationCurve()};
             spotAngle = new StageLightValue<float>(){value = 15f};
@@ -22,6 +23,7 @@ namespace StageLightSupervisor
         
         public LightProperty(LightProperty other)
         {
+            propertyName = other.propertyName;
             lightColor = other.lightColor;
             lightIntensity = other.lightIntensity;
             spotAngle = other.spotAngle;

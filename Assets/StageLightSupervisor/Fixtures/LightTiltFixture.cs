@@ -20,8 +20,11 @@ namespace StageLightSupervisor
                 var stageLightBaseProperty = queueData.stageLightProfile.stageLightBaseProperty;
                 var weight = queueData.weight;
                 if (qTiltProperty == null) continue;
-                var time = GetNormalizedTime(currentTime,stageLightBaseProperty,qTiltProperty.LoopType);
-                var start = qTiltProperty.rollTransform.value;
+                var bpm = stageLightBaseProperty.bpm.value;
+                var bpmOffset = qTiltProperty.bpmOverrideData.value.bpmOverride ? qTiltProperty.bpmOverrideData.value.bpmOffset : stageLightBaseProperty.bpmOffset.value;
+                var bpmScale = qTiltProperty.bpmOverrideData.value.bpmOverride ? qTiltProperty.bpmOverrideData.value.bpmScale : stageLightBaseProperty.bpmScale.value;
+                var time = GetNormalizedTime(currentTime,bpm,bpmOffset,bpmScale,qTiltProperty.LoopType);
+               
                 // var end = qTiltProperty.endRoll.value;
                 
                 if (qTiltProperty.lightTransformControlType.value == AnimationMode.Ease)
@@ -32,7 +35,7 @@ namespace StageLightSupervisor
                 }
                 else
                 {
-                    _angle += qTiltProperty.animationCurve.value.Evaluate(currentTime) *weight;
+                    _angle += qTiltProperty.rollTransform.value.animationCurve.Evaluate(time) *weight;
                 }
 
             }

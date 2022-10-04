@@ -33,12 +33,12 @@ namespace StageLightSupervisor
         }
         
         
-        public float GetNormalizedTime(float time,StageLightBaseProperty stageLightBaseProperty,LoopType loopType)
+        public float GetNormalizedTime(float time,float bpm, float bpmOffset,float bpmScale,LoopType loopType)
         {
             
-            var scaledBpm = stageLightBaseProperty.bpm.value * stageLightBaseProperty.bpmScale.value;
+            var scaledBpm = bpm * bpmScale;
             var duration = 60 / scaledBpm;
-            var offset = duration* stageLightBaseProperty.bpmOffset.value * Index;
+            var offset = duration* bpmOffset * Index;
             var offsetTime = time + offset;
             var result = 0f;
             var t = (float)offsetTime % duration;

@@ -9,6 +9,7 @@ namespace StageLightSupervisor
     public class DecalFixture: StageLightExtension
     {
         public LightFixture lightFixture;
+        public Texture2D decalTexture;
         public Color decalColor = Color.white;
         public float decalSizeScaler = 1f;
         public float floorHeight = 0f;
@@ -30,13 +31,10 @@ namespace StageLightSupervisor
             Init();
         }
         
-        
-        
         public override void UpdateFixture(float time)
         {
             if(decalMaterial == null || decalProjector == null || decalProjector.material == null) return;
             
-
             opacity = 0f;
             fadeFactor = 0f;
             decalSizeScaler = 0f;
@@ -46,17 +44,29 @@ namespace StageLightSupervisor
             
             while (stageLightDataQueue.Count >0)
             {
-                
                 var queueData = stageLightDataQueue.Dequeue();
+                var stageLightBaseProperties = queueData.stageLightProfile.stageLightBaseProperty;
+                stageLightBaseProperties.propertyName = "Time";
                 var qDecalProperty = queueData.stageLightProfile.decalProperty;
                 var weight = queueData.weight;
                 if (qDecalProperty == null) continue;
-                var t = GetNormalizedTime(time,queueData.stageLightProfile.stageLightBaseProperty, qDecalProperty.LoopType);
+                var bpm = stageLightBaseProperties.bpm.value;
+                var bpmOffset = qDecalProperty.bpmOverrideData.value.bpmOverride
+                    ? qDecalProperty.bpmOverrideData.value.bpmOffset
+                    : stageLightBaseProperties.bpmOffset.value;
+                var bpmScale = qDecalProperty.bpmOverrideData.value.bpmOverride
+                    ? qDecalProperty.bpmOverrideData.value.bpmScale
+                    : stageLightBaseProperties.bpmScale.value;
+                var t = GetNormalizedTime(time,
+                    bpm,
+                    bpmOffset,
+                    bpmScale, qDecalProperty.LoopType);
                 opacity += qDecalProperty.opacity.value * weight;
                 fadeFactor += qDecalProperty.fadeFactor.value * weight;
                 decalSizeScaler += qDecalProperty.decalSizeScaler.value * weight;
                 decalDepthScaler += qDecalProperty.decalDepthScaler.value * weight;
                 floorHeight += qDecalProperty.floorHeight.value * weight;
+                if(weight > 0.5f)decalTexture = qDecalProperty.decalTexture.value;
             }
 
             decalColor = lightFixture.lightColor;
@@ -74,11 +84,13 @@ namespace StageLightSupervisor
             _depth = distance * decalDepthScaler;
             
             decalProjector.size = new Vector3(_radius,_radius, _depth);
-            decalProjector.fadeFactor = fadeFactor;
+            decalProjector.fadeFactor = fadeFactor *Vector3.Distance(Vector3.zero, new Vector3(Mathf.Clamp(decalColor.r,0,1f), Mathf.Clamp(decalColor.g,0,1), Mathf.Clamp(decalColor.b,0,1)))*decalColor.a;
+            if (lightFixture != null) decalProjector.fadeFactor *= lightFixture.lightIntensity; 
             decalProjector.pivot = new Vector3(0, 0, _depth / 2f);
 
             decalProjector.material.SetFloat("_Alpha",opacity);
             decalProjector.material.SetColor("_Color",decalColor);
+            decalProjector.material.SetTexture("_MainTex",decalTexture);
         }
         public override void Init()
         {
