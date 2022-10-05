@@ -34,11 +34,10 @@ namespace StageLightSupervisor
                 var queueData = stageLightDataQueue.Dequeue();
 
 
-                var qLightBaseProperty = queueData.stageLightProfile.stageLightBaseProperty;
-
-                var qPanProperty = queueData.stageLightProfile.panProperty;
+                var qLightBaseProperty = queueData.stageLightProfile.TryGet<StageLightBaseProperty>() as StageLightBaseProperty;
+                var qPanProperty = queueData.stageLightProfile.TryGet<PanProperty>() as PanProperty;
                 var weight = queueData.weight;
-                if (qPanProperty == null) continue;
+                if (qPanProperty == null || qLightBaseProperty == null) continue;
                 var bpm = qLightBaseProperty.bpm.value;
                 var bpmOffset = qPanProperty.bpmOverrideData.value.bpmOverride
                     ? qPanProperty.bpmOverrideData.value.bpmOffset

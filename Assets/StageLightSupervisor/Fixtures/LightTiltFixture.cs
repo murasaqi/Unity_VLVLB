@@ -16,10 +16,10 @@ namespace StageLightSupervisor
             while (stageLightDataQueue.Count>0)
             {
                 var queueData = stageLightDataQueue.Dequeue();
-                var qTiltProperty = queueData.stageLightProfile.tiltProperty;
-                var stageLightBaseProperty = queueData.stageLightProfile.stageLightBaseProperty;
+                var qTiltProperty = queueData.stageLightProfile.TryGet<TiltProperty>() as TiltProperty;
+                var stageLightBaseProperty = queueData.stageLightProfile.TryGet<StageLightBaseProperty>() as StageLightBaseProperty;
                 var weight = queueData.weight;
-                if (qTiltProperty == null) continue;
+                if (qTiltProperty == null || stageLightBaseProperty == null) continue;
                 var bpm = stageLightBaseProperty.bpm.value;
                 var bpmOffset = qTiltProperty.bpmOverrideData.value.bpmOverride ? qTiltProperty.bpmOverrideData.value.bpmOffset : stageLightBaseProperty.bpmOffset.value;
                 var bpmScale = qTiltProperty.bpmOverrideData.value.bpmOverride ? qTiltProperty.bpmOverrideData.value.bpmScale : stageLightBaseProperty.bpmScale.value;

@@ -15,6 +15,7 @@ namespace StageLightSupervisor
             LightProperty()
         {
             propertyName = "Light";
+            bpmOverrideData = new StageLightValue<BpmOverrideData>(){value = new BpmOverrideData()};
             lightColor = new StageLightValue<Gradient>(){value = new Gradient()};
             lightIntensity = new StageLightValue<AnimationCurve>(){value = new AnimationCurve()};
             spotAngle = new StageLightValue<float>(){value = 15f};
@@ -24,6 +25,7 @@ namespace StageLightSupervisor
         public LightProperty(LightProperty other)
         {
             propertyName = other.propertyName;
+            bpmOverrideData = other.bpmOverrideData;
             lightColor = other.lightColor;
             lightIntensity = other.lightIntensity;
             spotAngle = other.spotAngle;

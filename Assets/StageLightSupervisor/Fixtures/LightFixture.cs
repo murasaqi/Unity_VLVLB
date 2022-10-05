@@ -28,10 +28,11 @@ namespace StageLightSupervisor
             while (stageLightDataQueue.Count>0)
             {
                 var data = stageLightDataQueue.Dequeue();
-                var lightProperty = data.stageLightProfile.lightProperty;
+                var stageLightBaseProperty= data.stageLightProfile.TryGet<StageLightBaseProperty>() as StageLightBaseProperty;
+                var lightProperty = data.stageLightProfile.TryGet<LightProperty>() as LightProperty;
                 var weight = data.weight;
-                if(lightProperty == null) continue;
-                var stageLightBaseProperty = data.stageLightProfile.stageLightBaseProperty;
+                if(lightProperty == null || stageLightBaseProperty == null) continue;
+                
                 var bpm = stageLightBaseProperty.bpm.value;
                 var bpmOffset = lightProperty.bpmOverrideData.value.bpmOverride
                     ? lightProperty.bpmOverrideData.value.bpmOffset

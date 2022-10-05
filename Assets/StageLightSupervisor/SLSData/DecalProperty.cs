@@ -14,6 +14,7 @@ namespace StageLightSupervisor
         public StageLightValue<float> opacity;
         public DecalProperty()
         {
+            bpmOverrideData = new StageLightValue<BpmOverrideData>(){value = new BpmOverrideData()};
             propertyName = "Decal";
             decalTexture = new StageLightValue<Texture2D>();
             decalSizeScaler = new StageLightValue<float>(){value = 0.8f};
@@ -25,6 +26,7 @@ namespace StageLightSupervisor
 
         public DecalProperty(DecalProperty other)
         {
+            bpmOverrideData = other.bpmOverrideData;
             decalTexture = other.decalTexture;
             propertyName = other.propertyName;
             decalSizeScaler = other.decalSizeScaler;

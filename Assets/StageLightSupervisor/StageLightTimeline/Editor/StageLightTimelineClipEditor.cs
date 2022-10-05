@@ -44,12 +44,20 @@ namespace StageLightSupervisor.StageLightTimeline.Editor
             serializedObject.Update();
             DrawRemainingPropertiesInInspector();
             var stageLightTimelineClip = serializedObject.targetObject as StageLightTimelineClip;
-            stageLightTimelineClip.stageLightProfile.Init();
 
-            if (GUILayout.Button("Load Profile"))
+            using (new EditorGUILayout.HorizontalScope())
             {
-                stageLightTimelineClip.ApplySetting();
+                if (GUILayout.Button("Load Profile"))
+                {
+                    stageLightTimelineClip.LoadProfile();
+                }
+                
+                if (GUILayout.Button("Save Profile"))
+                {
+                    stageLightTimelineClip.SaveProfile();
+                }
             }
+           
             var stageLightProperties = stageLightTimelineClip.stageLightProfile.stageLightProperties;
             var stageLightProfile = new SerializedObject(serializedObject.FindProperty("stageLightProfile").objectReferenceValue);
             
@@ -262,6 +270,7 @@ namespace StageLightSupervisor.StageLightTimeline.Editor
                             if (stageLightValueFieldInfo.FieldType == typeof(BpmOverrideData))
                             {
                                 var bpmOverrideData = stageLightValueFieldInfo.GetValue(fieldValue) as BpmOverrideData;
+                                // Debug.Log(bpmOverrideData);
                                 using (new EditorGUILayout.VerticalScope())
                                 {
                                     using (new EditorGUILayout.HorizontalScope())

@@ -45,11 +45,10 @@ namespace StageLightSupervisor
             while (stageLightDataQueue.Count >0)
             {
                 var queueData = stageLightDataQueue.Dequeue();
-                var stageLightBaseProperties = queueData.stageLightProfile.stageLightBaseProperty;
-                stageLightBaseProperties.propertyName = "Time";
-                var qDecalProperty = queueData.stageLightProfile.decalProperty;
+                var stageLightBaseProperties = queueData.stageLightProfile.TryGet<StageLightBaseProperty>() as StageLightBaseProperty;
+                var qDecalProperty = queueData.stageLightProfile.TryGet<DecalProperty>() as DecalProperty;
+                if (qDecalProperty == null || stageLightBaseProperties == null) continue;
                 var weight = queueData.weight;
-                if (qDecalProperty == null) continue;
                 var bpm = stageLightBaseProperties.bpm.value;
                 var bpmOffset = qDecalProperty.bpmOverrideData.value.bpmOverride
                     ? qDecalProperty.bpmOverrideData.value.bpmOffset
@@ -61,6 +60,7 @@ namespace StageLightSupervisor
                     bpm,
                     bpmOffset,
                     bpmScale, qDecalProperty.LoopType);
+                
                 opacity += qDecalProperty.opacity.value * weight;
                 fadeFactor += qDecalProperty.fadeFactor.value * weight;
                 decalSizeScaler += qDecalProperty.decalSizeScaler.value * weight;
@@ -84,11 +84,15 @@ namespace StageLightSupervisor
             _depth = distance * decalDepthScaler;
             
             decalProjector.size = new Vector3(_radius,_radius, _depth);
-            decalProjector.fadeFactor = fadeFactor *Vector3.Distance(Vector3.zero, new Vector3(Mathf.Clamp(decalColor.r,0,1f), Mathf.Clamp(decalColor.g,0,1), Mathf.Clamp(decalColor.b,0,1)))*decalColor.a;
+            decalProjector.fadeFactor = fadeFactor;
             if (lightFixture != null) decalProjector.fadeFactor *= lightFixture.lightIntensity; 
             decalProjector.pivot = new Vector3(0, 0, _depth / 2f);
-
-            decalProjector.material.SetFloat("_Alpha",opacity);
+            
+            decalProjector.material.SetFloat("_Alpha",opacity*
+                                                      Vector3.Distance(Vector3.zero, new Vector3(
+                                                          Mathf.Clamp(decalColor.r,0,1f), 
+                                                          Mathf.Clamp(decalColor.g,0,1), 
+                                                          Mathf.Clamp(decalColor.b,0,1))));
             decalProjector.material.SetColor("_Color",decalColor);
             decalProjector.material.SetTexture("_MainTex",decalTexture);
         }

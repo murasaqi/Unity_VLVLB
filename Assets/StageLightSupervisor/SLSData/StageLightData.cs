@@ -36,6 +36,8 @@ namespace StageLightSupervisor
     {
         public string propertyName;
         public LoopType LoopType;
+        
+        
     }
     
     
@@ -45,6 +47,13 @@ namespace StageLightSupervisor
         [DisplayNameAttribute("BPM Override")] public bool bpmOverride = false;
         [DisplayNameAttribute("BPM Scale")] public float bpmScale = 1;
         [DisplayNameAttribute("BPM Offset")] public float bpmOffset = 0;
+
+        public BpmOverrideData()
+        {
+            propertyOverride = false;
+            bpmScale = 1;
+            bpmOffset = 0;
+        }
     }
     
     

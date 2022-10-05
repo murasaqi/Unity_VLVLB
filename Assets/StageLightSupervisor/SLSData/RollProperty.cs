@@ -27,6 +27,7 @@ namespace StageLightSupervisor
 
         public RollProperty(RollProperty rollProperty)
         {
+            bpmOverrideData = rollProperty.bpmOverrideData;
             this.lightTransformControlType = rollProperty.lightTransformControlType;
             this.rollTransform = rollProperty.rollTransform;
             
@@ -35,7 +36,7 @@ namespace StageLightSupervisor
 
         public RollProperty()
         {
-            
+            bpmOverrideData = new StageLightValue<BpmOverrideData>(){value = new BpmOverrideData()};
             lightTransformControlType = new StageLightValue<AnimationMode>(){value =  AnimationMode.Ease};
             rollTransform = new StageLightValue<RollTransform>() {value = new RollTransform()};
            
