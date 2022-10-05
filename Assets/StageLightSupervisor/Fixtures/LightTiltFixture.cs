@@ -23,11 +23,12 @@ namespace StageLightSupervisor
                 var bpm = stageLightBaseProperty.bpm.value;
                 var bpmOffset = qTiltProperty.bpmOverrideData.value.bpmOverride ? qTiltProperty.bpmOverrideData.value.bpmOffset : stageLightBaseProperty.bpmOffset.value;
                 var bpmScale = qTiltProperty.bpmOverrideData.value.bpmOverride ? qTiltProperty.bpmOverrideData.value.bpmScale : stageLightBaseProperty.bpmScale.value;
-                var time = GetNormalizedTime(currentTime,bpm,bpmOffset,bpmScale,qTiltProperty.LoopType);
+                var loopType = qTiltProperty.bpmOverrideData.value.bpmOverride ? qTiltProperty.bpmOverrideData.value.loopType : stageLightBaseProperty.loopType.value;
+                var time = GetNormalizedTime(currentTime,bpm,bpmOffset,bpmScale,loopType);
                
                 // var end = qTiltProperty.endRoll.value;
                 
-                if (qTiltProperty.lightTransformControlType.value == AnimationMode.Ease)
+                if (qTiltProperty.rollTransform.value.mode == AnimationMode.Ease)
                 {
                     _angle += EaseUtil.GetEaseValue(qTiltProperty.rollTransform.value.easeType, time, 1f, qTiltProperty.rollTransform.value.rollRange.x, qTiltProperty.rollTransform.value.rollRange.y) * weight;
                     // if(weight >= 1f)Debug.Log($"{queueData.stageLightSetting.name}: {_angle},{time},{weight}");

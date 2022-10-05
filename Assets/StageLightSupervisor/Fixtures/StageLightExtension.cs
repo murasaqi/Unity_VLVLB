@@ -21,6 +21,7 @@ namespace StageLightSupervisor
 
         public int Index { get; set; }
         public List<StageLight> StageLightChild { get; set; }
+        public float offsetDuration = 0f;
 
         public virtual void UpdateFixture(float currentTime)
         {
@@ -40,6 +41,7 @@ namespace StageLightSupervisor
             var duration = 60 / scaledBpm;
             var offset = duration* bpmOffset * Index;
             var offsetTime = time + offset;
+            offsetDuration = offset;
             var result = 0f;
             var t = (float)offsetTime % duration;
             var normalisedTime = t / duration;

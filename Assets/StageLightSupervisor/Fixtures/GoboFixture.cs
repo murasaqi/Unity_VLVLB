@@ -12,7 +12,9 @@ namespace StageLightSupervisor
         public string goboPropertyName = "_GoboTexture";
         private MaterialPropertyBlock _materialPropertyBlock;
         
-        
+        public Transform goboTransform;
+        public float speed = 0f;
+        public Vector3 goboRotateVector = new Vector3(0, 0, 1);
         
         private void Start()
         {
@@ -33,11 +35,30 @@ namespace StageLightSupervisor
 
         public override void UpdateFixture(float time)
         {
+            goboTexture = null;
+            speed = 0f;
             while (stageLightDataQueue.Count > 0)
             {
                 var queueData = stageLightDataQueue.Dequeue();
                 var stageLightBaseProperties = queueData.stageLightProfile.TryGet<StageLightBaseProperty>() as StageLightBaseProperty;
                 var goboProperty = queueData.stageLightProfile.TryGet<GoboProperty>() as GoboProperty;
+                
+                
+                var bpm = stageLightBaseProperties.bpm.value;
+                var bpmOffset = goboProperty.bpmOverrideData.value.bpmOverride
+                    ? goboProperty.bpmOverrideData.value.bpmOffset
+                    : stageLightBaseProperties.bpmOffset.value;
+                var bpmScale = goboProperty.bpmOverrideData.value.bpmOverride
+                    ? goboProperty.bpmOverrideData.value.bpmScale
+                    : stageLightBaseProperties.bpmScale.value;
+                var loopType = goboProperty.bpmOverrideData.value.bpmOverride
+                    ? goboProperty.bpmOverrideData.value.loopType
+                    : stageLightBaseProperties.loopType.value;
+                var t = GetNormalizedTime(time,
+                    bpm,
+                    bpmOffset,
+                    bpmScale, loopType);
+                
                 
                 if(goboProperty ==null || stageLightBaseProperties == null) continue;
                 if (queueData.weight > 0.5f)
@@ -45,18 +66,48 @@ namespace StageLightSupervisor
                     goboTexture = goboProperty.goboTexture.value;
                     goboPropertyName = goboProperty.goboPropertyName.value;
                 }
-                
 
+                if (goboProperty.goroRotationSpeed.value.mode == AnimationMode.Ease)
+                {
+                    speed +=EaseUtil.GetEaseValue(goboProperty.goroRotationSpeed.value.easeType, time, 1f, goboProperty.goroRotationSpeed.value.rollRange.x,
+                        goboProperty.goroRotationSpeed.value.rollRange.y) * queueData.weight;
+                    
+                }
+                else
+                {
+                    speed += goboProperty.goroRotationSpeed.value.animationCurve.Evaluate(t) * queueData.weight;     
+                }
+               
             }
         }
 
         private void Update()
         {
-            if (vlbMeshRenderer != null && goboTexture != null && _materialPropertyBlock != null)
+            
+            if (goboTransform != null)
             {
-                _materialPropertyBlock.SetTexture(goboPropertyName,goboTexture);
+                goboTransform.localEulerAngles += goboRotateVector *(speed*(float)Time.deltaTime);
+            }
+            if (vlbMeshRenderer != null)
+            {
+                if (_materialPropertyBlock == null)
+                {
+                    Init();
+                    if(_materialPropertyBlock == null) return;
+                }
+                
+                if (goboTexture != null)
+                {
+                    _materialPropertyBlock.SetTexture(goboPropertyName,goboTexture);
+                }
+                else
+                {
+                    _materialPropertyBlock.SetTexture(goboPropertyName,Texture2D.whiteTexture);
+                }
                 vlbMeshRenderer.SetPropertyBlock(_materialPropertyBlock);
             }
+
+           
            
         }
     

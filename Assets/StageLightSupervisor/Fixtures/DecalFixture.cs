@@ -56,10 +56,13 @@ namespace StageLightSupervisor
                 var bpmScale = qDecalProperty.bpmOverrideData.value.bpmOverride
                     ? qDecalProperty.bpmOverrideData.value.bpmScale
                     : stageLightBaseProperties.bpmScale.value;
+                var loopType = qDecalProperty.bpmOverrideData.value.bpmOverride
+                    ? qDecalProperty.bpmOverrideData.value.loopType
+                    : stageLightBaseProperties.loopType.value;
                 var t = GetNormalizedTime(time,
                     bpm,
                     bpmOffset,
-                    bpmScale, qDecalProperty.LoopType);
+                    bpmScale, loopType);
                 
                 opacity += qDecalProperty.opacity.value * weight;
                 fadeFactor += qDecalProperty.fadeFactor.value * weight;

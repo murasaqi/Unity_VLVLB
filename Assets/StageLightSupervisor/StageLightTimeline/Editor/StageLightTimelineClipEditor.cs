@@ -1,457 +1,246 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using NUnit.Framework;
-using UnityEngine.Timeline;
-using UnityEditor.Timeline;
 using UnityEditor;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.UIElements;
-using VLB;
-using Object = UnityEngine.Object;
+using UnityEngine.Timeline;
+using VLVLB;
 
 namespace StageLightSupervisor.StageLightTimeline.Editor
 {
-    [CustomEditor(typeof(StageLightTimelineClip))]
-    public class StageLightTimelineClipEditor : UnityEditor.Editor
+    [CustomTimelineEditor(typeof(StageLightTimelineClip))]
+    public class StageLightTimelineClipEditor:ClipEditor
     {
-        
-        
-        private List<StageLightPropertyEditor> _stageLightPropertyEditors = new List<StageLightPropertyEditor>();
-
-        public override VisualElement CreateInspectorGUI()
+         [InitializeOnLoad]
+        class EditorInitialize
         {
-            var root = new VisualElement();
-            var template = EditorGUIUtility.Load("StageLightTimelineClipEditor.uxml") as VisualTreeAsset;
-            template.CloneTree(root);
-            return root;
-        }
-
-        private List<string> mExcluded = new List<string>();
-
-        public override void OnInspectorGUI()
-        {
-            BeginInspector();
-            mExcluded.Clear();
-            mExcluded.Add("stageLightSetting");
-            // DrawRemainingPropertiesInInspector();
-        }
-        
-        private void BeginInspector()
-        {
-            serializedObject.Update();
-            DrawRemainingPropertiesInInspector();
-            var stageLightTimelineClip = serializedObject.targetObject as StageLightTimelineClip;
-
-            using (new EditorGUILayout.HorizontalScope())
+            static EditorInitialize()
             {
-                if (GUILayout.Button("Load Profile"))
-                {
-                    stageLightTimelineClip.LoadProfile();
-                }
-                
-                if (GUILayout.Button("Save Profile"))
-                {
-                    stageLightTimelineClip.SaveProfile();
-                }
-            }
+                playableDirector = GetMasterDirector();  
+                backgroundTexture = new Texture2D(1, 1);
+                syncIconTexture = Resources.Load<Texture2D>("VLVLBMaterials/icon_sync");
+                backgroundTexture.SetPixel(0, 0, Color.white);
+                backgroundTexture.Apply();
            
-            var stageLightProperties = stageLightTimelineClip.stageLightProfile.stageLightProperties;
-            var stageLightProfile = new SerializedObject(serializedObject.FindProperty("stageLightProfile").objectReferenceValue);
-            
-            _stageLightPropertyEditors.Clear();
-            foreach (var property in stageLightProperties)
-            {
-                
-                DrawStageLightPropertyGUI(property, stageLightProfile.targetObject);
-                
-                // var stageLightPropertyEditor = new StageLightPropertyEditor(property);
-                // _stageLightPropertyEditors.Add(stageLightPropertyEditor);
-                // stageLightPropertyEditor.DrawGUI(stageLightProfile.targetObject);
-            }
-            
-           
-            // DrawPropertyInInspector(stageLightProfile.FindProperty("stageLightProperties"));
+            } 
+            static PlayableDirector GetMasterDirector() { return TimelineEditor.masterDirector; }
         }
+        Dictionary<StageLightTimelineClip, Texture2D> _gradientTextures = new Dictionary<StageLightTimelineClip, Texture2D>();
+        // Dictionary<StageLightTimelineClip, Texture2D> _beatTextures = new Dictionary<StageLightTimelineClip, Texture2D>();
 
-        private void DrawRollProperty(FieldInfo[] fields)
+        private Dictionary<StageLightTimelineClip, List<float>>
+            _beatPoint = new Dictionary<StageLightTimelineClip, List<float>>();
+        private static PlayableDirector playableDirector;
+        private static Texture2D backgroundTexture;
+        private static Texture2D syncIconTexture;
+        private float min;
+        private float max;
+        private Dictionary<TimelineClip, AnimationCurve>
+            _panCurves = new Dictionary<TimelineClip, AnimationCurve>();
+        public override ClipDrawOptions GetClipOptions(TimelineClip clip)
         {
-            foreach (var fieldInfo in fields)
+            return new ClipDrawOptions
             {
-            }
+                errorText = GetErrorText(clip),
+                highlightColor = GetDefaultHighlightColor(clip),
+                icons = Enumerable.Empty<Texture2D>(),
+                tooltip = "Tooltip"
+            };
         }
         
-
-        private void DrawStageLightPropertyGUI(StageLightProperty property, Object undoTarget)
+        public override void OnClipChanged(TimelineClip clip)
         {
-         
-            EditorGUILayout.Space(2);
-            var fields = property.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic).ToList();
-            // var baseFields = typeof(StageLightProperty).GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic); 
-            // fields = fields.Except(baseFields).ToArray();
-            var propertyOverrideFieldInfo = property.GetType().BaseType.GetField("propertyOverride");
+        
+            var stageLightTimelineClip = (StageLightTimelineClip)clip.asset;
+            if (stageLightTimelineClip == null)
+                return;
+            GetGradientTexture(clip, true);
+            if (stageLightTimelineClip.referenceStageLightProfile != null)
+                clip.displayName = stageLightTimelineClip.referenceStageLightProfile.name;
+            
 
-            var orderedFields = new List<FieldInfo>();
-            // var bpmOverrideFields = new List<FieldInfo>();
-            if (property.GetType().BaseType == typeof(StageLightAdditionalProperty) || property.GetType().BaseType == typeof(RollProperty))
+        }
+        public override void OnCreate(TimelineClip clip, TrackAsset track, TimelineClip clonedFrom)
+        {
+            base.OnCreate(clip, track, clonedFrom);
+       
+        }
+
+
+        public override void DrawBackground(TimelineClip clip, ClipBackgroundRegion region)
+        {
+            base.DrawBackground(clip, region);
+
+
+            if(syncIconTexture == null)syncIconTexture = Resources.Load<Texture2D>("VLVLBMaterials/icon_sync");
+            var stageLightTimelineClip = (StageLightTimelineClip) clip.asset;
+            var update = stageLightTimelineClip.forceTimelineClipUpdate;
+            var tex = GetGradientTexture(clip, update);
+            stageLightTimelineClip.forceTimelineClipUpdate = false;
+            if(stageLightTimelineClip.track == null) return;
+            var colorHeight = region.position.height * stageLightTimelineClip.track.colorLineHeight;
+            var beatHeight = 2f;
+
+            if (stageLightTimelineClip.track.drawBeat)
             {
-                orderedFields.Add(fields.Find(x=>x.Name == "bpmOverrideData"));
-             
-                foreach (var f in fields)
+                foreach (var p in _beatPoint[stageLightTimelineClip])
                 {
-                    if(f.Name != "bpmOverrideData")
-                        orderedFields.Add(f);
+                    EditorGUI.DrawRect(new Rect(region.position.width * p, 0, 1, region.position.height),
+                        stageLightTimelineClip.track.beatLineColor);
                 }
+            }
+
+            if (tex)
+                GUI.DrawTexture(
+                    new Rect(region.position.x, region.position.height - colorHeight, region.position.width,
+                        colorHeight), tex);
+
+
+
+
+            // GUI.HorizontalSlider()
+            // GUI.HorizontalSlider(region.position, 0, 0, 1);
+            // var curve = EditorGUILayout.CurveField(new AnimationCurve(), Color.white, new Rect(region.position.x,region.position.y,100,40),new []{GUILayout.Height(40),GUILayout.Width(100)});
+
+            var iconSize = 12;
+            var margin = 4;
+            if (stageLightTimelineClip.useProfile)
+                GUI.DrawTexture(new Rect(region.position.width - iconSize - margin, margin, iconSize, iconSize),
+                    syncIconTexture, ScaleMode.ScaleAndCrop,
+                    true,
+                    0,
+                    new Color(1, 1, 1, 0.5f), 0, 0);
+            
+        }
+
+        private float GetNormalizedTime(float BPM, float timeScale, float time, LoopType loopType)
+        {
+            var bpm = BPM * timeScale;
+            var duration = 60 / bpm;
+            var t = (float) time % duration;
+            var inv = Mathf.CeilToInt((float) time / duration) % 2 != 0;
+            var normalisedTime = t / duration;
+            if (loopType == LoopType.Loop) return normalisedTime;
+            return inv ? 1f - normalisedTime : normalisedTime;
+        }
+
+
+        
+        Texture2D GetGradientTexture(TimelineClip clip, bool update = false)
+        {
+            Texture2D tex = Texture2D.whiteTexture;
+
+            var customClip = clip.asset as StageLightTimelineClip;
+            
+            if (!customClip) return tex;
+
+            // var props = customClip.behaviour.props;
+            // if (customClip.useProfile && customClip.resolvedVlvlbClipProfile != null)
+            // {
+            //     props = customClip.resolvedVlvlbClipProfile.ptlProps;
+            // }
+            var gradient = customClip.stageLightProfile.lightProperty.lightColor.value;
+            var intensity = customClip.stageLightProfile.lightProperty.lightIntensity.value;
+
+
+            // var _textures = isGrad ? _gradientTextures : _beatTextures;
+
+            if (update) 
+            {
+                _gradientTextures.Remove(customClip);
+                _beatPoint.Remove(customClip);
             }
             else
             {
-                orderedFields = fields;
+                _gradientTextures.TryGetValue(customClip, out tex);
+                if (tex) return tex;
             }
-           
-            
-            EditorGUILayout.BeginHorizontal();
-            EditorGUI.BeginChangeCheck();
-            var enable = EditorGUILayout.Toggle((bool)propertyOverrideFieldInfo.GetValue(property), GUILayout.Width(30));
-            if (EditorGUI.EndChangeCheck())
-            {
-                propertyOverrideFieldInfo.SetValue(property,enable);
-            }
-            
-            EditorGUILayout.LabelField(property.propertyName, EditorStyles.boldLabel);
-            EditorGUILayout.EndHorizontal();
-            
-            EditorGUI.BeginDisabledGroup(!enable);
-           
 
-            using (new EditorGUI.IndentLevelScope())
+            var b = (float)(clip.blendInDuration / clip.duration);
+            tex = new Texture2D(64, 1);
+            
+            var beatPointList = new List<float>();
+
+            var preBeat = -1f;
+            for (int i = 0; i < tex.width; ++i)
             {
 
-                using (new EditorGUILayout.VerticalScope("GroupBox"))
+                var t = (float)i / tex.width;
+
+               
+                var colorT = t;
+                var intensityT = t;
+
+                var lightProfile = customClip.stageLightProfile.lightProperty;
+                var stageLightBaseProfile = customClip.stageLightProfile.stageLightBaseProperty;
+                
+                var bpm = stageLightBaseProfile.bpm.value;
+                var bpmOffset = lightProfile.bpmOverrideData.value.bpmOverride
+                    ? lightProfile.bpmOverrideData.value.bpmOffset
+                    : stageLightBaseProfile.bpmOffset.value;
+                var bpmScale = lightProfile.bpmOverrideData.value.bpmOverride
+                    ? lightProfile.bpmOverrideData.value.bpmScale
+                    : stageLightBaseProfile.bpmScale.value;
+                var loopType = lightProfile.bpmOverrideData.value.bpmOverride
+                    ? lightProfile.bpmOverrideData.value.loopType
+                    : stageLightBaseProfile.loopType.value;
+                float offsetTime = (60 / bpmScale) * bpmOffset;
+                if (loopType != LoopType.Fixed)
                 {
-
-                    foreach (var fieldInfo in orderedFields)
-                    {
-                        var fieldType = fieldInfo.FieldType;
-
-                        if (fieldType.IsGenericType &&
-                            fieldType.GetGenericTypeDefinition() == typeof(StageLightValue<>))
-                        {
-                            var fieldValue = fieldInfo.GetValue(property);
-                            var stageLightValueFieldInfo = fieldValue.GetType().GetField("value");
-                            var propertyOverride = fieldValue.GetType().BaseType.GetField("propertyOverride");
-                            var displayName = fieldInfo.GetCustomAttribute<DisplayNameAttribute>();
-                            var labelValue = displayName != null ? displayName.name : fieldInfo.Name;
-                            EditorGUILayout.BeginHorizontal();
-
-                            EditorGUI.BeginChangeCheck();
-
-                            var propertyOverrideToggle = false;
-
-                            propertyOverrideToggle = EditorGUILayout.Toggle((bool)propertyOverride.GetValue(fieldValue),
-                                GUILayout.Width(40));
-
-                            if (EditorGUI.EndChangeCheck())
-                            {
-                                propertyOverride.SetValue(fieldValue, propertyOverrideToggle);
-                            }
-
-                            EditorGUI.BeginDisabledGroup(!propertyOverrideToggle);
-
-                            object resultValue = null;
-                            EditorGUI.BeginChangeCheck();
-                            if (stageLightValueFieldInfo.FieldType == typeof(System.Single))
-                            {
-                                if (property.GetType().BaseType == typeof(StageLightAdditionalProperty) &&
-                                    labelValue == "BPM Scale" ||
-                                    property.GetType().BaseType == typeof(StageLightAdditionalProperty) &&
-                                    labelValue == "BPM Offset")
-                                {
-                                    var stageLightAdditionalProperty = property as StageLightAdditionalProperty;
-                                    EditorGUI.BeginDisabledGroup(!stageLightAdditionalProperty.bpmOverrideData.value.bpmOverride);
-                                    using (new EditorGUI.IndentLevelScope())
-                                    {
-                                        resultValue = EditorGUILayout.FloatField(labelValue,
-                                            (float)stageLightValueFieldInfo.GetValue(fieldValue));
-                                    }
-                                    EditorGUI.EndDisabledGroup();
-                                }
-                                else
-                                {
-                                    resultValue = EditorGUILayout.FloatField(labelValue,
-                                        (float)stageLightValueFieldInfo.GetValue(fieldValue));
-                                }
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(RollTransform))
-                            {
-                                var rollProperty = property as RollProperty;
-                                var rollTransform = stageLightValueFieldInfo.GetValue(fieldValue) as RollTransform;
-                                if (rollProperty.lightTransformControlType.value == AnimationMode.Ease)
-                                {
-
-                                    using (new EditorGUILayout.VerticalScope())
-                                    {
-                                        using (new EditorGUILayout.HorizontalScope())
-                                        {
-                                            var easeType = rollTransform.easeType;
-                                            EditorGUI.BeginChangeCheck();
-                                            var resultEaseType = EditorGUILayout.EnumPopup(labelValue, easeType);
-                                            if(EditorGUI.EndChangeCheck())
-                                            {
-                                                rollTransform.GetType().GetField("easeType").SetValue(rollTransform,resultEaseType);
-                                            }
-                                        }
-
-                                        using (new EditorGUILayout.HorizontalScope())
-                                        {
-                                            EditorGUILayout.BeginHorizontal();
-                                            // GUILayout.FlexibleSpace();
-                                            using (new EditorGUILayout.HorizontalScope())
-                                            {
-                                                using (new EditorCommon.LabelWidth(60))
-                                                {
-                                                    EditorGUI.BeginChangeCheck();
-                                                    var min = EditorGUILayout.FloatField("Min",
-                                                        rollTransform.rollMinMax.x);
-                                                    if (EditorGUI.EndChangeCheck())
-                                                    {
-                                                        Undo.RecordObject(undoTarget, "Changed Area Of Effect");
-                                                        rollTransform.GetType().GetField("rollMinMax")
-                                                            .SetValue(rollTransform,
-                                                                new Vector2(min, rollTransform.rollMinMax.y) as object);
-                                                    }
-                                                }
-                                            }
-
-                                            GUILayout.FlexibleSpace();
-                                            using (new EditorGUILayout.HorizontalScope())
-                                            {
-                                                using (new EditorCommon.LabelWidth(60))
-                                                {
-                                                    EditorGUI.BeginChangeCheck();
-                                                    var max = EditorGUILayout.FloatField("Max",
-                                                        rollTransform.rollMinMax.y);
-                                                    if (EditorGUI.EndChangeCheck())
-                                                    {
-                                                        Undo.RecordObject(undoTarget, "Changed Area Of Effect");
-                                                        rollTransform.GetType().GetField("rollMinMax")
-                                                            .SetValue(rollTransform,
-                                                                new Vector2(rollTransform.rollMinMax.x, max) as object);
-                                                    }
-                                                }
-                                            }
-
-                                            EditorGUILayout.EndHorizontal();
-                                        }
-
-                                        using (new EditorGUILayout.HorizontalScope())
-                                        {
-
-                                            EditorGUILayout.FloatField(rollTransform.rollRange.x, GUILayout.Width(80));
-                                            EditorGUILayout.MinMaxSlider(ref rollTransform.rollRange.x,
-                                                ref rollTransform.rollRange.y,
-                                                rollTransform.rollMinMax.x, rollTransform.rollMinMax.y);
-                                            EditorGUILayout.FloatField(rollTransform.rollRange.y, GUILayout.Width(80));
-
-                                        }
-                                    }
-                                }
-                                else
-                                {
-
-                                    resultValue = EditorGUILayout.CurveField("Curve",
-                                        (AnimationCurve)rollTransform.animationCurve);
-
-                                }
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(BpmOverrideData))
-                            {
-                                var bpmOverrideData = stageLightValueFieldInfo.GetValue(fieldValue) as BpmOverrideData;
-                                // Debug.Log(bpmOverrideData);
-                                using (new EditorGUILayout.VerticalScope())
-                                {
-                                    using (new EditorGUILayout.HorizontalScope())
-                                    {
-                                        using (new EditorCommon.LabelWidth(120))
-                                        {
-                                            EditorGUI.BeginChangeCheck();
-                                            var bpmOverrideValue = EditorGUILayout.Toggle("BPM Override",
-                                                bpmOverrideData.bpmOverride,
-                                                GUILayout.Width(80));
-                                            if (EditorGUI.EndChangeCheck())
-                                            {
-                                                bpmOverrideData.GetType().GetField("bpmOverride")
-                                                    .SetValue(bpmOverrideData, bpmOverrideValue);
-                                            }
-                                        }
-                                    }
-
-                                    using (new EditorGUI.IndentLevelScope())
-                                    {
-                                        using (new EditorGUILayout.HorizontalScope())
-                                        {
-                                            using (new EditorCommon.LabelWidth(120))
-                                            {
-                                                EditorGUI.BeginChangeCheck();
-                                                var bpmScaleValue = EditorGUILayout.FloatField("BPM Scale",
-                                                    bpmOverrideData.bpmScale,
-                                                    GUILayout.Width(180));
-                                                if (EditorGUI.EndChangeCheck())
-                                                {
-                                                    bpmOverrideData.GetType().GetField("bpmScale")
-                                                        .SetValue(bpmOverrideData, bpmScaleValue);
-                                                }
-
-                                                EditorGUI.BeginChangeCheck();
-                                                var bpmOffsetValue = EditorGUILayout.FloatField("BPM Offset",
-                                                    bpmOverrideData.bpmOffset,
-                                                    GUILayout.Width(180));
-                                                if (EditorGUI.EndChangeCheck())
-                                                {
-                                                    bpmOverrideData.GetType().GetField("bpmOffset")
-                                                        .SetValue(bpmOverrideData, bpmOffsetValue);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(System.Int32))
-                            {
-                                resultValue = EditorGUILayout.IntField(labelValue,
-                                    (int)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(System.Boolean))
-                            {
-                                resultValue = EditorGUILayout.Toggle(labelValue,
-                                    (bool)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(System.String))
-                            {
-                                resultValue = EditorGUILayout.TextField(labelValue,
-                                    (string)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Color))
-                            {
-                                resultValue = EditorGUILayout.ColorField(labelValue,
-                                    (Color)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Vector2))
-                            {
-                                resultValue = EditorGUILayout.Vector2Field(
-                                    labelValue, (Vector2)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Vector3))
-                            {
-                                resultValue = EditorGUILayout.Vector3Field(
-                                    labelValue, (Vector3)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Vector4))
-                            {
-                                resultValue = EditorGUILayout.Vector4Field(
-                                    labelValue, (Vector4)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Quaternion))
-                            {
-                                resultValue = EditorGUILayout.Vector4Field(
-                                    labelValue, (Vector4)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.AnimationCurve))
-                            {
-                                resultValue = EditorGUILayout.CurveField(labelValue,
-                                    (AnimationCurve)stageLightValueFieldInfo.GetValue(fieldValue));
-
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(Texture2D))
-                            {
-                                resultValue = EditorGUILayout.ObjectField(labelValue,
-                                    (Texture2D)stageLightValueFieldInfo.GetValue(fieldValue), typeof(Texture2D), false);
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType.BaseType != null &&
-                                stageLightValueFieldInfo.FieldType.BaseType == typeof(System.Enum))
-                            {
-                                var easeType = stageLightValueFieldInfo.GetValue(fieldValue) as Enum;
-                                resultValue = EditorGUILayout.EnumPopup(labelValue, easeType);
-                            }
-
-                            if (stageLightValueFieldInfo.FieldType == typeof(UnityEngine.Gradient))
-                            {
-                                resultValue = EditorGUILayout.GradientField(labelValue,
-                                    (Gradient)stageLightValueFieldInfo.GetValue(fieldValue));
-                            }
-
-                            if (EditorGUI.EndChangeCheck())
-                            {
-                                Undo.RecordObject(undoTarget, "Changed Area Of Effect");
-                                if (resultValue != null) stageLightValueFieldInfo.SetValue(fieldValue, resultValue);
-                            }
-                            
-                            EditorGUILayout.EndHorizontal();
-                            EditorGUI.EndDisabledGroup();
-                        }
-                    }
+                    colorT = GetNormalizedTime(bpm, bpmScale, (float)(t * clip.duration + clip.start+offsetTime), loopType);
+                    intensityT = GetNormalizedTime(bpm, bpmScale, (float)(t * clip.duration + clip.start+offsetTime), loopType);
                 }
-            }
-
-            // EditorGUILayout.Space(2);
-            EditorGUI.EndDisabledGroup();
-            
-        }
-        
-        protected void DrawRemainingPropertiesInInspector()
-        {
-            EditorGUI.BeginChangeCheck();
-            DrawPropertiesExcluding(serializedObject, mExcluded.ToArray());
-            if (EditorGUI.EndChangeCheck())
-                serializedObject.ApplyModifiedProperties();
-        }
-        
-        protected void DrawPropertyInInspector(SerializedProperty p)
-        {
-            if (!IsPropertyExcluded(p.name))
-            {
-                EditorGUI.BeginChangeCheck();
-                EditorGUILayout.PropertyField(p);
-                if (EditorGUI.EndChangeCheck())
-                    serializedObject.ApplyModifiedProperties();
-                ExcludeProperty(p.name);
-            }
-        }
-        
-        private bool IsPropertyExcluded(string propertyName)
-        {
-            return mExcluded.Contains(propertyName);
-        }
-
-        private void ExcludeProperty(string propertyName)
-        {
-            mExcluded.Add(propertyName);
-        }
-        private void OnDisable()
-        {
+                var color = gradient.Evaluate(colorT);
+                if (b > 0f) color.a = Mathf.Min(colorT / b, 1f);
+                var intensityValue = Mathf.Clamp(intensity.Evaluate(intensityT),0,1);
+                color = new Color(color.r,
+                    color.g,
+                    color.b,
+                    color.a*intensityValue);
+                tex.SetPixel(i, 0, color);     
            
+                
+                
+                if (loopType != LoopType.Fixed)
+                {
+                    var normalisedTime = GetNormalizedTime(bpm, 1, (float)(t * clip.duration + clip.start+offsetTime),
+                        LoopType.Loop);
+                    if (preBeat> normalisedTime)
+                    {
+                        beatPointList.Add(t);
+                    }
+                    
+                    preBeat = normalisedTime;
+                }
+                
+   
+                
+                    
+            }
+
+            
+            
+            tex.Apply();
+            if (_gradientTextures.ContainsKey(customClip))
+            {
+                _gradientTextures[customClip] = tex;
+            }
+            else
+            {
+                _gradientTextures.Add(customClip, tex);    
+            }
+            
+            _beatPoint.Add(customClip,beatPointList);
+
+            return tex;
         }
 
-        private void OnDestroy()
+        public override void GetSubTimelines(TimelineClip clip, PlayableDirector director, List<PlayableDirector> subTimelines)
         {
+            base.GetSubTimelines(clip, director, subTimelines);
         }
-
-
-      
-
     }
+    
+    
 }

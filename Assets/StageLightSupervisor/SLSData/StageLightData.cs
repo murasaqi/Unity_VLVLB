@@ -28,6 +28,18 @@ namespace StageLightSupervisor
     public class StageLightValue<T>:StageLightData
     {
         [SerializeField]public T value;
+        
+        public StageLightValue(StageLightValue<T> stageLightValue)
+        {
+            propertyOverride = stageLightValue.propertyOverride;
+            this.value = stageLightValue.value;
+        }
+
+        public StageLightValue()
+        {
+            propertyOverride = false;
+            value = default;
+        }
     }
 
 
@@ -35,24 +47,25 @@ namespace StageLightSupervisor
     public class StageLightProperty:StageLightData
     {
         public string propertyName;
-        public LoopType LoopType;
-        
-        
+
+
     }
     
     
     [Serializable]
     public class BpmOverrideData:StageLightData
     {
-        [DisplayNameAttribute("BPM Override")] public bool bpmOverride = false;
+        [DisplayName("Loop Type")] public LoopType loopType = LoopType.Loop;
+        [DisplayNameAttribute("Override Time")] public bool bpmOverride = false;
         [DisplayNameAttribute("BPM Scale")] public float bpmScale = 1;
         [DisplayNameAttribute("BPM Offset")] public float bpmOffset = 0;
-
+       
         public BpmOverrideData()
         {
             propertyOverride = false;
             bpmScale = 1;
             bpmOffset = 0;
+            loopType = LoopType.Loop;
         }
     }
     

@@ -40,7 +40,10 @@ namespace StageLightSupervisor
                 var bpmScale = lightProperty.bpmOverrideData.value.bpmOverride
                     ? lightProperty.bpmOverrideData.value.bpmScale
                     : stageLightBaseProperty.bpmScale.value;
-                var t = GetNormalizedTime(currentTime,bpm,bpmOffset,bpmScale, lightProperty.LoopType);
+                var loopType = lightProperty.bpmOverrideData.value.bpmOverride
+                    ? lightProperty.bpmOverrideData.value.loopType
+                    : stageLightBaseProperty.loopType.value;
+                var t = GetNormalizedTime(currentTime,bpm,bpmOffset,bpmScale, loopType);
                 lightColor += lightProperty.lightColor.value.Evaluate(t) * weight;
                 lightIntensity += lightProperty.lightIntensity.value.Evaluate(t) * weight;
                 spotAngle += lightProperty.spotAngle.value * weight;

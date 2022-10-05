@@ -22,6 +22,7 @@ namespace StageLightSupervisor
             stageLightFixtures.Add(gameObject.AddComponent<LightFixture>());
             stageLightFixtures.Add(gameObject.AddComponent<MaterialColorFixture>());
             stageLightFixtures.Add(gameObject.AddComponent<DecalFixture>());
+            stageLightFixtures.Add(gameObject.AddComponent<GoboFixture>());
         }
     }
 }

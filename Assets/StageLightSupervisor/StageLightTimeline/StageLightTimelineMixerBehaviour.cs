@@ -30,7 +30,6 @@ public class StageLightTimelineMixerBehaviour : PlayableBehaviour
             if (inputWeight > 0)
             {
                 trackBinding.AddQue(stageLightTimelineClip.stageLightProfile,inputWeight);
-                
             }
 
         }
