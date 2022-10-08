@@ -1,16 +1,25 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace StageLightManeuver
 {
-
-    public interface IStageLight
-    {
-        public int Index { get; set; }
-        public List<StageLight> StageLightChild { get; set; }
-        public void UpdateFixture(float time);
-        public void AddStageLightInChild(){}
-        public void AddQue(SlmToggleValueBase slmToggleValueBase, float weight){}
-    }
+    // public class StageLightBase:MonoBehaviour,IStageLight
+    // {
+    //     [SerializeField]private int index = 0;
+    //     public int Index { get => index; set => index = value; }
+    //     [SerializeField]private List<StageLight> stageLightChild = new List<StageLight>();
+    //     public List<StageLight> StageLightChild
+    //     {
+    //         get => stageLightChild;
+    //         set=> stageLightChild = value;
+    //     }
+    //
+    //     public virtual void AddQue(StageLightQueData stageLightQueData, float weight)
+    //     {
+    //     }
+    //
+    //     public virtual void UpdateFixture(float time)
+    //     {
+    //     }
+    // }
 }

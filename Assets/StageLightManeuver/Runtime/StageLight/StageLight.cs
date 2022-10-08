@@ -6,9 +6,9 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class StageLight: MonoBehaviour,IStageLight
+    public abstract class StageLight: MonoBehaviour,IStageLight
     {
-        public List<StageLightFixtureBase> stageLightFixtures = new List<StageLightFixtureBase>();
+        
         [SerializeField]private int index = 0;
         public int Index { get => index; set => index = value; }
         [SerializeField]private List<StageLight> stageLightChild = new List<StageLight>();
@@ -19,17 +19,14 @@ namespace StageLightManeuver
             set=> stageLightChild = value;
         }
 
-        public void Update()
+           public void Update()
         {
         }
 
-        public void AddQue(StageLightQueData stageLightQueData, float weight)
+        public virtual void AddQue(StageLightQueData stageLightQueData, float weight)
         {
             
-            foreach (var stageLightFixture in stageLightFixtures)
-            {
-                stageLightFixture.stageLightDataQueue.Enqueue(stageLightQueData);
-            }
+           
 
             foreach (var stageLight in StageLightChild)
             {
@@ -37,7 +34,7 @@ namespace StageLightManeuver
             }
         }
 
-        public void UpdateFixture(float time)
+        public virtual void UpdateFixture(float time)
         {
             var i = 0;
             foreach (var stageLight in StageLightChild)
@@ -47,11 +44,7 @@ namespace StageLightManeuver
                 stageLight.UpdateFixture(time);
                 i++;
             }
-            foreach (var stageLightFixture in stageLightFixtures)
-            {
-                stageLightFixture.UpdateFixture(time);
-                stageLightFixture.Index = index;
-            }
+           
         }
         
         [ContextMenu("Get StageLights in Children")]
@@ -60,6 +53,8 @@ namespace StageLightManeuver
             StageLightChild.Clear();
             StageLightChild = GetComponentsInChildren<StageLight>().ToList();
         }
+        
+       
 
     }
 }
