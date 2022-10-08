@@ -119,10 +119,10 @@ namespace StageLightManeuver
          
         }
 
-        public SlmProperty TryGet<T>() where T : SlmProperty
+        public T TryGet<T>() where T : SlmProperty
         {
             var result = stageLightProperties.Find(x => x.GetType() == typeof(T));
-            return result;
+            return result as T;
         }
         public StageLightProfile()
         {

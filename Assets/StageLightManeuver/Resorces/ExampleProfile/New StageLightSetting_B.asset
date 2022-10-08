@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUpdateGuiFlag: 1
   stageLightProperties:
-  - rid: 6126432800899072412
-  - rid: 6126432800899072413
-  - rid: 6126432800899072414
-  - rid: 6126432800899072415
-  - rid: 6126432800899072416
-  - rid: 6126432800899072417
+  - rid: 6126432800899072490
+  - rid: 6126432800899072491
+  - rid: 6126432800899072492
+  - rid: 6126432800899072493
+  - rid: 6126432800899072494
+  - rid: 6126432800899072495
   references:
     version: 2
     RefIds:
-    - rid: 6126432800899072412
+    - rid: 6126432800899072490
       type: {class: TimeProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
       data:
         propertyOverride: 1
@@ -43,7 +43,7 @@ MonoBehaviour:
         bpmOffset:
           propertyOverride: 0
           value: 0
-    - rid: 6126432800899072413
+    - rid: 6126432800899072491
       type: {class: LightProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
       data:
         propertyOverride: 1
@@ -60,16 +60,16 @@ MonoBehaviour:
           propertyOverride: 1
           value:
             serializedVersion: 2
-            key0: {r: 1, g: 1, b: 1, a: 1}
-            key1: {r: 0.2761955, g: 0.75377023, b: 0.8962264, a: 1}
+            key0: {r: 1, g: 0.55481756, b: 0, a: 1}
+            key1: {r: 1, g: 0.55481756, b: 0, a: 1}
             key2: {r: 0.4278636, g: 0.16447127, b: 0.9339623, a: 0}
             key3: {r: 0.8773585, g: 0.17933422, b: 0.27266467, a: 0}
             key4: {r: 0.45356795, g: 0.2347217, b: 0.8113208, a: 0}
             key5: {r: 0.19568045, g: 0.6641345, b: 0.9150943, a: 0}
             key6: {r: 1, g: 1, b: 1, a: 0}
             key7: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
-            ctime0: 1536
-            ctime1: 9984
+            ctime0: 0
+            ctime1: 65535
             ctime2: 19776
             ctime3: 33215
             ctime4: 45119
@@ -85,7 +85,7 @@ MonoBehaviour:
             atime6: 0
             atime7: 0
             m_Mode: 0
-            m_NumColorKeys: 7
+            m_NumColorKeys: 2
             m_NumAlphaKeys: 2
         lightToggleIntensity:
           propertyOverride: 1
@@ -119,7 +119,7 @@ MonoBehaviour:
         innerSpotAngle:
           propertyOverride: 0
           value: 10
-    - rid: 6126432800899072414
+    - rid: 6126432800899072492
       type: {class: PanProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
       data:
         propertyOverride: 1
@@ -163,7 +163,7 @@ MonoBehaviour:
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
-    - rid: 6126432800899072415
+    - rid: 6126432800899072493
       type: {class: TiltProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
       data:
         propertyOverride: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
-    - rid: 6126432800899072416
+    - rid: 6126432800899072494
       type: {class: DecalProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
       data:
         propertyOverride: 1
@@ -238,7 +238,7 @@ MonoBehaviour:
         opacity:
           propertyOverride: 1
           value: 0.1
-    - rid: 6126432800899072417
+    - rid: 6126432800899072495
       type: {class: GoboProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
       data:
         propertyOverride: 1
