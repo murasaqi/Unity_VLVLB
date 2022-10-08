@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
+using VLB;
 
 namespace VLVLB
 {
@@ -44,7 +45,10 @@ namespace VLVLB
             buttonNewRect = new Rect(fieldRect.xMax-buttonWidth*2f-buttonMargine*2f, lineRect.y, buttonWidth, lineRect.height);
             if(GUI.Button(buttonNewRect,"Save as"))
             {
-                vlvlbTimelineClip.ExportProfile();
+                using (new EditorCommon.LabelWidth(120))
+                {
+                    
+                }
                 vlvlbTimelineClip.forceTimelineClipUpdate = true;
             }
 
