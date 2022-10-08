@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class DecalFixture: StageLightExtension
+    public class DecalFixture: StageLightFixtureBase
     {
         public LightFixture lightFixture;
         public Texture2D decalTexture;

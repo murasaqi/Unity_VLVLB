@@ -4,37 +4,52 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [Serializable]
-    public class DecalProperty : StageLightAdditionalProperty
+    public class DecalProperty : SlmAdditionalProperty
     {
-        public StageLightToggleValue<Texture2D> decalTexture;
-        public StageLightToggleValue<float> decalSizeScaler;
-        public StageLightToggleValue<float> floorHeight;
-        public StageLightToggleValue<float> decalDepthScaler;
-        public StageLightToggleValue<float> fadeFactor;
-        public StageLightToggleValue<float> opacity;
+        public SlmToggleValue<Texture2D> decalTexture;
+        public SlmToggleValue<float> decalSizeScaler;
+        public SlmToggleValue<float> floorHeight;
+        public SlmToggleValue<float> decalDepthScaler;
+        public SlmToggleValue<float> fadeFactor;
+        public SlmToggleValue<float> opacity;
         public DecalProperty()
         {
             propertyOverride = false;
-            bpmOverrideData = new StageLightToggleValue<BpmOverrideData>(){value = new BpmOverrideData()};
+            bpmOverrideData = new SlmToggleValue<BpmOverrideToggleValueBase>(){value = new BpmOverrideToggleValueBase()};
             propertyName = "Decal";
-            decalTexture = new StageLightToggleValue<Texture2D>();
-            decalSizeScaler = new StageLightToggleValue<float>(){value = 0.8f};
-            floorHeight = new StageLightToggleValue<float> { value = 0f };
-            decalDepthScaler = new StageLightToggleValue<float> { value = 1f };
-            fadeFactor = new StageLightToggleValue<float> { value = 1f };
-            opacity = new StageLightToggleValue<float> { value = 1f };
+            decalTexture = new SlmToggleValue<Texture2D>();
+            decalSizeScaler = new SlmToggleValue<float>(){value = 0.8f};
+            floorHeight = new SlmToggleValue<float> { value = 0f };
+            decalDepthScaler = new SlmToggleValue<float> { value = 1f };
+            fadeFactor = new SlmToggleValue<float> { value = 1f };
+            opacity = new SlmToggleValue<float> { value = 1f };
         }
+
+        public override void ToggleOverride(bool toggle)
+        {
+            base.ToggleOverride(toggle);
+       
+            propertyOverride = toggle;
+            decalTexture.propertyOverride = toggle;
+            decalSizeScaler.propertyOverride = toggle;
+            floorHeight.propertyOverride = toggle;
+            decalDepthScaler.propertyOverride = toggle;
+            fadeFactor.propertyOverride = toggle;
+            opacity.propertyOverride = toggle;
+            
+        }
+
         public DecalProperty(DecalProperty other)
         {
             propertyOverride = other.propertyOverride;
             bpmOverrideData = other.bpmOverrideData;
-            decalTexture = new StageLightToggleValue<Texture2D>(other.decalTexture);
+            decalTexture = new SlmToggleValue<Texture2D>(other.decalTexture);
             propertyName = other.propertyName;
-            decalSizeScaler = new StageLightToggleValue<float>(other.decalSizeScaler);
-            floorHeight = new StageLightToggleValue<float>(other.floorHeight);
-            decalDepthScaler = new StageLightToggleValue<float>(other.decalDepthScaler);
-            fadeFactor = new StageLightToggleValue<float>(other.fadeFactor);
-            opacity = new StageLightToggleValue<float>(other.opacity);
+            decalSizeScaler = new SlmToggleValue<float>(other.decalSizeScaler);
+            floorHeight = new SlmToggleValue<float>(other.floorHeight);
+            decalDepthScaler = new SlmToggleValue<float>(other.decalDepthScaler);
+            fadeFactor = new SlmToggleValue<float>(other.fadeFactor);
+            opacity = new SlmToggleValue<float>(other.opacity);
         }
 
     }

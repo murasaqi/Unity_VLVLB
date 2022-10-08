@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -15,74 +16,76 @@ namespace StageLightManeuver
     [CreateAssetMenu(fileName = "New StageLightSetting", menuName = "ScriptableObject/StageLightSetting")]
     public class StageLightProfile: ScriptableObject
     {
-        public TimeProperty timeProperty;
-        public LightProperty lightProperty;
-        public PanProperty panProperty;
-        public TiltProperty tiltProperty;
-        public DecalProperty decalProperty;
-        public GoboProperty goboProperty;
-        [SerializeField]public List<StageLightProperty> stageLightProperties = new List<StageLightProperty>();
+        // public TimeProperty timeProperty;
+        // public LightProperty lightProperty;
+        // public PanProperty panProperty;
+        // public TiltProperty tiltProperty;
+        // public DecalProperty decalProperty;
+        // public GoboProperty goboProperty;
+        public bool isUpdateGuiFlag = false;
+        [SerializeReference]public List<SlmProperty> stageLightProperties = new List<SlmProperty>();
   
         
         
         [ContextMenu("Init")]
         public void Init()
         {
-            timeProperty = new TimeProperty();
-            lightProperty = new LightProperty();
-            panProperty = new PanProperty();
-            tiltProperty = new TiltProperty();
-            decalProperty = new DecalProperty();
-            goboProperty = new GoboProperty();
-            InitializePropertyList();
+            // timeProperty = new TimeProperty();
+            // lightProperty = new LightProperty();
+            // panProperty = new PanProperty();
+            // tiltProperty = new TiltProperty();
+            // decalProperty = new DecalProperty();
+            // goboProperty = new GoboProperty();
+            // InitializePropertyList();
         }
         
-        public void InitializePropertyList()
-        {
-            stageLightProperties.Clear();
-            stageLightProperties.Add(timeProperty);
-            stageLightProperties.Add(lightProperty);
-            stageLightProperties.Add(panProperty);
-            stageLightProperties.Add(tiltProperty);
-            stageLightProperties.Add(decalProperty);
-            stageLightProperties.Add(goboProperty);
-        }
+        // public void InitializePropertyList()
+        // {
+            // stageLightProperties.Clear();
+            // stageLightProperties.Add(timeProperty);
+            // stageLightProperties.Add(lightProperty);
+            // stageLightProperties.Add(panProperty);
+            // stageLightProperties.Add(tiltProperty);
+            // stageLightProperties.Add(decalProperty);
+            // stageLightProperties.Add(goboProperty);
+        // }
         
-        public void ApplyListToProperties()
-        {
-            var _stageLightBaseProperty =
-                (TimeProperty)stageLightProperties.Find(x => x.GetType() == typeof(TimeProperty));
-            if(_stageLightBaseProperty != null)
-                timeProperty = _stageLightBaseProperty;
-            
-            var _lightProperty =    
-                (LightProperty)stageLightProperties.Find(x => x.GetType() == typeof(LightProperty));
-            if(_lightProperty != null)
-                lightProperty = _lightProperty;
-            
-            var _panProperty =  
-                (PanProperty)stageLightProperties.Find(x => x.GetType() == typeof(PanProperty));
-            if(_panProperty != null)
-                panProperty = _panProperty;
-            
-            var _tiltProperty =
-                (TiltProperty)stageLightProperties.Find(x => x.GetType() == typeof(TiltProperty));
-            if(_tiltProperty != null)
-                tiltProperty = _tiltProperty;
-            
-            var _decalProperty =    
-                (DecalProperty)stageLightProperties.Find(x => x.GetType() == typeof(DecalProperty));
-            if(_decalProperty != null)  
-                decalProperty = _decalProperty;
-            
-            var _goboProperty =
-                (GoboProperty)stageLightProperties.Find(x => x.GetType() == typeof(GoboProperty));
-            if(_goboProperty != null)
-                goboProperty = _goboProperty;
-            
-        }
+        
+        // public void ApplyListToProperties()
+        // {
+        //     var _stageLightBaseProperty =
+        //         (TimeProperty)stageLightProperties.Find(x => x.GetType() == typeof(TimeProperty));
+        //     if(_stageLightBaseProperty != null)
+        //         timeProperty = _stageLightBaseProperty;
+        //     
+        //     var _lightProperty =    
+        //         (LightProperty)stageLightProperties.Find(x => x.GetType() == typeof(LightProperty));
+        //     if(_lightProperty != null)
+        //         lightProperty = _lightProperty;
+        //     
+        //     var _panProperty =  
+        //         (PanProperty)stageLightProperties.Find(x => x.GetType() == typeof(PanProperty));
+        //     if(_panProperty != null)
+        //         panProperty = _panProperty;
+        //     
+        //     var _tiltProperty =
+        //         (TiltProperty)stageLightProperties.Find(x => x.GetType() == typeof(TiltProperty));
+        //     if(_tiltProperty != null)
+        //         tiltProperty = _tiltProperty;
+        //     
+        //     var _decalProperty =    
+        //         (DecalProperty)stageLightProperties.Find(x => x.GetType() == typeof(DecalProperty));
+        //     if(_decalProperty != null)  
+        //         decalProperty = _decalProperty;
+        //     
+        //     var _goboProperty =
+        //         (GoboProperty)stageLightProperties.Find(x => x.GetType() == typeof(GoboProperty));
+        //     if(_goboProperty != null)
+        //         goboProperty = _goboProperty;
+        //     
+        // }
 
-        public void TryCreatePropertyListByComponentList(List<StageLightExtension> stageLightExtensions)
+        public void TryCreatePropertyListByComponentList(List<StageLightFixtureBase> stageLightExtensions)
         {
             stageLightProperties.Clear();
             foreach (var extension in stageLightExtensions)
@@ -90,33 +93,33 @@ namespace StageLightManeuver
                 Debug.Log(extension);
                 if (extension.GetType() == typeof(LightFixture))
                 {
-                    stageLightProperties.Add(lightProperty);
+                    stageLightProperties.Add(new LightProperty());
                 }
             
                 if (extension.GetType() == typeof(LightPanFixture))
                 {
-                    stageLightProperties.Add(panProperty);
+                    stageLightProperties.Add(new PanProperty());
                 }
             
                 if (extension.GetType() == typeof(LightTiltFixture))
                 {
-                    stageLightProperties.Add(tiltProperty);
+                    stageLightProperties.Add(new TiltProperty());
                 }
                 
                 if (extension.GetType() == typeof(DecalFixture))
                 {
-                    stageLightProperties.Add(decalProperty);
+                    stageLightProperties.Add(new DecalProperty());
                 }
                 
                 if (extension.GetType() == typeof(GoboFixture))
                 {
-                    stageLightProperties.Add(goboProperty);
+                    stageLightProperties.Add(new GoboProperty());
                 }
             }
          
         }
 
-        public StageLightProperty TryGet<T>() where T : StageLightProperty
+        public SlmProperty TryGet<T>() where T : SlmProperty
         {
             var result = stageLightProperties.Find(x => x.GetType() == typeof(T));
             return result;
@@ -128,15 +131,15 @@ namespace StageLightManeuver
         public StageLightProfile Clone()
         {
             var result = CreateInstance<StageLightProfile>();
-            result.stageLightProperties.Clear();
+            // result.stageLightProperties.Clear();
 
-            result.timeProperty = new TimeProperty(timeProperty);
-            result.lightProperty = new LightProperty(lightProperty);
-            result.panProperty = new PanProperty(panProperty);
-            result.tiltProperty = new TiltProperty(tiltProperty);
-            result.decalProperty = new DecalProperty(decalProperty);
-            result.goboProperty = new GoboProperty(goboProperty);
-            result.InitializePropertyList();
+            foreach (var stageLightProperty in stageLightProperties)
+            {
+                var type = stageLightProperty.GetType();
+                result.stageLightProperties.Add(Activator.CreateInstance(type, BindingFlags.CreateInstance, null, new object[]{stageLightProperty}, null)
+                    as SlmProperty);
+            }
+           
            
             return result;
         }

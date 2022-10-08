@@ -45,14 +45,21 @@ namespace StageLightManeuver.StageLightTimeline.Editor
         {
             BeginInspector();
             mExcluded.Clear();
-            mExcluded.Add("stageLightSetting");
+            // mExcluded.Add("stageLightSetting");
             // DrawRemainingPropertiesInInspector();
         }
         
         private void BeginInspector()
         {
             serializedObject.Update();
-            DrawRemainingPropertiesInInspector();
+            
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("referenceStageLightProfile"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+            }
+           
             var stageLightTimelineClip = serializedObject.targetObject as StageLightTimelineClip;
 
             if(stageLightTimelineClip == null)
@@ -60,13 +67,6 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             using (new EditorGUILayout.HorizontalScope())
             {
                 GUILayout.FlexibleSpace();
-                GUI.backgroundColor= Color.red;
-                GUI.contentColor = Color.white;
-                if (GUILayout.Button("Save as",GUILayout.MaxWidth(100)))
-                {
-                    ExportProfile(stageLightTimelineClip);
-                }
-                
                 
                 GUI.backgroundColor= Color.green;
                 GUI.contentColor = Color.white;
@@ -82,13 +82,31 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 {
                     stageLightTimelineClip.SaveProfile();
                     
-                    serializedObject.ApplyModifiedProperties();
                 }
-
                 
+                GUI.backgroundColor= Color.red;
+                GUI.contentColor = Color.white;
+                if (GUILayout.Button("Save as",GUILayout.MaxWidth(100)))
+                {
+                    ExportProfile(stageLightTimelineClip);
+                }
+                GUI.backgroundColor = Color.white;
+                
+            }
+            
+            EditorGUILayout.Space(1);
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("syncReferenceProfile"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                stageLightTimelineClip.InitSyncData();
             }
 
 
+            // EditorGUILayout.PropertyField(serializedObject.FindProperty("forceTimelineClipUpdate"));
+            EditorGUI.BeginDisabledGroup(stageLightTimelineClip.syncReferenceProfile);
             if (stageLightTimelineClip.stageLightTimelineBehaviour.stageLightQueData != null &&
                 stageLightTimelineClip.stageLightTimelineBehaviour.stageLightQueData.TryGet<LightProperty>() != null)
             {
@@ -107,24 +125,39 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             
             DrawAddPropertyButton(stageLightTimelineClip);
            
+            EditorGUI.EndDisabledGroup();
             // DrawPropertyInInspector(stageLightProfile.FindProperty("stageLightProperties"));
         }
         
         private void DrawAddPropertyButton(StageLightTimelineClip stageLightTimelineClip)
         {
             EditorGUI.BeginChangeCheck();
-            var select = EditorGUILayout.Popup(-1, new string[]
+
+            var selectList = new List<string>()
             {
+                "Add Property",
                 "Light Property",
                 "Pan Property",
                 "Tilt Property",
                 "Gobo Property",
                 "Decal Property",
-            });
+            };
 
+
+            foreach (var property in stageLightTimelineClip.stageLightTimelineBehaviour.stageLightQueData
+                         .stageLightProperties)
+            {
+                if (selectList.Find(x => x == property.propertyName + " Property") != null)
+                {
+                    selectList.Remove(property.propertyName + " Property");
+                }
+            }
+            EditorGUI.BeginDisabledGroup(selectList.Count  <= 1);
+            var select = EditorGUILayout.Popup(0, selectList.ToArray());
+            EditorGUI.EndDisabledGroup();
             if (EditorGUI.EndChangeCheck())
             {
-                switch (select)
+                switch (select-1)
                 {
                     case 0:
                         stageLightTimelineClip.stageLightTimelineBehaviour.stageLightQueData.stageLightProperties.Add(new LightProperty());
@@ -143,6 +176,8 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                         break;
                 }
             }
+            
+            
         }
 
         private void DrawRollProperty(FieldInfo[] fields)
@@ -153,53 +188,49 @@ namespace StageLightManeuver.StageLightTimeline.Editor
         }
         
 
-        private void DrawStageLightPropertyGUI(StageLightProperty property, Object undoTarget)
+        private void DrawStageLightPropertyGUI(SlmProperty property, Object undoTarget)
         {
-         
-            EditorGUILayout.Space(2);
-            var fields = property.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic).ToList();
-            // var baseFields = typeof(StageLightProperty).GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic); 
-            // fields = fields.Except(baseFields).ToArray();
-            var propertyOverrideFieldInfo = property.GetType().BaseType.GetField("propertyOverride");
 
-            var orderedFields = new List<FieldInfo>();
-            // var bpmOverrideFields = new List<FieldInfo>();
-            if (property.GetType().BaseType == typeof(StageLightAdditionalProperty) || property.GetType().BaseType == typeof(RollProperty))
+
+            using (new EditorGUILayout.VerticalScope("GroupBox"))
             {
-                orderedFields.Add(fields.Find(x=>x.Name == "bpmOverrideData"));
-             
-                foreach (var f in fields)
+                var fields = property.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic).ToList();
+                var propertyOverrideFieldInfo = property.GetType().BaseType.GetField("propertyOverride");
+                var isPropertyOverride = (bool)propertyOverrideFieldInfo.GetValue(property);
+               
+                var opened =EditorGUILayout.Foldout( isPropertyOverride, property.propertyName);
+
+                if(opened != isPropertyOverride)
+                    propertyOverrideFieldInfo.SetValue(property,opened);
+                
+                if (!opened)
                 {
-                    if(f.Name != "bpmOverrideData")
-                        orderedFields.Add(f);
+                    return;
                 }
-            }
-            else
-            {
-                orderedFields = fields;
-            }
-           
-            
-            EditorGUILayout.BeginHorizontal();
-            EditorGUI.BeginChangeCheck();
-            var enable = EditorGUILayout.Toggle((bool)propertyOverrideFieldInfo.GetValue(property), GUILayout.Width(30));
-            if (EditorGUI.EndChangeCheck())
-            {
-                propertyOverrideFieldInfo.SetValue(property,enable);
-            }
-            
-            EditorGUILayout.LabelField(property.propertyName, EditorStyles.boldLabel);
-            EditorGUILayout.EndHorizontal();
-            
-            EditorGUI.BeginDisabledGroup(!enable);
-           
+                
+                EditorGUI.indentLevel++;
+               
 
-            using (new EditorGUI.IndentLevelScope())
-            {
-
-                using (new EditorGUILayout.VerticalScope("GroupBox"))
+                var orderedFields = new List<FieldInfo>();
+                // var bpmOverrideFields = new List<FieldInfo>();
+                if (property.GetType().BaseType == typeof(SlmAdditionalProperty) || property.GetType().BaseType == typeof(RollProperty))
                 {
+                    orderedFields.Add(fields.Find(x=>x.Name == "bpmOverrideData"));
+                 
+                    foreach (var f in fields)
+                    {
+                        if(f.Name != "bpmOverrideData")
+                            orderedFields.Add(f);
+                    }
+                }
+                else
+                {
+                    orderedFields = fields;
+                }
+                
 
+                using (new EditorGUILayout.VerticalScope())
+                {
                     foreach (var fieldInfo in orderedFields)
                     {
                         var fieldValue = fieldInfo.GetValue(property);
@@ -207,19 +238,22 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                         var displayName = fieldInfo.GetCustomAttribute<DisplayNameAttribute>();
                         var labelValue = displayName != null ? displayName.name : fieldInfo.Name;
 
-                        if (fieldType ==typeof(ClipProperty))
+                        if (fieldType == typeof(ClipProperty))
                         {
-                            
+
                             var clipProperty = fieldValue as ClipProperty;
                             EditorGUILayout.BeginHorizontal();
                             // GUILayout.FlexibleSpace();      
-                            EditorGUILayout.LabelField($"Constant Duration: {clipProperty.clipEndTime - clipProperty.clipStartTime}");
+                            EditorGUILayout.LabelField(
+                                $"Constant Duration: {clipProperty.clipEndTime - clipProperty.clipStartTime}");
                             // EditorGUILayout.LabelField($"End: {clipProperty.clipEndTime}");
-                           
+
                             EditorGUILayout.EndHorizontal();
-                            
-                            
-                        }else if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(StageLightToggleValue<>))
+
+
+                        }
+                        else if (fieldType.IsGenericType &&
+                                 fieldType.GetGenericTypeDefinition() == typeof(SlmToggleValue<>))
                         {
                             object resultValue = null;
                             var stageLightValueFieldInfo = fieldValue.GetType().GetField("value");
@@ -240,23 +274,25 @@ namespace StageLightManeuver.StageLightTimeline.Editor
 
                             EditorGUI.BeginDisabledGroup(!propertyOverrideToggle);
 
-                            
+
                             EditorGUI.BeginChangeCheck();
                             if (stageLightValueFieldInfo.FieldType == typeof(System.Single))
                             {
 
-                                if (property.GetType().BaseType == typeof(StageLightAdditionalProperty) &&
+                                if (property.GetType().BaseType == typeof(SlmAdditionalProperty) &&
                                     labelValue == "BPM Scale" ||
-                                    property.GetType().BaseType == typeof(StageLightAdditionalProperty) &&
+                                    property.GetType().BaseType == typeof(SlmAdditionalProperty) &&
                                     labelValue == "BPM Offset")
                                 {
-                                    var stageLightAdditionalProperty = property as StageLightAdditionalProperty;
-                                    EditorGUI.BeginDisabledGroup(!stageLightAdditionalProperty.bpmOverrideData.value.bpmOverride);
+                                    var stageLightAdditionalProperty = property as SlmAdditionalProperty;
+                                    EditorGUI.BeginDisabledGroup(!stageLightAdditionalProperty.bpmOverrideData.value
+                                        .bpmOverride);
                                     using (new EditorGUI.IndentLevelScope())
                                     {
                                         resultValue = EditorGUILayout.FloatField(labelValue,
                                             (float)stageLightValueFieldInfo.GetValue(fieldValue));
                                     }
+
                                     EditorGUI.EndDisabledGroup();
                                 }
                                 else
@@ -269,52 +305,56 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                             if (stageLightValueFieldInfo.FieldType == typeof(MinMaxEasingValue))
                             {
 
-                                DrawMinMaxEaseUI(labelValue,stageLightValueFieldInfo, fieldValue, undoTarget);
+                                DrawMinMaxEaseUI(labelValue, stageLightValueFieldInfo, fieldValue, undoTarget);
                             }
 
-                            if (stageLightValueFieldInfo.FieldType == typeof(BpmOverrideData))
+                            if (stageLightValueFieldInfo.FieldType == typeof(BpmOverrideToggleValueBase))
                             {
-                                var bpmOverrideData = stageLightValueFieldInfo.GetValue(fieldValue) as BpmOverrideData;
+                                var bpmOverrideData =
+                                    stageLightValueFieldInfo.GetValue(fieldValue) as BpmOverrideToggleValueBase;
                                 // Debug.Log(bpmOverrideData);
-                                
+
                                 using (new EditorGUILayout.VerticalScope())
                                 {
-                                   
+
                                     using (new EditorGUILayout.HorizontalScope())
-                                    {   
-                                        
-                                        using (new LabelWidth(120))
-                                        {
-                                            EditorGUI.BeginChangeCheck();
-                                            var bpmOverride = EditorGUILayout.Toggle("Override Time",
-                                                bpmOverrideData.bpmOverride);
-                                            if (EditorGUI.EndChangeCheck())
-                                            {
-                                                bpmOverrideData.GetType().GetField("bpmOverride")
-                                                    .SetValue(bpmOverrideData, bpmOverride);
-                                            }
-                                        }
-
-                                        
+                                    {
+                                        EditorGUILayout.LabelField("BPM Override");   
                                     }
-
                                     using (new EditorGUI.IndentLevelScope())
                                     {
                                         using (new EditorGUILayout.HorizontalScope())
                                         {
-                                            // using (new EditorCommon.LabelWidth(100))
+
+                                            // using (new LabelWidth(120))
                                             // {
                                                 EditorGUI.BeginChangeCheck();
-                                                var resultLoopType =
-                                                    EditorGUILayout.EnumPopup("Loop Type", bpmOverrideData.loopType);
+                                                var bpmOverride = EditorGUILayout.Toggle("Override Time",
+                                                    bpmOverrideData.bpmOverride);
                                                 if (EditorGUI.EndChangeCheck())
                                                 {
-                                                    bpmOverrideData.GetType().GetField("loopType")
-                                                        .SetValue(bpmOverrideData, resultLoopType);
+                                                    bpmOverrideData.GetType().GetField("bpmOverride")
+                                                        .SetValue(bpmOverrideData, bpmOverride);
                                                 }
+
+                                        }
+
+                                        EditorGUI.BeginDisabledGroup(!bpmOverrideData.bpmOverride);
+                                        using (new EditorGUILayout.HorizontalScope())
+                                        {
+                                            // using (new EditorCommon.LabelWidth(100))
+                                            // {
+                                            EditorGUI.BeginChangeCheck();
+                                            var resultLoopType =
+                                                EditorGUILayout.EnumPopup("Loop Type", bpmOverrideData.loopType);
+                                            if (EditorGUI.EndChangeCheck())
+                                            {
+                                                bpmOverrideData.GetType().GetField("loopType")
+                                                    .SetValue(bpmOverrideData, resultLoopType);
+                                            }
                                             // }
                                         }
-                                        
+
                                         using (new EditorGUILayout.HorizontalScope())
                                         {
                                             using (new LabelWidth(120))
@@ -340,6 +380,8 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                                                 }
                                             }
                                         }
+                                        
+                                        EditorGUI.EndDisabledGroup();
                                     }
                                 }
                             }
@@ -425,18 +467,18 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                                 {
                                     stageLightValueFieldInfo.SetValue(fieldValue, resultValue);
                                 }
-                                
+
                             }
-                            
+
                             EditorGUILayout.EndHorizontal();
                             EditorGUI.EndDisabledGroup();
                         }
                     }
+
+
+                    EditorGUI.indentLevel--;
                 }
             }
-
-            EditorGUI.EndDisabledGroup();
-            
         }
 
         protected void DrawMinMaxEaseUI(string labelName ,FieldInfo fieldInfo,object target, Object undoTarget=null)
@@ -592,7 +634,6 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             // Debug.Log($"dir: {dir}, file: {fileName}");
             var newProfile = CreateInstance<StageLightProfile>();
             newProfile.stageLightProperties = stageLightTimelineClip.stageLightTimelineBehaviour.stageLightQueData.stageLightProperties;
-            newProfile.ApplyListToProperties();
             AssetDatabase.CreateAsset(newProfile, path);
             // useProfile = true;
             // ptlPropObject = new ExposedReference<VLVLBClipProfile>();
@@ -607,7 +648,10 @@ namespace StageLightManeuver.StageLightTimeline.Editor
         private void OnDestroy()
         {
         }
-
+        public void OnInspectorUpdate()
+        {
+            this.Repaint();
+        }
 
       
 

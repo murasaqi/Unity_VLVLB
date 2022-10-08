@@ -6,12 +6,12 @@ using UnityEngine.Rendering.Universal;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class MaterialColorFixture : StageLightExtension
+    public class MaterialColorFixture : StageLightFixtureBase
     {
         public LightProperty lightProperty = new LightProperty();
         // public StageLightProperty<bool> fromLightFixture = new StageLightProperty<bool>();
         public MeshRenderer meshRenderer;
-        public StageLightToggleValue<string> materialToggleValueName = new StageLightToggleValue<string>(){value = "_Color"};
+        public SlmToggleValue<string> materialToggleValueName = new SlmToggleValue<string>(){value = "_Color"};
         private MaterialPropertyBlock _materialPropertyBlock;
         public LightFixture lightFixture;
         private void Start()

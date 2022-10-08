@@ -4,7 +4,7 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class GoboFixture:StageLightExtension
+    public class GoboFixture:StageLightFixtureBase
     
     {
         public MeshRenderer vlbMeshRenderer;

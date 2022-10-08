@@ -8,7 +8,7 @@ namespace StageLightManeuver
     public class StageLightQueData
     {
 
-        [SerializeReference]public List<StageLightProperty> stageLightProperties;
+        [SerializeReference]public List<SlmProperty> stageLightProperties;
         public float weight = 1;
         
         
@@ -20,11 +20,11 @@ namespace StageLightManeuver
         
         public StageLightQueData()
         {
-            stageLightProperties = new List<StageLightProperty>();
+            stageLightProperties = new List<SlmProperty>();
             stageLightProperties.Add(new TimeProperty());
             weight = 1f;
         }
-        public T TryGet<T>() where T : StageLightProperty
+        public T TryGet<T>() where T : SlmProperty
         {
             foreach (var property in stageLightProperties)
             {

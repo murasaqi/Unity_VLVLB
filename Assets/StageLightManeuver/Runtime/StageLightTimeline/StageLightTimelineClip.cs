@@ -15,10 +15,7 @@ public class StageLightTimelineClip : PlayableAsset, ITimelineClipAsset
     public StageLightProfile referenceStageLightProfile;
     [HideInInspector]public StageLightTimelineBehaviour stageLightTimelineBehaviour = new StageLightTimelineBehaviour ();
     public bool forceTimelineClipUpdate;
-   
-   
-    public bool useProfile = false;
-    
+    public bool syncReferenceProfile = false;
     public StageLightTimelineTrack track;
     public ClipCaps clipCaps
     {
@@ -34,6 +31,11 @@ public class StageLightTimelineClip : PlayableAsset, ITimelineClipAsset
         if(queData.TryGet<TimeProperty>() == null)
         {
             queData.TryAdd(typeof(TimeProperty));
+        }
+
+        if (syncReferenceProfile)
+        {
+            InitSyncData();
         }
         
 
@@ -61,14 +63,41 @@ public class StageLightTimelineClip : PlayableAsset, ITimelineClipAsset
         {
             var type = stageLightProperty.GetType();
             referenceStageLightProfile.stageLightProperties.Add(Activator.CreateInstance(type, BindingFlags.CreateInstance, null, new object[]{stageLightProperty}, null)
-                as StageLightProperty);
+                as SlmProperty);
         }
-        
-        referenceStageLightProfile.ApplyListToProperties();
-        // referenceStageLightProfile.Serialize();
-        // Set dirty flag
+        referenceStageLightProfile.isUpdateGuiFlag = true;
         EditorUtility.SetDirty(referenceStageLightProfile);
         AssetDatabase.SaveAssets();
 #endif
+    }
+
+    public void InitSyncData()
+    {
+        if (syncReferenceProfile)
+        {
+            if(referenceStageLightProfile != null)
+            {
+                
+                foreach (var stageLightProperty in referenceStageLightProfile.stageLightProperties)
+                {
+                    stageLightProperty.ToggleOverride(false);
+                    stageLightProperty.propertyOverride = true;
+                }
+                stageLightTimelineBehaviour.stageLightQueData.stageLightProperties =
+                    referenceStageLightProfile.stageLightProperties;    
+            }
+        }
+        else
+        {
+            var cloneProperties = new List<SlmProperty>();
+            foreach (var stageLightProperty in stageLightTimelineBehaviour.stageLightQueData.stageLightProperties)
+            {
+                var type = stageLightProperty.GetType();
+                cloneProperties.Add(Activator.CreateInstance(type, BindingFlags.CreateInstance, null, new object[]{stageLightProperty}, null)
+                    as SlmProperty);
+            }
+
+            stageLightTimelineBehaviour.stageLightQueData.stageLightProperties = cloneProperties;
+        }
     }
 }

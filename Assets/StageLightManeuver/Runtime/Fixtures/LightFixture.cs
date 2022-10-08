@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class LightFixture : StageLightExtension
+    public class LightFixture : StageLightFixtureBase
     {
         public Light light;
         public Color lightColor;

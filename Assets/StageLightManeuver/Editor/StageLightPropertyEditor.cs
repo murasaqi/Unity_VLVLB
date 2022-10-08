@@ -10,25 +10,25 @@ namespace StageLightManeuver.StageLightTimeline.Editor
 {
     public class StageLightPropertyEditor
     {
-        private StageLightProperty _stageLightProperty;
-        public StageLightPropertyEditor(StageLightProperty property)
+        private SlmProperty _slmProperty;
+        public StageLightPropertyEditor(SlmProperty property)
         {
-            _stageLightProperty = property;
+            _slmProperty = property;
         }
     
         public void DrawGUI(UnityEngine.Object undoTarget)
         {
-            var fields = _stageLightProperty.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+            var fields = _slmProperty.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
 
-                var _stageLightPropertyOverrideFieldInfo = _stageLightProperty.GetType().BaseType.GetField("_stageLightPropertyOverride");
+                var _stageLightPropertyOverrideFieldInfo = _slmProperty.GetType().BaseType.GetField("_stageLightPropertyOverride");
                 EditorGUILayout.BeginHorizontal();
                 EditorGUI.BeginChangeCheck();
-                var enable = EditorGUILayout.Toggle((bool)_stageLightPropertyOverrideFieldInfo.GetValue(_stageLightProperty), GUILayout.Width(30));
+                var enable = EditorGUILayout.Toggle((bool)_stageLightPropertyOverrideFieldInfo.GetValue(_slmProperty), GUILayout.Width(30));
                 if (EditorGUI.EndChangeCheck())
                 {
-                    _stageLightPropertyOverrideFieldInfo.SetValue(_stageLightProperty,enable);
+                    _stageLightPropertyOverrideFieldInfo.SetValue(_slmProperty,enable);
                 }
-                EditorGUILayout.PrefixLabel(_stageLightProperty.GetType().ToString());
+                EditorGUILayout.PrefixLabel(_slmProperty.GetType().ToString());
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.Space(2);
                 
@@ -40,9 +40,9 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     foreach (var fieldInfo in fields)
                     {
                         var fieldType = fieldInfo.FieldType;
-                        if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(StageLightToggleValue<>))
+                        if (fieldType.IsGenericType && fieldType.GetGenericTypeDefinition() == typeof(SlmToggleValue<>))
                         {
-                            var fieldValue = fieldInfo.GetValue(_stageLightProperty);
+                            var fieldValue = fieldInfo.GetValue(_slmProperty);
                             var stageLightValueFieldInfo = fieldValue.GetType().GetField("value");
                             var _stageLightPropertyOverride = fieldValue.GetType().BaseType.GetField("_stageLightPropertyOverride");
                             

@@ -4,30 +4,39 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [Serializable]
-    public class GoboProperty:StageLightAdditionalProperty
+    public class GoboProperty:SlmAdditionalProperty
     {
-        [DisplayName("Gobo Texture")]public StageLightToggleValue<Texture2D> goboTexture;
-        [DisplayName("Gobo Property Name")]public StageLightToggleValue<string> goboPropertyName;
-        [DisplayName("Rotation Speed")]public StageLightToggleValue<MinMaxEasingValue> goroRotationSpeed;
+        [DisplayName("Gobo Texture")]public SlmToggleValue<Texture2D> goboTexture;
+        [DisplayName("Gobo Property Name")]public SlmToggleValue<string> goboPropertyName;
+        [DisplayName("Rotation Speed")]public SlmToggleValue<MinMaxEasingValue> goroRotationSpeed;
 
         public GoboProperty()
         {
             propertyName = "Gobo";
             propertyOverride = false;
-            bpmOverrideData = new StageLightToggleValue<BpmOverrideData>(){value = new BpmOverrideData()};
-            goboTexture = new StageLightToggleValue<Texture2D>(){value = null};
-            goboPropertyName = new StageLightToggleValue<string>(){value = "_GoboTexture"};
-            goroRotationSpeed = new StageLightToggleValue<MinMaxEasingValue>(){value = new MinMaxEasingValue()};
+            bpmOverrideData = new SlmToggleValue<BpmOverrideToggleValueBase>(){value = new BpmOverrideToggleValueBase()};
+            goboTexture = new SlmToggleValue<Texture2D>(){value = null};
+            goboPropertyName = new SlmToggleValue<string>(){value = "_GoboTexture"};
+            goroRotationSpeed = new SlmToggleValue<MinMaxEasingValue>(){value = new MinMaxEasingValue()};
         }
-        
+
+        public override void ToggleOverride(bool toggle)
+        {
+            base.ToggleOverride(toggle); 
+            propertyOverride = toggle;
+            goboTexture.propertyOverride = toggle;
+            goboPropertyName.propertyOverride = toggle;
+            goroRotationSpeed.propertyOverride = toggle;
+        }
+
         public GoboProperty(GoboProperty other)
         {
             propertyName = other.propertyName;
             propertyOverride = other.propertyOverride;
-            bpmOverrideData = new StageLightToggleValue<BpmOverrideData>(other.bpmOverrideData);
-            goboTexture = new StageLightToggleValue<Texture2D>(other.goboTexture);
-            goboPropertyName = new StageLightToggleValue<string>(other.goboPropertyName);
-            goroRotationSpeed = new StageLightToggleValue<MinMaxEasingValue>(other.goroRotationSpeed);
+            bpmOverrideData = new SlmToggleValue<BpmOverrideToggleValueBase>(other.bpmOverrideData);
+            goboTexture = new SlmToggleValue<Texture2D>(other.goboTexture);
+            goboPropertyName = new SlmToggleValue<string>(other.goboPropertyName);
+            goroRotationSpeed = new SlmToggleValue<MinMaxEasingValue>(other.goroRotationSpeed);
         }
     }
 }

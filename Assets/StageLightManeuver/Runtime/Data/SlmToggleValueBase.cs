@@ -19,23 +19,23 @@ namespace StageLightManeuver
     
     
     [Serializable]
-    public class StageLightData
+    public class SlmToggleValueBase
     {
         [SerializeField] public bool propertyOverride = false;
     }
 
     [Serializable]
-    public class StageLightToggleValue<T>:StageLightData
+    public class SlmToggleValue<T>:SlmToggleValueBase
     {
         public T value;
         
-        public StageLightToggleValue(StageLightToggleValue<T> stageLightToggleValue)
+        public SlmToggleValue(SlmToggleValue<T> slmToggleValue)
         {
-            propertyOverride = stageLightToggleValue.propertyOverride;
-            this.value = stageLightToggleValue.value;
+            propertyOverride = slmToggleValue.propertyOverride;
+            this.value = slmToggleValue.value;
         }
 
-        public StageLightToggleValue()
+        public SlmToggleValue()
         {
             propertyOverride = false;
             value = default;
@@ -44,23 +44,27 @@ namespace StageLightManeuver
 
 
     [Serializable]
-    public class StageLightProperty:StageLightData
+    public class SlmProperty:SlmToggleValueBase
     {
         public string propertyName;
-
-
+        
+        public virtual void ToggleOverride(bool toggle)
+        {
+            propertyOverride = toggle;
+        }
+        
     }
     
     
     [Serializable]
-    public class BpmOverrideData:StageLightData
+    public class BpmOverrideToggleValueBase:SlmToggleValueBase
     {
         [DisplayName("Loop Type")] public LoopType loopType = LoopType.Loop;
         [DisplayName("Override Time")] public bool bpmOverride = false;
         [DisplayName("BPM Scale")] public float bpmScale = 1;
         [DisplayName("BPM Offset")] public float bpmOffset = 0;
        
-        public BpmOverrideData()
+        public BpmOverrideToggleValueBase()
         {
             propertyOverride = false;
             bpmScale = 1;
@@ -71,9 +75,9 @@ namespace StageLightManeuver
     
     
     [Serializable]
-    public class StageLightAdditionalProperty:StageLightProperty
+    public class SlmAdditionalProperty:SlmProperty
     {
-        [DisplayName("BPM Override")]public StageLightToggleValue<BpmOverrideData> bpmOverrideData = new StageLightToggleValue<BpmOverrideData>(); 
+        [DisplayName("BPM Override")]public SlmToggleValue<BpmOverrideToggleValueBase> bpmOverrideData = new SlmToggleValue<BpmOverrideToggleValueBase>(); 
         
     }
 

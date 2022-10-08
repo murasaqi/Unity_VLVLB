@@ -8,7 +8,7 @@ namespace StageLightManeuver
     [ExecuteAlways]
     public class StageLight: MonoBehaviour,IStageLight
     {
-        public List<StageLightExtension> stageLightFixtures = new List<StageLightExtension>();
+        public List<StageLightFixtureBase> stageLightFixtures = new List<StageLightFixtureBase>();
         [SerializeField]private int index = 0;
         public int Index { get => index; set => index = value; }
         [SerializeField]private List<StageLight> stageLightChild = new List<StageLight>();

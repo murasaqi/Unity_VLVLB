@@ -3,7 +3,7 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class LightTiltFixture: StageLightExtension
+    public class LightTiltFixture: StageLightFixtureBase
     {
         private LightTransformType _lightTransformType = LightTransformType.Tilt;
         private float _angle =0f;

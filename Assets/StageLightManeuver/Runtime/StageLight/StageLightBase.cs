@@ -11,6 +11,6 @@ namespace StageLightManeuver
         public List<StageLight> StageLightChild { get; set; }
         public void UpdateFixture(float time);
         public void AddStageLightInChild(){}
-        public void AddQue(StageLightData stageLightData, float weight){}
+        public void AddQue(SlmToggleValueBase slmToggleValueBase, float weight){}
     }
 }

@@ -32,9 +32,9 @@ namespace StageLightManeuver
         }
     }
     [Serializable]
-    public class RollProperty:StageLightAdditionalProperty
+    public class RollProperty:SlmAdditionalProperty
     {
-        [DisplayName("Roll Transform")]public StageLightToggleValue<MinMaxEasingValue> rollTransform;
+        [DisplayName("Roll Transform")]public SlmToggleValue<MinMaxEasingValue> rollTransform;
        
         public RollProperty(RollProperty rollProperty)
         {
@@ -48,10 +48,17 @@ namespace StageLightManeuver
         public RollProperty()
         {
             propertyOverride = false;
-            bpmOverrideData = new StageLightToggleValue<BpmOverrideData>(){value = new BpmOverrideData()};
-            rollTransform = new StageLightToggleValue<MinMaxEasingValue>() {value = new MinMaxEasingValue()};
+            bpmOverrideData = new SlmToggleValue<BpmOverrideToggleValueBase>(){value = new BpmOverrideToggleValueBase()};
+            rollTransform = new SlmToggleValue<MinMaxEasingValue>() {value = new MinMaxEasingValue()};
         }
 
+        public override void ToggleOverride(bool toggle)
+        {
+            base.ToggleOverride(toggle);
+            propertyOverride = toggle;
+            rollTransform.propertyOverride = toggle;
+            
+        }
     }
     
     [Serializable]

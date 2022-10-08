@@ -7,7 +7,7 @@ namespace StageLightManeuver
     
   
     [Serializable]
-    public abstract class StageLightExtension: MonoBehaviour,IStageLight
+    public abstract class StageLightFixtureBase: MonoBehaviour,IStageLight
     {
         // public StageLightBaseProperty stageLightBaseProperty = new StageLightBaseProperty();
         // public ClipProperty clipProperty = new ClipProperty();

@@ -16,7 +16,6 @@ namespace StageLightManeuver.StageLightTimeline.Editor
         {
             static EditorInitialize()
             {
-                playableDirector = GetMasterDirector();  
                 backgroundTexture = new Texture2D(1, 1);
                 syncIconTexture = Resources.Load<Texture2D>("VLVLBMaterials/icon_sync");
                 backgroundTexture.SetPixel(0, 0, Color.white);
@@ -30,13 +29,9 @@ namespace StageLightManeuver.StageLightTimeline.Editor
 
         private Dictionary<StageLightTimelineClip, List<float>>
             _beatPoint = new Dictionary<StageLightTimelineClip, List<float>>();
-        private static PlayableDirector playableDirector;
         private static Texture2D backgroundTexture;
         private static Texture2D syncIconTexture;
-        private float min;
-        private float max;
-        private Dictionary<TimelineClip, AnimationCurve>
-            _panCurves = new Dictionary<TimelineClip, AnimationCurve>();
+     
         public override ClipDrawOptions GetClipOptions(TimelineClip clip)
         {
             return new ClipDrawOptions
@@ -55,8 +50,8 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             if (stageLightTimelineClip == null)
                 return;
             GetGradientTexture(clip, true);
-            // if (stageLightTimelineClip.stage != null)
-            //     clip.displayName = stageLightTimelineClip.stageLightProfile.name;
+            if (stageLightTimelineClip.referenceStageLightProfile != null)
+                clip.displayName = stageLightTimelineClip.referenceStageLightProfile.name;
             
 
         }
@@ -75,22 +70,39 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             if(syncIconTexture == null)syncIconTexture = Resources.Load<Texture2D>("VLVLBMaterials/icon_sync");
             var stageLightTimelineClip = (StageLightTimelineClip) clip.asset;
             var update = stageLightTimelineClip.forceTimelineClipUpdate;
+            if (stageLightTimelineClip.referenceStageLightProfile != null)
+            {
+                if (stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag) update = true;
+                stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag = false;
+            }
             var tex = GetGradientTexture(clip, update);
-            stageLightTimelineClip.forceTimelineClipUpdate = false;
             if(stageLightTimelineClip.track == null) return;
             var colorHeight = region.position.height * stageLightTimelineClip.track.colorLineHeight;
             var beatHeight = 2f;
 
+            UpdateBeatPoint(clip);
             if (stageLightTimelineClip.track.drawBeat)
             {
                 if (_beatPoint.ContainsKey(stageLightTimelineClip))
                 {
                     foreach (var p in _beatPoint[stageLightTimelineClip])
                     {
-                        EditorGUI.DrawRect(new Rect(region.position.width * p, 0, 1, region.position.height),
+                        var width = region.position.size.x;
+                        EditorGUI.DrawRect(new Rect(width* p, 0, 1, region.position.height),
                             stageLightTimelineClip.track.beatLineColor);
                     }     
+
+                   
                 }
+
+                var size = 10;
+                for (float i = 0; i < size; i++)
+                {
+
+                    // var with = region.position.width;
+                    // EditorGUI.DrawRect(new Rect(region.position.x + with*, 0, 1, region.position.height),
+                    //     stageLightTimelineClip.track.beatLineColor);
+                }    
                
             }
 
@@ -100,35 +112,91 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                         colorHeight), tex);
 
 
-
-
-            // GUI.HorizontalSlider()
-            // GUI.HorizontalSlider(region.position, 0, 0, 1);
-            // var curve = EditorGUILayout.CurveField(new AnimationCurve(), Color.white, new Rect(region.position.x,region.position.y,100,40),new []{GUILayout.Height(40),GUILayout.Width(100)});
-
             var iconSize = 12;
             var margin = 4;
-            if (stageLightTimelineClip.useProfile)
+            if (stageLightTimelineClip.syncReferenceProfile)
                 GUI.DrawTexture(new Rect(region.position.width - iconSize - margin, margin, iconSize, iconSize),
                     syncIconTexture, ScaleMode.ScaleAndCrop,
                     true,
                     0,
                     new Color(1, 1, 1, 0.5f), 0, 0);
             
+            stageLightTimelineClip.forceTimelineClipUpdate = false;
         }
 
-        private float GetNormalizedTime(float BPM, float timeScale, float time, LoopType loopType)
+        private float GetNormalizedTime(float time,float bpm, float bpmOffset,float bpmScale,ClipProperty clipProperty,LoopType loopType)
         {
-            var bpm = BPM * timeScale;
-            var duration = 60 / bpm;
-            var t = (float) time % duration;
-            var inv = Mathf.CeilToInt((float) time / duration) % 2 != 0;
+            
+            var scaledBpm = bpm * bpmScale;
+            var duration = 60 / scaledBpm;
+            var offset = duration* bpmOffset *0;
+            var offsetTime = time + offset;
+            var result = 0f;
+            var t = (float)offsetTime % duration;
             var normalisedTime = t / duration;
-            if (loopType == LoopType.Loop) return normalisedTime;
-            return inv ? 1f - normalisedTime : normalisedTime;
+            
+            if (loopType == LoopType.Loop)
+            {
+                result = normalisedTime;     
+            }else if (loopType == LoopType.PingPong)
+            {
+                result = Mathf.PingPong(offsetTime / duration, 1f);
+            }
+            else if(loopType == LoopType.Fixed)
+            {
+                result = Mathf.InverseLerp(clipProperty.clipStartTime, clipProperty.clipEndTime, time);
+            }
+           
+            return result;
         }
 
 
+
+        public void UpdateBeatPoint(TimelineClip clip,float step = 0.1f)
+        {
+            var customClip = clip.asset as StageLightTimelineClip;
+            var beatPointList = new List<float>();
+            
+            
+            
+            var timeProperty = customClip.stageLightTimelineBehaviour.stageLightQueData.TryGet<TimeProperty>();
+            
+            if (timeProperty != null)
+            {
+                var preBeat = -1f;
+                for (float i =(float) clip.start; i < (float)clip.end; i+=step)
+                {
+                    var bpm = timeProperty.bpm.value;
+                    var bpmOffset =timeProperty.bpmOffset.value;
+                    var bpmScale = timeProperty.bpmScale.value;
+                    var loopType = timeProperty.loopType.value;
+                    float offsetTime = (60 / bpmScale) * bpmOffset;
+                    var t =GetNormalizedTime(i,bpm,bpmOffset,bpmScale,timeProperty.clipProperty,loopType);
+                    
+                    
+                    if (preBeat> t)
+                    {
+                        beatPointList.Add(t);
+                    }
+                    
+                    preBeat = t;
+                }
+            }
+            
+            if (_beatPoint.ContainsKey(customClip))
+            {
+                _beatPoint[customClip] = beatPointList;
+            }
+            else
+            {
+                _beatPoint.Add(customClip, beatPointList);    
+            }
+
+
+
+           
+                 
+        }
         
         Texture2D GetGradientTexture(TimelineClip clip, bool update = false)
         {
@@ -138,12 +206,6 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             
             if (!customClip) return tex;
 
-            
-            // var props = customClip.behaviour.props;
-            // if (customClip.useProfile && customClip.resolvedVlvlbClipProfile != null)
-            // {
-            //     props = customClip.resolvedVlvlbClipProfile.ptlProps;
-            // }
             if(customClip.stageLightTimelineBehaviour.stageLightQueData == null) return tex;
             
             var lightProperty = customClip.stageLightTimelineBehaviour.stageLightQueData.TryGet<LightProperty>();
@@ -151,34 +213,24 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             if(lightProperty.lightToggleColor == null) return tex;
             var gradient = lightProperty.lightToggleColor.value;
             var intensity = lightProperty.lightToggleIntensity.value;
-
-
-            // var _textures = isGrad ? _gradientTextures : _beatTextures;
-
             if (update) 
             {
                 _gradientTextures.Remove(customClip);
-                _beatPoint.Remove(customClip);
             }
             else
             {
                 _gradientTextures.TryGetValue(customClip, out tex);
                 if (tex) return tex;
             }
-
-            var b = (float)(clip.blendInDuration / clip.duration);
             tex = new Texture2D(64, 1);
-            
-            var beatPointList = new List<float>();
-
-            var preBeat = -1f;
+            var b = (float)(clip.blendInDuration / clip.duration);
+          
             for (int i = 0; i < tex.width; ++i)
             {
-                var t = (float)i / tex.width;
-                var colorT = t;
-                var intensityT = t;
-
+                var currentTime  =(float)clip.duration* (float)i / tex.width;
+            
                 // var lightProfile = lightProperty;
+                
                 var timeProperty = customClip.stageLightTimelineBehaviour.stageLightQueData.TryGet<TimeProperty>();
                 if (timeProperty != null)
                 {
@@ -192,41 +244,19 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     var loopType = lightProperty.bpmOverrideData.value.bpmOverride
                         ? lightProperty.bpmOverrideData.value.loopType
                         : timeProperty.loopType.value;
-                    float offsetTime = (60 / bpmScale) * bpmOffset;
-                    if (loopType != LoopType.Fixed)
-                    {
-                        colorT = GetNormalizedTime(bpm, bpmScale, (float)(t * clip.duration + clip.start+offsetTime), loopType);
-                        intensityT = GetNormalizedTime(bpm, bpmScale, (float)(t * clip.duration + clip.start+offsetTime), loopType);
-                    }
-                    var color = gradient.Evaluate(colorT);
-                    if (b > 0f) color.a = Mathf.Min(colorT / b, 1f);
-                    var intensityValue = Mathf.Clamp(intensity.Evaluate(intensityT),0,1);
+                   
+                    var t = GetNormalizedTime(currentTime,bpm, bpmScale, bpmScale,timeProperty.clipProperty, loopType);
+                    
+                    var color = gradient.Evaluate(t);
+                    if (b > 0f) color.a = Mathf.Min(t / b, 1f);
+                    var intensityValue = Mathf.Clamp(intensity.Evaluate(t),0,1);
                     color = new Color(color.r,
                         color.g,
                         color.b,
                         color.a*intensityValue);
                     tex.SetPixel(i, 0, color);     
-           
-                
-                
-                    if (loopType != LoopType.Fixed)
-                    {
-                        var normalisedTime = GetNormalizedTime(bpm, 1, (float)(t * clip.duration + clip.start+offsetTime),
-                            LoopType.Loop);
-                        if (preBeat> normalisedTime)
-                        {
-                            beatPointList.Add(t);
-                        }
                     
-                        preBeat = normalisedTime;
-                    }
                 }
-                
-               
-                
-   
-                
-                    
             }
 
             
@@ -241,15 +271,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 _gradientTextures.Add(customClip, tex);    
             }
 
-            if (_beatPoint.ContainsKey(customClip))
-            {
-                _beatPoint[customClip] = beatPointList;
-            }
-            else
-            {
-                _beatPoint.Add(customClip, beatPointList);    
-            }
-
+           
             return tex;
         }
 
